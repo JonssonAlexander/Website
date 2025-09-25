@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NIR Satellite Signals → Orange Juice Yield — Brazil Case Study</title>
+  <meta name="description" content="Using near‑infrared ESA satellite data to predict harvest timing and disease prevalence in São Paulo orange orchards; includes naive factor model vs detection algorithm, NDVI time‑lapse, and market context."/>
+  <link rel="icon" href="favicon.png" />
+
+  <!-- MathJax for equations (only needed for the filter math block) -->
+  <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Leaflet for the interactive map (remove if you prefer a static image) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    /* ------- Minimal reset ------- */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.6 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:#0f0f10;background:#fff}
+    img{max-width:100%;display:block;height:auto}
+    a{color:inherit}
+    :root{
+      --max: 1080px;          /* content max width */
+      --gutter: clamp(16px, 4vw, 32px);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --border: 1px solid rgba(0,0,0,.08);
+      --accent: #111;         /* tweak if you want a color pop */
+      --muted: #6b7280;
+    }
+
+    /* ------- Layout ------- */
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+    header.site{padding:20vh var(--gutter) 10vh;position:relative}
+    header.site h1{font-size:clamp(32px,7vw,64px);line-height:1.05;margin:0 0 .6rem;font-weight:700;letter-spacing:-.02em}
+    .lede{font-size:clamp(18px,2.4vw,22px);color:var(--muted);max-width:70ch;margin:0}
+    .back{display:none}
+    .back-fixed{position:fixed;top:16px;left:16px;z-index:10000;color:#fafafa;text-decoration:none;font-family:"BasisGrotesque-Regular",sans-serif;font-size:.888rem;letter-spacing:.02em;mix-blend-mode:exclusion;padding:4px 6px}
+    .back-fixed:focus{outline:2px solid #ffd300;outline-offset:2px}
+    @media (max-width:543.98px){.back-fixed{top:12px;left:12px;font-size:.777rem}}
+
+    nav.toc{position:sticky;top:0;background:linear-gradient(#fff,rgba(255,255,255,.85));backdrop-filter:saturate(150%) blur(6px);border-bottom:var(--border);z-index:10}
+    nav.toc .wrap{display:flex;gap:1rem;overflow:auto;scrollbar-width:none}
+    nav.toc .wrap::-webkit-scrollbar{display:none}
+    nav.toc a{display:flex;align-items:center;gap:.6rem;padding:1rem .75rem;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent}
+    nav.toc a:is(:hover,:focus){border-color:#000}
+    nav.toc a span.num{display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;border:1px solid rgba(0,0,0,.15);font-size:.9rem}
+
+    main section{padding:10vh 0;border-bottom:var(--border)}
+    main section:last-of-type{border-bottom:none}
+
+    /* ------- Typography helpers ------- */
+    h2.section-title{font-size:clamp(22px,3.5vw,32px);letter-spacing:-.01em;margin:0 0 1rem}
+    .eyebrow{display:flex;align-items:center;gap:.6rem;color:var(--muted);text-transform:uppercase;font-size:.8rem;letter-spacing:.12em}
+    .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#000;opacity:.3}
+    .kicker{color:var(--muted)}
+
+    /* ------- Figures / images ------- */
+    figure{margin:2rem 0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#f8f8f8;border:var(--border)}
+    figure.nochrome{border:none;box-shadow:none;background:transparent}
+    figcaption{padding:.75rem 1rem;color:var(--muted);font-size:.9rem}
+
+    .full-bleed{width:100vw;margin-left:calc(50% - 50vw)}
+    .full-bleed img{width:100%;height:clamp(40vh,70vh,84vh);object-fit:cover}
+
+    .grid{display:grid;gap:clamp(12px,2vw,20px)}
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    .grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+    @media (max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
+
+    /* ------- Code / math blocks ------- */
+    pre{padding:1rem;border-radius:12px;background:#0f0f10;color:#f1f5f9;overflow:auto}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+
+    /* ------- Reveal on scroll ------- */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    /* ------- Lightbox ------- */
+    dialog#lightbox{padding:0;border:none;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    dialog#lightbox::backdrop{background:rgba(0,0,0,.65)}
+    .lightbox-img{max-width:90vw;max-height:85vh;display:block}
+    .lb-close{position:absolute;inset:10px 14px auto auto;border:none;background:#fff;border-radius:999px;width:40px;height:40px;box-shadow:var(--shadow);font-weight:700;cursor:pointer}
+
+    footer{padding:12vh var(--gutter) 16vh;color:var(--muted)}
+
+    /* ------- Hover subpage (math/details) ------- */
+    .proof-trigger{color:var(--accent); text-decoration:underline; cursor:pointer}
+    .proof-box{position:fixed; left:50%; top:8vh; transform:translateX(-50%) translateY(-8px); width:min(1100px,92vw); max-height:80vh; overflow:auto; background:#fff; border:var(--border); border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.25); padding:18px; opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease; z-index:10001}
+    .proof-box.open{opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0)}
+    .proof-close{position:sticky; top:0; margin:-6px -6px 12px auto; display:inline-block; border:none; background:#fff; border-radius:999px; width:36px; height:36px; box-shadow:var(--shadow); font-weight:700; cursor:pointer}
+
+    /* Map */
+    #map{height:60vh; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:var(--border)}
+
+    /* Two-option cards */
+    .cards{display:grid; gap:clamp(12px,2vw,20px); grid-template-columns:1fr 1fr}
+    @media (max-width:900px){.cards{grid-template-columns:1fr}}
+    .card{border:var(--border); border-radius:16px; box-shadow:var(--shadow); padding:1.25rem; background:#fff}
+    .card h3{margin:.2rem 0 0; font-size:1.25rem}
+    .chip{display:inline-block; padding:.2rem .6rem; border-radius:999px; background:#f1f5f9; font-size:.8rem; color:#374151}
+
+    /* Nice hero number labels like reference */
+    .num-tag{display:inline-grid; place-items:center; width:1.8rem; height:1.8rem; border-radius:50%; border:1px solid rgba(0,0,0,.15); font-size:.9rem; margin-right:.5rem}
+  </style>
+</head>
+<body>
+  <a class="back-fixed" href="../../index.html"><span>←</span> Back to projects</a>
+  <header class="site wrap">
+    <h1>Predicting Orange Juice Production with NIR Satellites</h1>
+    <p class="lede">ESA near‑infrared (NIR) imaging to forecast harvest timing and detect citrus greening in São Paulo, Brazil — with a naive market factor model vs an NDVI‑driven detection algorithm.</p>
+  </header>
+
+  <!-- Sticky section index -->
+  <nav class="toc">
+    <div class="wrap">
+      <a href="#tldr"><span class="num">1</span> TL;DR</a>
+      <a href="#market"><span class="num">2</span> Market Context</a>
+      <a href="#method"><span class="num">3</span> Method</a>
+      <a href="#map"><span class="num">4</span> Fields Map</a>
+      <a href="#parallel"><span class="num">5</span> Parallel Loader</a>
+      <a href="#naive"><span class="num">6</span> Naive Model</a>
+      <a href="#filter"><span class="num">7</span> Filtering</a>
+      <a href="#results"><span class="num">8</span> Results</a>
+      <a href="#demos"><span class="num">9</span> Demos</a>
+      <a href="#conclusion"><span class="num">10</span> Conclusion</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO full‑bleed image -->
+    <section id="hero" class="full-bleed">
+      <figure class="nochrome">
+        <!-- Replace hero.jpg with your best cover image (2000px+ recommended) -->
+        <img class="zoomable" src="images/hero_orchard.jpg" alt="NIR/NDVI orchard montage" loading="eager" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="tldr" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Summary</span></div>
+      <h2 class="section-title">1 — TL;DR</h2>
+      <p><strong>Idea:</strong> Use ESA NIR bands and NDVI to estimate <em>harvest timing</em> and <em>citrus greening prevalence</em> across mapped orchards in São Paulo.</p>
+      <ul>
+        <li><strong>Naive baseline:</strong> a factor model on market/seasonality for OJ prices.</li>
+        <li><strong>Detection path:</strong> NDVI‑based field‑level signals feeding a classifier; includes a GIF of the per‑field evolution.</li>
+        <li><strong>Why it matters:</strong> Leading OJ reports drop around <em>September/December</em>; satellites give ~<em>2‑month</em> lead on harvest progress.</li>
+      </ul>
+      <div class="grid cols-2 reveal">
+        <figure>
+          <img class="zoomable" src="images/ndvi_timelapse.gif" alt="NDVI field evolution GIF" loading="lazy"/>
+          <figcaption>NDVI evolution for a representative field (click to zoom).</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="images/detector_flow.png" alt="Detection algorithm flow" loading="lazy"/>
+          <figcaption>Detection algorithm at a glance.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="market" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Context</span></div>
+      <h2 class="section-title">2 — Market Context</h2>
+      <p class="kicker">Current state of the OJ market &mdash; framing the question: <em>When does the bubble burst?</em></p>
+      <div class="grid cols-2 reveal">
+        <figure>
+          <img class="zoomable" src="images/oj_price_trend.png" alt="OJ futures/prices chart" loading="lazy"/>
+          <figcaption>OJ price dynamics (placeholder image).</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="images/market_news_collage.jpg" alt="Market headlines collage" loading="lazy"/>
+          <figcaption>Recent supply/disease/weather headlines.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="method" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Setup</span></div>
+      <h2 class="section-title">3 — Method Overview</h2>
+      <p>Greening‑stressed trees reduce chlorophyll production, altering reflectance: NIR rises while red band behavior shifts, making stressed vs healthy trees separable via vegetation indices (e.g., NDVI).</p>
+      <figure class="reveal">
+        <img class="zoomable" src="images/band_diagram.png" alt="NIR/Red band reflectance diagram" loading="lazy"/>
+        <figcaption>NIR sensitivity to chlorophyll &rarr; NDVI contrast for stressed trees.</figcaption>
+      </figure>
+      <ul>
+        <li><strong>Data:</strong> ESA Sentinel imagery (~10–15 m) with NIR and Red bands.</li>
+        <li><strong>Scope:</strong> 87 mapped orchards across São Paulo state.</li>
+        <li><strong>Goal:</strong> Harvest progress curve + greening prevalence proxy.</li>
+      </ul>
+    </section>
+
+    <section id="fields" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Map</span></div>
+      <h2 class="section-title">4 — Interactive Fields Map</h2>
+      <p>Explore the 87 orchards. Click markers/polygons to see field metadata and sample NDVI sparkline.</p>
+      <div id="map" class="reveal"></div>
+      <figcaption class="wrap" style="color:var(--muted);margin-top:.5rem">Tip: Replace <code>data/fields.geojson</code> with your exported polygons. Properties <code>{name, farm, notes}</code> are shown in popups.</figcaption>
+    </section>
+
+    <section id="parallel" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Engineering</span></div>
+      <h2 class="section-title">5 — Parallelizing the Pipeline</h2>
+      <p class="kicker">API pulls were the bottleneck &mdash; so we fanned them out.</p>
+      <div class="grid cols-2 reveal">
+        <figure>
+          <img class="zoomable" src="images/parallel_arch.png" alt="Parallel data loader architecture" loading="lazy"/>
+          <figcaption>Batching + async queue + per‑tile caching.</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="images/perf_bars.png" alt="Performance bars" loading="lazy"/>
+          <figcaption>Throughput vs workers; sweet spot before throttling.</figcaption>
+        </figure>
+      </div>
+      <pre><code>// Pseudocode sketch (replace with your snippet)
+for batch in chunk(field_tiles, B):
+  schedule(async fetch(tile) for tile in batch)
+  await all
+  write(cache(tile.id), tile.data)
+</code></pre>
+    </section>
+
+    <section id="naive" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Baseline</span></div>
+      <h2 class="section-title">6 — Naive Factor Model</h2>
+      <p>First pass: field‑level means &rarr; aggregate seasonal factors &rarr; simple price regression.</p>
+      <div class="grid cols-3 reveal">
+        <figure><img class="zoomable" src="images/naive_pipeline.png" alt="Naive pipeline" loading="lazy"><figcaption>Pipeline overview.</figcaption></figure>
+        <figure><img class="zoomable" src="images/factor_table.png" alt="Factors" loading="lazy"><figcaption>Seasonal/weather factors.</figcaption></figure>
+        <figure><img class="zoomable" src="images/backtest_plot.png" alt="Backtest" loading="lazy"><figcaption>Backtest vs OJ price.</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="filter" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Signal Processing</span></div>
+      <h2 class="section-title">7 — Looking at the Data &amp; Filtering</h2>
+      <p>This is noisy! Means can help, but we use a tailored temporal filter instead of naive band‑pass.</p>
+      <p class="kicker">Curious why classic band‑pass breaks for irregular satellite cadence? <a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">Hover/tap for the math</a>.</p>
+      <figure class="reveal">
+        <img class="zoomable" src="images/raw_vs_filtered.png" alt="Raw vs filtered NDVI" loading="lazy"/>
+        <figcaption>Raw (grey) vs filtered (accent) NDVI; gaps handled by kernel weighting.</figcaption>
+      </figure>
+      <aside id="proof-box" class="proof-box" aria-hidden="true">
+        <button class="proof-close" aria-label="Close">×</button>
+        <h3 style="margin-top:0">Why you can’t band‑pass irregular temporal data</h3>
+        <p>With irregular times \(t_i\), convolution \((x * h)(t)\) isn’t shift‑invariant; FFT assumptions break. We instead fit a local trend via a kernel:</p>
+        <p>\[\hat{x}(t) = \arg\min_m \sum_i w_{\tau}(t-t_i)\,\big(x_i - m(t_i)\big)^2 + \lambda\,\|m''\|^2,\]</p>
+        <p>where \(w_{\tau}\) is a time‑decay kernel; sampling gaps down‑weight stale points. Equivalent to a continuous‑time low‑pass with adaptive support.</p>
+      </aside>
+    </section>
+
+    <section id="results" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Findings</span></div>
+      <h2 class="section-title">8 — Results</h2>
+      <p>Signals line up with the main harvest window (Sep–Nov). NDVI slope reversals flag harvest onset; plateau levels track progress.</p>
+      <figure class="full-bleed reveal">
+        <img class="zoomable" src="images/harvest_tradeoff.png" alt="Runtime vs error or Harvest vs price tradeoff" loading="lazy" />
+        <figcaption>Lead time vs accuracy trade‑off.</figcaption>
+      </figure>
+      <div class="grid cols-3 reveal">
+        <figure><img class="zoomable" src="images/ndvi_grid_50.png" alt="N=50 fields" loading="lazy"><figcaption>50 fields.</figcaption></figure>
+        <figure><img class="zoomable" src="images/ndvi_grid_87.png" alt="N=87 fields" loading="lazy"><figcaption>87 fields.</figcaption></figure>
+        <figure><img class="zoomable" src="images/ndvi_grid_200.png" alt="N=200 fields (simulated)" loading="lazy"><figcaption>200 fields (sim).</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="demos" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Try It</span></div>
+      <h2 class="section-title">9 — Two Clickable Paths</h2>
+      <div class="cards reveal">
+        <a class="card" href="#demo-detect">
+          <span class="chip">Detection</span>
+          <h3><span class="num-tag">A</span> Algorithm for Better Detection</h3>
+          <p>NDVI features → classifier → harvest onset &amp; greening prevalence. Includes GIF and per‑field thumbnails.</p>
+        </a>
+        <a class="card" href="#demo-naive">
+          <span class="chip">Baseline</span>
+          <h3><span class="num-tag">B</span> Naive Factor Model for Commodity Prediction</h3>
+          <p>Seasonal/market factors with field means → OJ price regression/backtest.</p>
+        </a>
+      </div>
+
+      <!-- Demo sections (anchors only; feel free to split into separate pages later) -->
+      <section id="demo-detect" class="wrap" style="padding-top:6vh">
+        <h3 style="margin:0 0 .5rem">A — Detection Demo</h3>
+        <div class="grid cols-2">
+          <figure>
+            <img class="zoomable" src="images/ndvi_timelapse.gif" alt="Per‑field GIF" loading="lazy"/>
+            <figcaption>Per‑field NDVI evolution (GIF).</figcaption>
+          </figure>
+          <figure>
+            <img class="zoomable" src="images/confusion_matrix.png" alt="Confusion matrix" loading="lazy"/>
+            <figcaption>Classifier performance snapshot.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="demo-naive" class="wrap" style="padding-top:6vh">
+        <h3 style="margin:0 0 .5rem">B — Naive Factor Model</h3>
+        <div class="grid cols-2">
+          <figure>
+            <img class="zoomable" src="images/factor_loadings.png" alt="Factor loadings" loading="lazy"/>
+            <figcaption>Estimated factor loadings.</figcaption>
+          </figure>
+          <figure>
+            <img class="zoomable" src="images/oj_fit.png" alt="Model fit vs price" loading="lazy"/>
+            <figcaption>Model fit vs OJ price.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </section>
+
+    <section id="conclusion" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Wrap‑up</span></div>
+      <h2 class="section-title">10 — Conclusion</h2>
+      <ul>
+        <li>Satellites provide a cheap, timely harvest progress proxy &amp; disease signal.</li>
+        <li>Detection algo outperforms naive mean‑of‑field in timing precision.</li>
+        <li>Practical edge: ~2‑month lead vs conventional reporting cycles.</li>
+      </ul>
+      <p><em>Next:</em> finer cloud‑gap handling, per‑orchard calibration, and fusing weather/radar bands.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© Your Name — <a href="#">Download PDF</a> · <a href="#">Contact</a></p>
+  </footer>
+
+  <!-- Lightbox dialog -->
+  <dialog id="lightbox">
+    <button class="lb-close" aria-label="Close">×</button>
+    <img class="lightbox-img" src="images/hero_orchard.jpg" alt="Expanded view" />
+  </dialog>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in');});
+    }, {threshold: .08});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Simple lightbox using <dialog>
+    const lb = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('.lightbox-img');
+    const closeLb = ()=> lb.close();
+    document.addEventListener('click', (e)=>{
+      const t = e.target.closest('.zoomable');
+      if(!t) return;
+      e.preventDefault();
+      lbImg.src = t.currentSrc || t.src;
+      lb.showModal();
+    });
+    lb.querySelector('.lb-close').addEventListener('click', closeLb);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLb(); });
+
+    // Hover/click math box
+    (function(){
+      const trigger = document.querySelector('.proof-trigger');
+      const box = document.getElementById('proof-box');
+      const close = box ? box.querySelector('.proof-close') : null;
+      if(!trigger || !box) return;
+      const setOpen = (open)=>{
+        box.classList.toggle('open', open);
+        trigger.setAttribute('aria-expanded', String(!!open));
+        box.setAttribute('aria-hidden', String(!open));
+      };
+      trigger.addEventListener('click', (e)=>{ e.preventDefault(); setOpen(!box.classList.contains('open')); });
+      trigger.addEventListener('mouseenter', ()=> setOpen(true));
+      box.addEventListener('mouseleave', ()=> setOpen(false));
+      if(close) close.addEventListener('click', ()=> setOpen(false));
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setOpen(false); });
+    })();
+
+    // Leaflet map setup (replace GeoJSON path with your file)
+    (function(){
+      const el = document.getElementById('map');
+      if(!el || typeof L === 'undefined') return;
+      const map = L.map('map', {scrollWheelZoom:false}).setView([-22.5, -48.0], 6); // São Paulo region
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution: '© OpenStreetMap'}).addTo(map);
+      // Load your GeoJSON of fields (polygons or points). Example skeleton shown inline:
+      fetch('data/fields.geojson')
+        .then(r=>r.json())
+        .then(geo => {
+          const layer = L.geoJSON(geo, {
+            style: {color:'#0f766e', weight:1, fillOpacity:.15},
+            onEachFeature: (f, l) => {
+              const p = f.properties || {};
+              l.bindPopup(`<strong>${p.name||'Field'}</strong><br/>Farm: ${p.farm||'n/a'}<br/>${p.notes||''}`);
+            }
+          });
+          layer.addTo(map);
+          try{ map.fitBounds(layer.getBounds(), {padding:[20,20]}); }catch(_){}
+        })
+        .catch(()=>{
+          // Fallback demo markers if file missing
+          const demo = [
+            {name:'Demo Field A', lat:-23.0, lng:-47.5},
+            {name:'Demo Field B', lat:-22.2, lng:-48.3},
+            {name:'Demo Field C', lat:-21.8, lng:-49.0},
+          ];
+          demo.forEach(d=> L.marker([d.lat,d.lng]).addTo(map).bindPopup(`<strong>${d.name}</strong>`));
+        });
+    })();
+  </script>
+</body>
+</html>

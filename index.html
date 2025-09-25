@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html data-semplice="5.3.2" lang="en-US">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <title>
+   Alexander Jonsson - Student and Aspiring Engineer
+  </title>
+  <link rel="icon" type="image/png" href="wp-content/themes/semplice5/assets/images/frontend/photoswipe/default-skin.png">
+  <meta content="max-image-preview:large" name="robots">
+  <link href="https://s.w.org/" rel="dns-prefetch"/>
+  <script>
+   window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+  </script>
+  <style>
+   img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+  </style>
+  <style id="local-asset-overrides">
+   /* Fix absolute PhotoSwipe preloader path to local asset */
+            .pswp__preloader--active .pswp__preloader__icn{
+                background: url('wp-content/themes/semplice5/assets/images/frontend/photoswipe/preloader.gif') no-repeat;
+            }
+  </style>
+  <style id="site-custom-overrides">
+   .site-name {
+     position: fixed;
+     top: 16px;
+     left: 16px;
+     z-index: 9999;
+     color: #fafafa;
+     text-decoration: none;
+     font-family: "BasisGrotesque-Regular", sans-serif;
+     font-size: 0.888rem;
+     letter-spacing: 0.02em;
+     mix-blend-mode: exclusion;
+   }
+   @media (max-width: 543.98px) {
+     .site-name { top: 12px; left: 12px; font-size: 0.777rem; }
+   }
+   /* Hero typography tweaks */
+   #content_c6af43e15 h1,
+   #content_235d085ca h1,
+   #content_7069b0024 h1 { font-size: 2.666rem !important; }
+   #content_c6af43e15 h1 span,
+   #content_235d085ca h1 span,
+   #content_7069b0024 h1 span { color: #ffffff !important; }
+   /* Match header row (menu) font + color to site-name */
+   .nav_ttmmgk8cq .navbar-inner nav ul li a span,
+   .overlay-nav ul li a span {
+     font-family: "BasisGrotesque-Regular", sans-serif !important;
+     color: #fafafa !important;
+   }
+   .nav_ttmmgk8cq .logo a { font-family: "BasisGrotesque-Regular", sans-serif !important; }
+   /* Hide top navigation links + hamburger (keep site-name visible) */
+   .nav_ttmmgk8cq .navbar-inner nav ul.menu { display: none !important; }
+   .nav_ttmmgk8cq .hamburger { display: none !important; }
+   #overlay-menu { display: none !important; }
+   /* Ensure hero content is visible (override theme animation default) */
+   #content_c6af43e15 .is-content,
+   #content_235d085ca .is-content,
+   #content_7069b0024 .is-content { opacity: 1 !important; }
+   .hero-about {
+     font-weight: 500;
+     color: #ffffff;
+     opacity: 1;
+     font-size: clamp(1.3rem, 3vw, 1.8rem);
+     line-height: 1.65;
+     max-width: 38rem;
+     margin-top: 1rem;
+     letter-spacing: 0.012em;
+     text-shadow: 0 10px 34px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.45);
+   }
+   .typing-caret { display:inline-block; border-right: 2px solid #fff; animation: caret 0.8s step-end infinite; }
+   /* Dedicated caret element that follows the text node */
+   #type-caret { display:inline-block; width:2px; height:1em; background:#fff; animation: caret 0.8s step-end infinite; margin-left:2px; vertical-align: -.1em; }
+   @keyframes caret { from, to { border-color: transparent } 50% { border-color: #fff } }
+   #hero-arrow { visibility: hidden; }
+  </style>
+  <link href="wp-includes/css/dist/block-library/style.min.css?ver=5.8.11" id="wp-block-library-css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="wp-content/themes/semplice5/style.css?ver=5.3.2" id="semplice-stylesheet-css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="wp-content/themes/semplice5/assets/css/frontend.min.css?ver=5.3.2" id="semplice-frontend-stylesheet-css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.16" id="mediaelement-css" media="all" rel="stylesheet" type="text/css"/>
+  <script id="jquery-core-js" src="wp-includes/js/jquery/jquery.min.js?ver=3.6.0">
+  </script>
+  <script id="jquery-migrate-js" src="wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2">
+  </script>
+  <link href="https://erikjonsson.se/wp-json/" rel="https://api.w.org/"/>
+  <link href="https://erikjonsson.se/wp-json/wp/v2/pages/46" rel="alternate" type="application/json"/>
+  <link href="https://erikjonsson.se/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+  <link href="https://erikjonsson.se/wp-includes/wlwmanifest.xml" rel="wlwmanifest" type="application/wlwmanifest+xml"/>
+  <meta content="WordPress 5.8.11" name="generator">
+  <link href="index.html" rel="canonical">
+  <link href="index.html" rel="shortlink">
+  <link href="https://erikjonsson.se/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ferikjonsson.se%2F" rel="alternate" type="application/json+oembed"/>
+  <link href="https://erikjonsson.se/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ferikjonsson.se%2F&format=xml" rel="alternate" type="text/xml+oembed"/>
+  <style id="semplice-webfonts-selfhosted">
+   @font-face {
+ font-family: 'BasisGrotesque-Regular';
+
+  src: url('wp-content/uploads/2020/01/BasisGrotesque-Regular.woff2') format('woff2'), 
+url('wp-content/uploads/2020/01/BasisGrotesque-Regular.woff') format('woff'),
+url('wp-content/uploads/2020/01/BasisGrotesque-Regular.svg') format('svg');
+
+}@font-face {
+ font-family: 'Replica-Light';
+
+  src: url('wp-content/uploads/2020/01/Replica-Light.woff2') format('woff2'), 
+url('wp-content/uploads/2020/01/Replica-Light.woff') format('woff');
+
+
+}@font-face {
+ font-family: 'Helvetica-Medium';
+
+  src: url('wp-content/uploads/2020/01/HelveticaNeueLTStd-Md.woff2') format('woff2'), 
+url('wp-content/uploads/2020/01/HelveticaNeueLTStd-Md.woff') format('woff');
+
+
+}
+  </style>
+  <style id="semplice-webfonts-css">
+   .font_p2ekx3bej, [data-font="font_p2ekx3bej"], [data-font="font_p2ekx3bej"] li a, #content-holder h1, #content-holder h2, #content-holder h3, #content-holder h4, #content-holder h5, #content-holder h6 {font-family: "BasisGrotesque-Regular", sans-serif;font-weight: normal;font-style: normal;}.font_zzjeqs6yk, [data-font="font_zzjeqs6yk"], [data-font="font_zzjeqs6yk"] li a, #content-holder p, #content-holder li {font-family: "Helvetica-Medium", sans-serif;font-weight: normal;font-style: normal;}
+  </style>
+  <style id="semplice-custom-css">
+   @media screen and (min-width: 1170px) {
+					.container-fluid, .container, .admin-container {
+						padding: 0 0rem 0 0rem;
+					}
+				}
+			.container {
+			max-width: 1440px;
+		}@media screen and (max-width: 1169px) { .row {
+			margin-left: -0px;
+			margin-right: -0px;
+		}.column, .grid-column {
+			padding-left: 0px;
+			padding-right: 0px;
+		}}@media screen and (min-width: 1170px) { .row {
+			margin-left: -0px;
+			margin-right: -0px;
+		}.column, .grid-column {
+			padding-left: 0px;
+			padding-right: 0px;
+		}}
+			#content-holder h1 { font-size: 2.3333333333333335rem;line-height: 2.2222222222222223rem;letter-spacing: -0.1111111111111111rem;}#content-holder h2 { font-size: 1.7777777777777777rem;line-height: 1.5555555555555556rem;letter-spacing: 0.005555555555555556rem;}#content-holder h3 { font-size: 1.3333333333333333rem;line-height: 1.1111111111111112rem;}#content-holder h4 { font-size: 1rem;line-height: 0.8888888888888888rem;letter-spacing: 0rem;}#content-holder h5 { font-size: 0.8888888888888888rem;line-height: 0.8333333333333334rem;}#content-holder h6 { font-size: 0.6666666666666666rem;line-height: 0.6666666666666666rem;}#content-holder p, #content-holder li { font-size: 0.7222222222222222rem;line-height: 1.4444444444444;}#content-holder .is-content p { margin-bottom: 1.4444444444444em; }#customize #custom_xuz6puy9j span, #content-holder .custom_xuz6puy9j { background-color:transparent;color:#000000;text-transform:none;font-family: "Open Sans", Arial, sans-serif;font-weight: 400;font-style: normal;font-size:1rem;letter-spacing:0rem;padding:0rem;text-decoration:none;text-decoration-color:#000000;-webkit-text-stroke: 0rem #000000;border-color:#000000;border-width:0rem;border-style:solid; }@media screen and (min-width: 992px) and (max-width: 1169.98px) { }@media screen and (min-width: 768px) and (max-width: 991.98px) { }@media screen and (min-width: 544px) and (max-width: 767.98px) { }@media screen and (max-width: 543.98px) { }
+			
+			
+		.project-panel {
+			background: #f5f5f5;
+			padding: 2.5rem 0rem;
+		}
+		[data-pp-gutter="no"] .project-panel .pp-thumbs,
+		.project-panel .pp-thumbs {
+			margin-bottom: -1.666666666666667rem;
+		}
+		#content-holder .panel-label, .projectnav-preview .panel-label {
+			color: #000000;
+			font-size: 1.777777777777778rem;
+			text-transform: none;
+			padding-left: 0rem;
+			padding-bottom: 1.666666666666667rem;
+			text-align: left;
+			line-height: 1;
+		}
+		.project-panel .pp-title {
+			padding: 0.5555555555555556rem 0rem 1.666666666666667rem 0rem;
+		}
+		.project-panel .pp-title a {
+			color: #000000; 
+			font-size: 0.7222222222222222rem; 
+			text-transform: none;
+		} 
+		.project-panel .pp-title span {
+			color: #999999;
+			font-size: 0.7222222222222222rem;
+			text-transform: none;
+		}
+		.semplice-next-prev {
+			background: #ffffff;
+			padding: 0rem 0rem 0rem 0rem;
+		}
+		.semplice-next-prev .np-inner {
+			height: 10rem;
+		}
+		.semplice-next-prev .np-inner .np-link .np-prefix,
+		.semplice-next-prev .np-inner .np-link .np-label {
+			color: #000000;
+			font-size: 1.555555555555556rem;
+			text-transform: none;
+			letter-spacing: 0rem;
+		}
+		.semplice-next-prev .np-inner .np-link .np-text-above {
+			padding-bottom: 2px;
+		}
+		.semplice-next-prev .np-inner .np-link .np-label-above {
+			color: #aaaaaa;
+			font-size: 0.7777777777777778rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		.semplice-next-prev .np-inner .np-link .np-text {
+			padding: 0rem 0rem;
+		}
+		.semplice-next .np-text {
+			margin-right: -0rem;
+		}
+		.semplice-next-prev .nextprev-seperator {
+			width: 1px;
+			margin: 1.666666666666667rem -0px;
+			background: #000000;
+		}
+	
+			.np-link:hover {
+				background: #ffffff;
+			}
+			.np-link:hover .np-text .np-label,
+			.np-link:hover .np-text .np-prefix {
+				color: #000000 !important;
+			}
+			.np-link:hover .np-label-above {
+				color: #000000 !important;
+			}
+		
+			.semplice-navbar {
+  mix-blend-mode: exclusion !important;
+}
+
+
+.column-content-120 {
+  width: 120px;
+  min-width: 120px;
+}
+
+.post-wrapper {
+	
+	display: block;
+	
+	
+}
+
+.thumb .thumb-inner {
+ margin-bottom: 10px ;
+  
+}
+
+.post-node-full {
+	display:inline-block;
+	margin: -2px 4px 0px 8px;
+	font-size:15px; 
+}
+
+.post-node-hollow {
+	display:inline-block;
+	margin: -2px 4px 0px 8px;
+	font-size:15px; 
+}
+
+
+
+.post-title {
+	float: left;
+  	width: 45%;
+	margin-left: 10px !important;
+	padding-left: 0em !important;
+    text-indent:0em !important;
+  	color: #202020;
+  	line-height: 10px !important;
+
+}
+
+.post-cat {
+	float: right;
+	color: #000000;
+	font-size: 0.5555555555555556rem;
+	text-transform: none;
+	width: 45%;
+  	margin-left: 5%;
+	margin-top: 5px;
+  font-size: 10px;
+  	color: #202020;
+  	
+}
+
+.post-type {
+	float: right;
+	color: #202020;
+	font-size: 0.5555555555555556rem;
+	text-transform: none;
+	width: 50%;
+  	margin-left: 5%;
+	margin-top: 0px;
+  	  font-size: 11px;
+}
+
+
+
+.font_zzjeqs6yk {
+
+
+  line-height: 13px !important;
+    font-size: 11px;
+	color: #202020;
+}
+.font_zzjeqs6yk.hero-about,
+.hero-about.font_zzjeqs6yk {
+  color: #fafafa !important;
+  text-shadow: 0 0 18px rgba(0,0,0,0.35);
+}
+@media screen and (min-width: 1170px){body, html {
+    font-size: 18px;
+    line-height: 1.66667;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+}
+			#content-holder .thumb .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-size: auto;background-position: 0% 0%;background-repeat: no-repeat;}#content-holder .thumb .thumb-inner img { transition: all 1s ease; }#content-holder .thumb .thumb-inner:hover img, .is-frontend #content-holder .thumb .wrap-focus img { transform: scale(1.02); }#content-holder .thumb .thumb-hover-meta { padding: 2.22rem; }#content-holder .thumb .thumb-hover-meta .title { color: #fafafa; font-size: 1.33rem; text-transform: none; }#content-holder .thumb .thumb-hover-meta .category { color: #fafafa; font-size: 1.3333333333333333rem; text-transform: none; }#content-holder .thumb video { opacity: 1; }
+  </style>
+  <style id="46-post-css">
+   #content-46 #section_02d725a58 .container {height: 85vh;}#content-46 #section_02d725a58 {padding-bottom: 0rem;padding-left: 0rem;background-color: transparent;}@media screen and (min-width: 992px) and (max-width: 1169.98px) { #content-46 #section_02d725a58 {padding-right: 0rem;padding-bottom: 0rem;padding-left: 0rem;}}@media screen and (min-width: 768px) and (max-width: 991.98px) { #content-46 #section_02d725a58 {padding-bottom: 0rem;padding-left: 0rem;}}@media screen and (min-width: 544px) and (max-width: 767.98px) { #content-46 #section_02d725a58 {padding-top: 0rem;padding-bottom: 0rem;padding-left: 3.3333333333333335rem;}}@media screen and (max-width: 543.98px) { #content-46 #section_02d725a58 {padding-top: 0rem;padding-bottom: 0rem;padding-left: 1.1111111111111112rem;}}#content-46 #column_6ab423e20 {padding-bottom: 4.444444444444445rem;}#content-46 #content_c6af43e15 {padding-right: 0rem;padding-bottom: 0rem;padding-left: 0rem;}@media screen and (min-width: 992px) and (max-width: 1169.98px) { #content-46 #content_c6af43e15 {padding-right: 0.2222222222222222rem;}}@media screen and (min-width: 544px) and (max-width: 767.98px) { #content-46 #content_c6af43e15 {padding-top: 6.666666666666667rem;}}@media screen and (max-width: 543.98px) { #content-46 #content_c6af43e15 {padding-top: 4.444444444444445rem;padding-right: 0rem;padding-bottom: 0rem;padding-left: 0rem;}}#content-46 #content_235d085ca {padding-left: 0rem;}@media screen and (max-width: 543.98px) { #content-46 #content_235d085ca {padding-left: 0rem;}}#content-46 #content_7069b0024 {padding-bottom: 0rem;padding-left: 0rem;}@media screen and (min-width: 544px) and (max-width: 767.98px) { #content-46 #content_7069b0024 {padding-top: 0rem;padding-left: 0rem;}}@media screen and (max-width: 543.98px) { #content-46 #content_7069b0024 {padding-top: 0rem;padding-bottom: 4.444444444444445rem;padding-left: 0rem;}}#content-46 #column_6ab423e20{opacity: 1;border-color: #000000;border-width: 0;background-color: transparent;background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);transform: translateY(0) translateX(0) rotate(0deg) rotateY(0deg) rotateX(0deg) skew(0deg,0deg) scale(1,1);}#content-46 #content_c6af43e15 .is-content{opacity: 0;border-color: #000000;border-width: 0;background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);transform: translateY(0) translateX(0) rotate(0deg) rotateY(0deg) rotateX(0deg) skew(0deg,0deg) scale(1,1);}#content-46 #content_235d085ca .is-content{opacity: 0;border-color: #000000;border-width: 0;background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);transform: translateY(0) translateX(0) rotate(0deg) rotateY(0deg) rotateX(0deg) skew(0deg,0deg) scale(1,1);}#content-46 #content_7069b0024 .is-content{opacity: 0;border-color: #000000;border-width: 0;background-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);transform: translateY(0) translateX(0) rotate(0deg) rotateY(0deg) rotateX(0deg) skew(0deg,0deg) scale(1,1);}#content-46 #section_xfivfd4a9 {padding-top: 0rem;padding-right: 0rem;padding-left: 0rem;background-color: #fafafa;}#content-46 #project-754 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0.5);background-image: url(wp-content/uploads/GNNHFTmain/ChatGPT\ Image\ Sep\ 25\,\ 2025\,\ 04_54_17\ PM.png);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-754 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-754 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-754 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-754 video { opacity: 1; }#content-46 #project-311 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: none;background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-311 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-311 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-311 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-311 video { opacity: 1; }#content-46 #project-177 .thumb-inner .thumb-hover {background-color: rgba(255, 255, 255, 0.95);background-image: url(wp-content/uploads/Quant/ChatGPT\ Image\ Sep\ 25\,\ 2025\,\ 08_00_36\ PM.png);background-size: contain;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-177 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-177 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-177 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-177 video { opacity: 1; }#content-46 #project-73 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/01/8-Exeger-2.jpg);background-size: cover;background-position: 0% 0%;background-repeat: no-repeat;}#content-46 #project-73 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-73 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-73 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-73 video { opacity: 1; }#content-46 #project-295 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/07/17-MAVS-2.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-295 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-295 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-295 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-295 video { opacity: 1; }#content-46 #project-67 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/08/Lars-Vaular-VI-Prototypes.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-67 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-67 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-67 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-67 video { opacity: 1; }#content-46 #project-134 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0.5);background-image: url(wp-content/uploads/2020/09/14-Norban-Brandstudy-2.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-134 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-134 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-134 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-134 video { opacity: 1; }#content-46 #project-733 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/DA-Mavs-Syncro-2.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-733 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-733 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-733 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-733 video { opacity: 1; }#content-46 #project-70 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/08/3-LV-Sketches-2.jpg);background-size: cover;background-position: 0% 0%;background-repeat: no-repeat;}#content-46 #project-70 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-70 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-70 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-70 video { opacity: 1; }#content-46 #project-589 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/08/18-Above-ID-Posters-2.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-589 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-589 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-589 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-589 video { opacity: 1; }#content-46 #project-263 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/08/16-Prefab-2.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-263 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-263 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-263 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-263 video { opacity: 1; }#content-46 #project-390 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/4-Norban-Illustrations-2.jpg);background-size: cover;background-position: 0% 0%;background-repeat: no-repeat;}#content-46 #project-390 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-390 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-390 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-390 video { opacity: 1; }#content-46 #project-126 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/08/Lars-Vaular-Merch-Blue.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-126 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-126 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-126 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-126 video { opacity: 1; }#content-46 #project-612 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/Above-Project-Posters-2.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-612 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-612 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-612 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-612 video { opacity: 1; }#content-46 #project-634 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/9-Performing-Arts-2.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-634 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-634 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-634 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-634 video { opacity: 1; }#content-46 #project-566 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/Tool-of-NA-1.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-566 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-566 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-566 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-566 video { opacity: 1; }#content-46 #project-242 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/14-UrbanOasis-1.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-242 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-242 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-242 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-242 video { opacity: 1; }#content-46 #project-666 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/Google-Beyond-the-Map-1-1.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-666 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-666 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-666 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-666 video { opacity: 1; }#content-46 #project-10 .thumb-inner .thumb-hover {background-color: rgba(255, 255, 255, 1);background-image: url(wp-content/uploads/2020/08/Lars-Vaular-Eps.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-10 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-10 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-10 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-10 video { opacity: 1; }#content-46 #project-651 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/Google-Abbey-Road-B.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-651 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-651 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-651 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-651 video { opacity: 1; }#content-46 #project-256 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/08/15-Inspo-1.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-256 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-256 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-256 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-256 video { opacity: 1; }#content-46 #project-683 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/09/INN-Brand-1.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-683 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-683 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-683 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-683 video { opacity: 1; }#content-46 #project-71 .thumb-inner .thumb-hover {background-color: rgba(0, 0, 0, 0);background-image: url(wp-content/uploads/2020/08/Misift-Chris-Illegal-Streetracing-Sleeve.jpg);background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}#content-46 #project-71 .thumb-hover-meta { padding: 2.22rem; }#content-46 #project-71 .thumb-hover-meta .title { color: #ffffff; font-size: 1.33rem; text-transform: none; }#content-46 #project-71 .thumb-hover-meta .category { color: #999999; font-size: 1rem; text-transform: none; }#content-46 #project-71 video { opacity: 1; }
+					#content-46 #content_drc9qsf8l .thumb .post-title { 
+						padding: 0rem 0 0 0;
+					}
+					#content_drc9qsf8l .thumb .post-title,
+					#content_drc9qsf8l .thumb .post-title a {
+						color: #000000;
+						font-size: 0.5555555555555556rem;
+						text-transform: none;
+					}
+					#content_drc9qsf8l .thumb .post-title span,
+					#content_drc9qsf8l .thumb .post-title a span {
+						color: #020202;
+						font-size: 0.5555555555555556rem;
+						text-transform: none;
+						padding-top: 0rem;
+					}
+					#content-46 #content_drc9qsf8l nav ul li a {
+						color: #bbbbbb;
+						text-transform: none;
+					}
+					#content-46 #content_drc9qsf8l nav ul li a:hover,
+					#content-46 #content_drc9qsf8l nav ul li a.pg-filter-active {
+						color: #000000;
+						text-decoration: none;
+					}
+				[data-breakpoint="##breakpoint##"] #content-46 #content_drc9qsf8l .thumb .post-title, [data-breakpoint="##breakpoint##"] #content-46 #content_drc9qsf8l .thumb .post-tile a { font-size: 0.5555555555555556rem; }[data-breakpoint="##breakpoint##"] #content-46 #content_drc9qsf8l .thumb .post-title span, [data-breakpoint="##breakpoint##"] #content-46 #content_drc9qsf8l .thumb .post-tile a span { font-size: 0.5555555555555556rem; }[data-breakpoint="##breakpoint##"] #content-46 #content_drc9qsf8l .thumb .post-title span, [data-breakpoint="##breakpoint##"] #content-46 #content_drc9qsf8l .thumb .post-tile a span { padding-top: 0rem; }#masonry-content_drc9qsf8l{ margin: auto -0px !important; } .masonry-content_drc9qsf8l-item { margin: 0px; padding-left: 0px; padding-right: 0px; padding-bottom: 80px; }@media screen and (min-width: 992px) and (max-width: 1169.98px) {}@media screen and (min-width: 768px) and (max-width: 991.98px) {}@media screen and (min-width: 544px) and (max-width: 767.98px) {}@media screen and (max-width: 543.98px) {}#content-46 .transition-wrap {background-color: #171717;}#content-46 .sections { margin-top: 0px !important; }
+.nav_ttmmgk8cq { background-color: transparent;; }.nav_ttmmgk8cq .navbar-inner .navbar-left, .nav_ttmmgk8cq .navbar-inner .navbar-center, .nav_ttmmgk8cq .navbar-inner .navbar-distributed { left: 2.2222222222222223rem; }.nav_ttmmgk8cq .container-fluid .navbar-inner .navbar-right, .nav_ttmmgk8cq .container-fluid .navbar-inner .navbar-distributed { right: 2.2222222222222223rem; }.nav_ttmmgk8cq .container-fluid .hamburger a:after { padding-right: 1.1111111111111rem; }.nav_ttmmgk8cq .navbar-inner .logo a { color: #ffffff; }.nav_ttmmgk8cq .navbar-inner .logo { align-items: center; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { background-color: #fafafa; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { width: 24px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { height: 2px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu span::before { transform: translateY(-6px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu span::after { transform: translateY(6px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu:hover span::before { transform: translateY(-8px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu:hover span::after { transform: translateY(8px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { font-size: 0.8888888888888888rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { color: #fafafa; }.nav_ttmmgk8cq .navbar-inner nav ul li a { padding-left: 1.6666666666667rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a { padding-right: 1.6666666666667rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { border-bottom-color: #ffffff; }.nav_ttmmgk8cq .navbar-inner nav ul li a:hover span, .navbar-inner nav ul li.current-menu-item a span, .navbar-inner nav ul li.current_page_item a span, .nav_ttmmgk8cq .navbar-inner nav ul li.wrap-focus a span { color: #ffd300; }.nav_ttmmgk8cq .navbar-inner nav ul li.current-menu-item a span { color: #ffd300; }.nav_ttmmgk8cq .navbar-inner nav ul li.current_page_item a span { color: #ffd300; }[data-post-type="project"] .navbar-inner nav ul li.portfolio-grid a span, [data-post-type="post"] .navbar-inner nav ul li.blog-overview a span { color: #ffd300; }#overlay-menu { background-color: rgba(0, 0, 0, 1); }@media screen and (min-width: 992px) and (max-width: 1169.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (min-width: 768px) and (max-width: 991.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (min-width: 544px) and (max-width: 767.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (max-width: 543.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}
+  </style>
+  <style>
+   html{margin-top:0px!important;}#wpadminbar{top:auto!important;bottom:0;}
+  </style>
+ </head>
+<body class="home page-template-default page page-id-46 is-frontend dynamic-mode mejs-semplice-ui" data-post-id="46" data-post-type="page">
+  <a class="site-name" href="index.html" aria-label="Home">Alexander Jonsson</a>
+  <div data-active-post="46" id="content-holder">
+   <header class="nav_ttmmgk8cq semplice-navbar active-navbar sticky-nav cover-transparent scroll-to-top" data-bg-overlay-visibility="hidden" data-cover-transparent="enabled" data-mobile-fallback="enabled">
+    <div class="container-fluid" data-nav="logo-right-menu-left">
+     <div class="navbar-inner menu-type-text" data-navbar-type="container-fluid" data-xl-width="12">
+      <nav class="standard navbar-left" data-font="font_p2ekx3bej">
+       <ul class="menu">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-239">
+         <a aria-current="page" href="index.html">
+          <span>
+           Erik Jonsson : Work 2018—
+          </span>
+         </a>
+        </li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306">
+         <a href="http://archive2015.erikjonsson.se">
+          <span>
+           Archives: 2017—2015
+          </span>
+         </a>
+        </li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-307">
+         <a href="http://archive2014.erikjonsson.se">
+          <span>
+           2014—2008
+          </span>
+         </a>
+        </li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-308">
+         <a href="http://studio.erikjonsson.se">
+          <span>
+           Photostudio
+          </span>
+         </a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-238">
+         <a href="https://erikjonsson.se/erikjonsson">
+          <span>
+           Information
+          </span>
+         </a>
+        </li>
+       </ul>
+      </nav>
+      <div class="hamburger navbar-left semplice-menu">
+       <a class="open-menu menu-icon">
+        <span>
+        </span>
+       </a>
+      </div>
+      <div class="logo navbar-right">
+       <a href="index.html" title="Erik Jonsson">
+       </a>
+      </div>
+     </div>
+    </div>
+   </header>
+   <div id="overlay-menu">
+    <div class="overlay-menu-inner" data-xl-width="12">
+     <nav class="overlay-nav" data-align="align-middle" data-font="font_p2ekx3bej" data-justify="center">
+      <ul class="container">
+       <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-239">
+        <a aria-current="page" href="index.html">
+         <span>
+          Erik Jonsson : Work 2018—
+         </span>
+        </a>
+       </li>
+       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306">
+        <a href="http://archive2015.erikjonsson.se">
+         <span>
+          Archives: 2017—2015
+         </span>
+        </a>
+       </li>
+       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-307">
+        <a href="http://archive2014.erikjonsson.se">
+         <span>
+          2014—2008
+         </span>
+        </a>
+       </li>
+       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-308">
+        <a href="http://studio.erikjonsson.se">
+         <span>
+          Photostudio
+         </span>
+        </a>
+       </li>
+       <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-238">
+        <a href="https://erikjonsson.se/erikjonsson">
+         <span>
+          Information
+         </span>
+        </a>
+       </li>
+      </ul>
+     </nav>
+    </div>
+   </div>
+   <div class="content-container active-content" id="content-46">
+    <div class="transition-wrap">
+     <div class="sections">
+      <section class="content-block" data-column-mode-sm="single" data-column-mode-xs="single" data-gutter="no" data-height="custom" data-justify="left" data-layout="fluid" data-valign="bottom" id="section_02d725a58">
+       <div class="container">
+        <div class="row" id="row_61d910852">
+         <div class="column spacer-column" data-xl-width="1" id="column_na53xh9ih">
+          <div class="content-wrapper">
+          </div>
+         </div>
+         <div class="column" data-lg-width="7" data-md-width="7" data-valign="stretch" data-xl-width="6" id="column_6ab423e20">
+          <div class="content-wrapper">
+           <div class="column-content" data-module="text" id="content_rafyfxbf1">
+            <div class="is-content">
+             <p data-font-size-xl="0.611rem" data-mce-style="font-size: 0.611rem;" style="font-size: 0.611rem;">
+              <span data-mce-style="color: #ffd300;" style="color: #ffd300;">
+               <span data-mce-style="caret-color: #ffd300;" style="caret-color: #ffd300;">
+                <br/>
+                <br/>
+               </span>
+              </span>
+             </p>
+            </div>
+           </div>
+           <div class="column-content" data-module="text" id="content_c6af43e15">
+            <div class="is-content">
+             <h1 data-font-size-lg="2.333rem" data-font-size-md="2.333rem" data-font-size-sm="2.333rem" data-font-size-xl="2.333rem" data-font-size-xs="2.389rem" data-line-height-lg="2.222rem" data-line-height-md="2.222rem" data-line-height-sm="2.222rem" data-line-height-xs="2.222rem" data-mce-style="font-size: 2.333rem;" style="font-size: 2.333rem;">
+              <span id="hero-line-1" data-mce-style="color: rgb(250, 250, 250);" style="color: rgb(250, 250, 250);">Engineering </span>
+              <br/>
+              <span id="hero-line-2" data-mce-style="color: rgb(250, 250, 250);" style="color: rgb(250, 250, 250);">Portfolio</span>
+              <br/>
+             </h1>
+             <p id="hero-about" class="hero-about" data-font="font_zzjeqs6yk">Hello, my name is Alexander and I am a double BSc + MSc student in Engineering Physics, Business and Engineering Mathematics.<br/>
+                Below, I showcase the projects I have been doing the past couple of years.  </p>
+            </div>
+           </div>
+           <div class="column-content" data-module="text" id="content_235d085ca">
+            <div class="is-content">
+             <h1 data-font-size-lg="2.333rem" data-font-size-md="2.333rem" data-font-size-sm="2.333rem" data-font-size-xs="2.333rem" data-line-height-lg="2.222rem" data-line-height-md="2.222rem" data-line-height-sm="2.222rem" data-line-height-xs="2.222rem" data-mce-style="font-size: 2.333rem; line-height: 2.222rem;" style="font-size: 2.333rem; line-height: 2.222rem;">
+              <span id="hero-line-3" data-mce-style="color: rgb(250, 250, 250);" style="color: rgb(250, 250, 250);">Hobby</span>
+              <br/>
+              <span id="hero-line-4" data-mce-style="color: rgb(250, 250, 250);" style="color: rgb(250, 250, 250);">& Internship Projects</span>
+              <br/>
+             </h1>
+            </div>
+           </div>
+           <div class="column-content" data-module="text" id="content_7069b0024">
+            <div class="is-content">
+             <h1 data-font-size-lg="2.333rem" data-font-size-md="2.333rem" data-font-size-sm="2.333rem" data-font-size-xs="2.333rem" data-line-height-lg="2.222rem" data-line-height-md="2.222rem" data-line-height-sm="2.222rem" data-line-height-xs="2.222rem" data-mce-style="font-size: 2.333rem; line-height: 2.222rem;" style="font-size: 2.333rem; line-height: 2.222rem;">
+              <span id="hero-line-5" data-mce-style="color: rgb(250, 250, 250);" style="color: rgb(250, 250, 250);">2023-</span>
+              <br/>
+              <span id="hero-arrow" data-mce-style="color: rgb(250, 250, 250);" style="color: rgb(250, 250, 250);">↓</span>
+              <br/>
+             </h1>
+            </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+     <script>
+      (function() {
+        function prepare(id) {
+          var el = document.getElementById(id);
+          if (!el) return null;
+          el.setAttribute('data-full', el.textContent.trim());
+          el.textContent = '';
+          return el;
+        }
+        // HTML-escaping and inline caret so it always follows the text
+        var CARET_HTML = '<span id="type-caret"></span>';
+        function escapeHtml(s){
+          return s
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        }
+        function type(el, speed) {
+          return new Promise(function(resolve){
+            if (!el) return resolve();
+            var full = el.getAttribute('data-full') || '';
+            var i = 0;
+            // ensure caret height tracks current line-height
+            (function syncCaretHeight(){
+              var lh = getComputedStyle(el).lineHeight;
+              var style = document.getElementById('site-custom-overrides');
+              // caret uses height:1em; line-height already aligns visually
+            })();
+            function next() {
+              if (i >= full.length) {
+                el.textContent = full; // finalize without caret
+                return resolve();
+              }
+              i++;
+              el.innerHTML = escapeHtml(full.slice(0, i)) + CARET_HTML;
+              var ch = full.charAt(i-1);
+              // Base speed, with extra pause at spaces/punctuation for rhythm
+              var delay = speed;
+              if (ch === ' ' || ch === '\u00A0') delay += 20;
+              if (/,|\.|—|-|!|\?|:|;/.test(ch)) delay += 30;
+              setTimeout(next, delay);
+            }
+            setTimeout(next, speed);
+          });
+        }
+        function sequence(list) {
+          return list.reduce(function(p, step){
+            return p.then(function(){ return type(step.el, step.speed || 24); });
+          }, Promise.resolve());
+        }
+        // Prepare all hero lines
+        var l1 = prepare('hero-line-1');
+        var l2 = prepare('hero-line-2');
+        var about = prepare('hero-about');
+        var l3 = prepare('hero-line-3');
+        var l4 = prepare('hero-line-4');
+        var l5 = prepare('hero-line-5');
+        var arrow = document.getElementById('hero-arrow');
+        if (arrow) arrow.style.visibility = 'hidden';
+
+        // Initial sequence on page load
+        document.addEventListener('DOMContentLoaded', function(){
+          sequence([
+            { el: l1, speed: 22 },
+            { el: l2, speed: 22 },
+            { el: about, speed: 14 }
+          ]);
+        });
+
+        // On first scroll, type the remaining lines then show arrow
+        var typedRest = false;
+        function triggerRest() {
+          if (typedRest) return;
+          typedRest = true;
+          sequence([
+            { el: l3, speed: 14 },
+            { el: l4, speed: 14 },
+            { el: l5, speed: 14 }
+          ]).then(function(){ if (arrow) arrow.style.visibility = 'visible'; });
+          window.removeEventListener('scroll', onScroll);
+        }
+        function onScroll() {
+          if (window.scrollY > 10) triggerRest();
+        }
+        window.addEventListener('scroll', onScroll);
+      })();
+     </script>
+      <section class="content-block" data-column-mode-sm="single" data-column-mode-xs="single" data-gutter="no" data-layout="fluid" id="section_xfivfd4a9">
+       <div class="container">
+        <div class="row" id="row_mf7mt57ii">
+         <div class="column" data-xl-width="12" id="column_2lr0myuuf">
+          <div class="content-wrapper">
+           <div class="column-content sp-perfect-grid" data-module="portfoliogrid" id="content_drc9qsf8l">
+            <div class="masonry" data-masonry-init="normal" id="masonry-content_drc9qsf8l">
+             <div class="masonry-item-width">
+             </div>
+             <div class="masonry-item thumb masonry-content_drc9qsf8l-item below-left" data-sm-width="6" data-xl-width="4" data-xs-width="12" id="project-754">
+              <a href="work/apple-art-direction/index.html">
+               <div class="thumb-inner">
+                <div class="thumb-hover">
+                 <div class="thumb-hover-meta bottom-left hide-both fade">
+                  <p>
+                   <span class="title" data-font="font_p2ekx3bej">
+                    Quadratic Optimisation Proxy Gradient - GNN-style
+                   </span>
+                   <br>
+                    <span class="category" data-font="font_p2ekx3bej">
+                     2025
+                    </span>
+                   <br>
+                  </p>
+                 </div>
+                </div>
+                <img alt="Runtime versus error trade-off" height="1440" src="wp-content/uploads/GNNHFTmain/ChatGPT Image Sep 25, 2025, 05_00_05 PM.png" width="1440"/>
+               </div>
+              </a>
+              <a class="pg-title-link" href="work/apple-art-direction/index.html" title="Apple">
+               <div class="post-title font_zzjeqs6yk">
+                Quadratic Optimisation Proxy Gradient - GNN-style
+                <span class="font_zzjeqs6yk">
+                 
+                </span>
+               </div>
+              </a>
+             </div>
+             <div class="masonry-item thumb masonry-content_drc9qsf8l-item below-left cat-5 cat-7" data-sm-width="6" data-xl-width="4" data-xs-width="12" id="project-311">
+              <a href="work/above-rebrand/index.html">
+               <div class="thumb-inner">
+                <div class="thumb-hover">
+                 <div class="thumb-hover-meta bottom-left hide-both fade">
+                  <p>
+                   <span class="title" data-font="font_p2ekx3bej">
+                  Orange Juice Prediction using ESA Satellites
+                   </span>
+                   <br>
+                    <span class="category" data-font="font_p2ekx3bej">
+                     
+                    </span>
+                   <br>
+                  </p>
+                 </div>
+                </div>
+                <img alt="Satellite observation truecolor" height="1440" src="wp-content/uploads/Satellite/nearAraquaba16_2023-01-01_2023-12-31_truecolor_bw.svg" width="1440" data-still="wp-content/uploads/Satellite/nearAraquaba16_2023-01-01_2023-12-31_truecolor_bw.svg" data-gif="wp-content/uploads/Satellite/nearAraquaba16_2023-01-01_2023-12-31_nir.gif"/>
+               </div>
+              </a>
+              <a class="pg-title-link" href="work/above-rebrand/index.html" title="Above: Rebrand">
+               <div class="post-title font_zzjeqs6yk">
+                Orange Juice Prediction using ESA Satellites
+                <span class="font_zzjeqs6yk">
+                 
+                </span>
+               </div>
+              </a>
+             </div>
+             <div class="masonry-item thumb masonry-content_drc9qsf8l-item below-left cat-4 cat-5" data-sm-width="6" data-xl-width="4" data-xs-width="12" id="project-177">
+              <a href="work/concordium-brand-system/index.html">
+               <div class="thumb-inner">
+                <div class="thumb-hover">
+                 <div class="thumb-hover-meta bottom-left hide-both fade">
+                  <p>
+                   <span class="title" data-font="font_p2ekx3bej">
+                    Concordium: Brand system
+                   </span>
+                   <br>
+                    <span class="category" data-font="font_p2ekx3bej">
+                     2019
+                    </span>
+                   <br>
+                  </p>
+                 </div>
+                </div>
+                <img alt="Quant strategy ranking visualisation" height="1440" src="wp-content/uploads/Quant/ChatGPT Image Sep 25, 2025, 07_57_42 PM.png" width="1440" data-fit="contain" data-padding="6%" data-bg="#ffffff"/>
+               </div>
+              </a>
+              <a class="pg-title-link" href="work/concordium-brand-system/index.html" title="Concordium: Brand system">
+               <div class="post-title font_zzjeqs6yk">
+                Combinatorially‑Symmetric Cross‑Validation: Evaluating Model Assumptions
+                <span class="font_zzjeqs6yk">
+                Quant Internship
+                </span>
+               </div>
+              </a>
+             </div>
+            </div>
+            <script>
+             (function ($) { $(document).ready(function () {
+		// define container
+		var $container = $(".active-content").find("#masonry-content_drc9qsf8l");
+
+		// make jquery object out of items
+		var $items = $(".active-content").find(".masonry-content_drc9qsf8l-item");
+
+		// fire masmonry
+		$container.masonry({
+			itemSelector: ".masonry-content_drc9qsf8l-item",
+			columnWidth: ".masonry-item-width",
+			transitionDuration: 0,
+			isResizable: true,
+			percentPosition: true,
+		});
+
+		// show images
+		showImages($container, $items);
+
+		// load images and reveal if loaded
+		function showImages($container, $items) {
+			// get masonry
+			var msnry = $container.data("masonry");
+			// get item selector
+			var itemSelector = msnry.options.itemSelector;
+			// append items to masonry container
+			//$container.append($items);
+			$items.imagesLoaded().progress(function(imgLoad, image) {
+				// get item
+				var $image = $(image.img);
+				var $item = $(image.img).parents(itemSelector);
+				
+				// layout
+				msnry.layout();
+				// fade in
+				gsap.to($item, 1.1, {
+					opacity: 1,
+					y: 0,
+					ease: "Expo.easeOut",
+				});
+			});
+		}
+
+		// remove min height after images are loaded in delayed mode
+		$items.imagesLoaded().done(function(imgLoad) {
+			// change masonry init status
+			if($container.attr("data-masonry-init") == "delayed") {
+				$container.attr("data-masonry-init", "loaded");
+				// sync scroll reveal if defined
+				if(typeof sr != "undefined") {
+					sr.sync();
+				}
+			}
+			// refresh scroll trigger
+			if($("body").hasClass("is-frontend")) {
+				s4.helper.refreshScrollTrigger();
+			}
+		});
+	});})(jQuery);
+            </script>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section class="content-block" data-column-mode-sm="single" data-column-mode-xs="single" id="section_3lq0kzgfu">
+       <div class="container">
+        <div class="row" id="row_trv3pvc4z">
+         <div class="column" data-xl-width="12" id="column_rdt7r03vy">
+          <div class="content-wrapper">
+           <div class="column-content" data-module="code" id="content_oszpfj6yw">
+            <div class="is-content ce-code">
+             <script>
+              (function($) {
+  function initGrid(gridEl) {
+    var $grid = $(gridEl);
+    var $items = $grid.find('.masonry-item');    var isMobile = $(window).width() < 768;    if (isMobile) {
+      $items.find('.thumb-inner > img').css('height', 'auto');
+      return;
+    }    var gridWidth = $grid.find('.masonry').width();
+    var itemPadding = $items.first().css('padding-left');
+    var gutter = Number(itemPadding.replace('px', ''));    var rows = [{
+      size: 0,
+      items: []
+    }];
+    var current = 0;    $items.each(function(index) {
+      var $item = $(this);
+      var itemSize = Number($item.attr('data-xl-width'));
+      var newSize = rows[current].size + itemSize;      if (newSize <= 12) {
+        rows[current].size = newSize;
+        rows[current].items.push(index);
+      } else {
+        current += 1;
+        rows[current] = {
+          size: itemSize,
+          items: [index],
+        }
+      }
+    });    rows.forEach(function(row) {
+      var height = row.items.reduce(function(acc, itemIndex) {
+        var $item = $items.eq(itemIndex);
+        var $image = $item.find('.thumb-inner > img');        var itemSize = Number($item.attr('data-xl-width'));
+        var height = Number($image.attr('height'));
+        var width = Number($image.attr('width'));
+        var realWidth = (gridWidth * itemSize / 12) - (gutter * 2);
+        var realHeight = height * realWidth / width;        var result = Math.floor(realHeight);
+        return acc > result ? acc : result;
+      }, 0);      row.items.forEach(function(itemIndex) {
+        var $item = $items.eq(itemIndex);
+        var $image = $item.find('.thumb-inner > img');
+        var fit = $image.attr('data-fit') || 'cover';
+        var padding = $image.attr('data-padding') || '0';
+        var bg = $image.attr('data-bg') || 'transparent';
+        $image.css({
+          transition: 'transform 0.3s ease',
+          objectFit: fit,
+          objectPosition: 'center',
+          height: height + 'px',
+          padding: padding,
+          backgroundColor: bg,
+          boxSizing: 'border-box'
+        });
+      });
+    });
+  }  function init() {
+    var $gridElements = $('.sp-perfect-grid');
+    $gridElements.each(function() {
+      initGrid(this);
+    });
+  }  $(document).ready(init);
+  $(window).resize(init);
+})(jQuery);
+             </script>
+             <script>
+              (function() {
+                var thumb = document.querySelector('#project-311 .thumb-inner > img');
+                if (!thumb) {
+                  return;
+                }
+                var stillSrc = thumb.getAttribute('data-still');
+                var gifSrc = thumb.getAttribute('data-gif');
+                var container = thumb.closest('.thumb-inner');
+                if (!stillSrc || !gifSrc || !container) {
+                  return;
+                }
+                var gifImg = null;
+                function clearGif() {
+                  if (gifImg && gifImg.parentNode) {
+                    gifImg.parentNode.removeChild(gifImg);
+                  }
+                  gifImg = null;
+                }
+                function playGif() {
+                  clearGif();
+                  gifImg = new Image();
+                  gifImg.className = 'thumb-gif-overlay';
+                  gifImg.alt = thumb.alt;
+                  gifImg.src = gifSrc + '?t=' + Date.now();
+                  gifImg.style.position = 'absolute';
+                  gifImg.style.top = '0';
+                  gifImg.style.left = '0';
+                  gifImg.style.width = '100%';
+                  gifImg.style.height = '100%';
+                  gifImg.style.objectFit = 'cover';
+                  gifImg.style.pointerEvents = 'none';
+                  gifImg.style.opacity = '0';
+                  gifImg.style.transition = 'opacity 0.2s ease';
+                  container.appendChild(gifImg);
+                  gifImg.addEventListener('load', function() {
+                    gifImg.style.opacity = '1';
+                  });
+                }
+                function showStill() {
+                  clearGif();
+                }
+                container.style.position = container.style.position || 'relative';
+                container.style.overflow = container.style.overflow || 'hidden';
+                container.addEventListener('mouseenter', playGif);
+                container.addEventListener('focusin', playGif);
+                container.addEventListener('mouseleave', showStill);
+                container.addEventListener('focusout', showStill);
+                container.addEventListener('touchstart', function() {
+                  playGif();
+                  window.setTimeout(showStill, 2000);
+                }, { passive: true });
+              })();
+             </script>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+   <div class="pswp__bg">
+   </div>
+   <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+     <div class="pswp__item">
+     </div>
+     <div class="pswp__item">
+     </div>
+     <div class="pswp__item">
+     </div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+     <div class="pswp__top-bar">
+      <div class="pswp__counter">
+      </div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)">
+      </button>
+      <button class="pswp__button pswp__button--share" title="Share">
+      </button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen">
+      </button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out">
+      </button>
+      <div class="pswp__preloader">
+       <div class="pswp__preloader__icn">
+        <div class="pswp__preloader__cut">
+         <div class="pswp__preloader__donut">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip">
+      </div>
+     </div>
+     <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+     </button>
+     <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+     </button>
+     <div class="pswp__caption">
+      <div class="pswp__caption__center">
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="back-to-top">
+   <a class="semplice-event" data-event="scrollToTop" data-event-type="helper">
+    <svg enable-background="new 0 0 53 20" height="20px" id="Ebene_1" version="1.1" viewbox="0 0 53 20" width="53px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+     <g id="Ebene_3">
+     </g>
+     <g>
+      <polygon points="43.886,16.221 42.697,17.687 26.5,4.731 10.303,17.688 9.114,16.221 26.5,2.312 	">
+      </polygon>
+     </g>
+    </svg>
+   </a>
+  </div>
+  <script id="semplice-shared-scripts-js" src="wp-content/themes/semplice5/assets/js/shared.scripts.min.js?ver=5.3.2">
+  </script>
+  <script id="semplice-frontend-scripts-js" src="wp-content/themes/semplice5/assets/js/frontend.scripts.min.js?ver=5.3.2">
+  </script>
+  <script id="mediaelement-core-js-before">
+   var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+  </script>
+  <script id="mediaelement-core-js" src="wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.16">
+  </script>
+  <script id="mediaelement-migrate-js" src="wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.8.11">
+  </script>
+  <script id="mediaelement-js-extra">
+   /* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+  </script>
+  <script id="semplice-frontend-js-js-extra">
+   /* <![CDATA[ */
+var semplice = {
+  "default_api_url": "https:\/\/erikjonsson.se\/wp-json",
+  "semplice_api_url": "https:\/\/erikjonsson.se\/wp-json\/semplice\/v1\/frontend",
+  "template_dir": "https:\/\/erikjonsson.se\/wp-content\/themes\/semplice5",
+  "category_base": "\/category\/",
+  "tag_base": "\/tag\/",
+  "nonce": "e4c3b46b9f",
+  "frontend_mode": "dynamic",
+  "static_transitions": "disabled",
+  "site_name": "Erik Jonsson",
+  "base_url": "https:\/\/erikjonsson.se",
+  "frontpage_id": "46",
+  "blog_home": "https:\/\/erikjonsson.se",
+  "blog_navbar": "",
+  "sr_status": "disabled",
+  "blog_sr_status": "enabled",
+  "is_preview": "",
+  "password_form": "\r\n<div class=\"post-password-form\">\r\n\t<div class=\"inner\">\r\n\t\t<form action="https:\/\/erikjonsson.se\/wp-login.php?action=postpass" method=\"post\">\r\n\t\t\t<div class=\"password-lock\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"35\" height=\"52\" viewBox=\"0 0 35 52\">\r\n  <path id=\"Form_1\" data-name=\"Form 1\" d=\"M31.3,25.028H27.056a0.755,0.755,0,0,1-.752-0.757V14.654a8.8,8.8,0,1,0-17.608,0v9.616a0.755,0.755,0,0,1-.752.757H3.7a0.755,0.755,0,0,1-.752-0.757V14.654a14.556,14.556,0,1,1,29.111,0v9.616A0.755,0.755,0,0,1,31.3,25.028Zm-3.495-1.514h2.743V14.654a13.051,13.051,0,1,0-26.1,0v8.859H7.192V14.654a10.309,10.309,0,1,1,20.617,0v8.859Zm4.43,28.475H2.761A2.77,2.77,0,0,1,0,49.213V25.28a1.763,1.763,0,0,1,1.755-1.766H33.242A1.763,1.763,0,0,1,35,25.28V49.213A2.77,2.77,0,0,1,32.239,51.988ZM1.758,25.028a0.252,0.252,0,0,0-.251.252V49.213a1.259,1.259,0,0,0,1.254,1.262H32.239a1.259,1.259,0,0,0,1.254-1.262V25.28a0.252,0.252,0,0,0-.251-0.252H1.758ZM20.849,43h-6.7a0.75,0.75,0,0,1-.61-0.314,0.763,0.763,0,0,1-.1-0.682l1.471-4.44a4.1,4.1,0,1,1,5.184,0L21.563,42a0.763,0.763,0,0,1-.1.682A0.75,0.75,0,0,1,20.849,43ZM15.2,41.487H19.8l-1.319-3.979a0.76,0.76,0,0,1,.33-0.891,2.6,2.6,0,1,0-2.633,0,0.76,0.76,0,0,1,.33.891Z\"\/>\r\n<\/svg>\r\n<\/div>\r\n\t\t\t<p>This content is protected. <br \/><span>To view, please enter the password.<\/span><\/p>\r\n\t\t\t<div class=\"input-fields\">\r\n\t\t\t\t<input name=\"post_password\" class=\"post-password-input\" type=\"password\" size=\"20\" maxlength=\"20\" placeholder=\"Enter password\" \/><a class=\"post-password-submit semplice-event\" data-event-type=\"helper\" data-event=\"postPassword\" data-id=\"46\">Submit<\/a>\t\t\t<\/div>\r\n\t\t<\/form>\r\n\t<\/div>\r\n<\/div>\r\n\r\n",
+  "portfolio_order": [
+    754,
+    311,
+    177
+  ],
+  "gallery": {
+    "prev": "<svg version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\"\n\twidth=\"18px\" height=\"40px\"  viewBox=\"0 0 18 40\" enable-background=\"new 0 0 18 40\" xml:space=\"preserve\">\n<g id=\"Ebene_2\">\n\t<g>\n\t\t<polygon points=\"16.3,40 0.3,20 16.3,0 17.7,1 2.5,20 17.7,39 \t\t\"\/>\n\t<\/g>\n<\/g>\n<\/svg>\n",
+    "next": "<svg version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" x=\"0px\" y=\"0px\"\n\twidth=\"18px\" height=\"40px\" viewBox=\"0 0 18 40\" enable-background=\"new 0 0 18 40\" xml:space=\"preserve\">\n<g id=\"Ebene_2\">\n\t<g>\n\t\t<polygon points=\"0.3,39 15.5,20 0.3,1 1.7,0 17.7,20 1.7,40 \t\t\"\/>\n\t<\/g>\n<\/g>\n<\/svg>\n"
+  },
+  "menus": {
+    "nav_ttmmgk8cq": {
+      "html": "\r\n\t\t\t\t\t\t<header class=\"nav_ttmmgk8cq semplice-navbar active-navbar sticky-nav  cover-transparent scroll-to-top\" data-cover-transparent=\"enabled\" data-bg-overlay-visibility=\"hidden\" data-mobile-fallback=\"enabled\">\r\n\t\t\t\t\t\t\t<div class=\"container-fluid\" data-nav=\"logo-right-menu-left\">\r\n\t\t\t\t\t\t\t\t<div class=\"navbar-inner menu-type-text\" data-xl-width=\"12\" data-navbar-type=\"container-fluid\">\r\n\t\t\t\t\t\t\t\t\t<nav class=\"standard navbar-left\" data-font=\"font_p2ekx3bej\"><ul class=\"menu\"><li id=\"menu-item-239\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-239\"><a href=\"index.html\" aria-current=\"page\"><span>Erik Jonsson : Work 2018\u2014<\/span><\/a><\/li>\n<li id=\"menu-item-306\" class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-306\"><a href=\"archives\/2015\/index.html\"><span>Archives: 2017\u20142015<\/span><\/a><\/li>\n<li id=\"menu-item-307\" class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-307\"><a href=\"archives\/2014\/index.html\"><span>2014\u20142008<\/span><\/a><\/li>\n<li id=\"menu-item-308\" class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-308\"><a href=\"photostudio\/index.html\"><span>Photostudio<\/span><\/a><\/li>\n<li id=\"menu-item-238\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-238\"><a href=\"erikjonsson\/index.html\"><span>Information<\/span><\/a><\/li>\n<\/ul><\/nav>\r\n\t\t\t\t\t\t\t\t\t<div class=\"hamburger navbar-left semplice-menu\"><a class=\"open-menu menu-icon\"><span><\/span><\/a><\/div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"logo navbar-right\"><a href=\"index.html\" title=\"Erik Jonsson\"><\/a><\/div>\r\n\t\t\t\t\t\t\t\t<\/div>\r\n\t\t\t\t\t\t\t<\/div>\r\n\t\t\t\t\t\t<\/header>\r\n\t\t\t\t\t\t\r\n\t\t\t\t<div id=\"overlay-menu\">\r\n\t\t\t\t\t<div class=\"overlay-menu-inner\" data-xl-width=\"12\">\r\n\t\t\t\t\t\t<nav class=\"overlay-nav\" data-justify=\"center\" data-align=\"align-middle\" data-font=\"font_p2ekx3bej\">\r\n\t\t\t\t\t\t\t<ul class=\"container\"><li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-239\"><a href=\"index.html\" aria-current=\"page\"><span>Erik Jonsson : Work 2018\u2014<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-306\"><a href=\"archives\/2015\/index.html\"><span>Archives: 2017\u20142015<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-307\"><a href=\"archives\/2014\/index.html\"><span>2014\u20142008<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-308\"><a href=\"photostudio\/index.html\"><span>Photostudio<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-238\"><a href=\"erikjonsson\/index.html\"><span>Information<\/span><\/a><\/li>\n<\/ul>\r\n\t\t\t\t\t\t<\/nav>\r\n\t\t\t\t\t<\/div>\r\n\t\t\t\t<\/div>\r\n\t\t\t\r\n\t\t\t\t\t",
+      "css": ".nav_ttmmgk8cq { background-color: transparent;; }.nav_ttmmgk8cq .navbar-inner .navbar-left, .nav_ttmmgk8cq .navbar-inner .navbar-center, .nav_ttmmgk8cq .navbar-inner .navbar-distributed { left: 2.2222222222222223rem; }.nav_ttmmgk8cq .container-fluid .navbar-inner .navbar-right, .nav_ttmmgk8cq .container-fluid .navbar-inner .navbar-distributed { right: 2.2222222222222223rem; }.nav_ttmmgk8cq .container-fluid .hamburger a:after { padding-right: 1.1111111111111rem; }.nav_ttmmgk8cq .navbar-inner .logo a { color: #ffffff; }.nav_ttmmgk8cq .navbar-inner .logo { align-items: center; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { background-color: #fafafa; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { width: 24; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { height: 2px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu span::before { transform: translateY(-6px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu span::after { transform: translateY(6px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu:hover span::before { transform: translateY(-8px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu:hover span::after { transform: translateY(8px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { font-size: 0.8888888888888888rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { color: #fafafa; }.nav_ttmmgk8cq .navbar-inner nav ul li a { padding-left: 1.6666666666667rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a { padding-right: 1.6666666666667rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { border-bottom-color: #ffffff; }.nav_ttmmgk8cq .navbar-inner nav ul li a:hover span, .navbar-inner nav ul li.current-menu-item a span, .navbar-inner nav ul li.current_page_item a span, .nav_ttmmgk8cq .navbar-inner nav ul li.wrap-focus a span { color: #ffd300; }.nav_ttmmgk8cq .navbar-inner nav ul li.current-menu-item a span { color: #ffd300; }.nav_ttmmgk8cq .navbar-inner nav ul li.current_page_item a span { color: #ffd300; }[data-post-type=\"project\"] .navbar-inner nav ul li.portfolio-grid a span, [data-post-type=\"post\"] .navbar-inner nav ul li.blog-overview a span { color: #ffd300; }#overlay-menu { background-color: rgba(0, 0, 0, 1); }@media screen and (min-width: 992px) and (max-width: 1169.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (min-width: 768px) and (max-width: 991.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (min-width: 544px) and (max-width: 767.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (max-width: 543.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}",
+      "mobile_css": {
+        "lg": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }",
+        "md": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }",
+        "sm": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }",
+        "xs": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }"
+      }
+    },
+    "default": "nav_ttmmgk8cq",
+    "system_default": {
+      "html": "\r\n\t\t\t\t\t\t<header class=\"nav_ttmmgk8cq semplice-navbar active-navbar sticky-nav  cover-transparent scroll-to-top\" data-cover-transparent=\"enabled\" data-bg-overlay-visibility=\"hidden\" data-mobile-fallback=\"enabled\">\r\n\t\t\t\t\t\t\t<div class=\"container-fluid\" data-nav=\"logo-right-menu-left\">\r\n\t\t\t\t\t\t\t\t<div class=\"navbar-inner menu-type-text\" data-xl-width=\"12\" data-navbar-type=\"container-fluid\">\r\n\t\t\t\t\t\t\t\t\t<nav class=\"standard navbar-left\" data-font=\"font_p2ekx3bej\"><ul class=\"menu\"><li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-239\"><a href=\"index.html\" aria-current=\"page\"><span>Erik Jonsson : Work 2018\u2014<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-306\"><a href=\"archives\/2015\/index.html\"><span>Archives: 2017\u20142015<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-307\"><a href=\"archives\/2014\/index.html\"><span>2014\u20142008<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-308\"><a href=\"photostudio\/index.html\"><span>Photostudio<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-238\"><a href=\"erikjonsson\/index.html\"><span>Information<\/span><\/a><\/li>\n<\/ul><\/nav>\r\n\t\t\t\t\t\t\t\t\t<div class=\"hamburger navbar-left semplice-menu\"><a class=\"open-menu menu-icon\"><span><\/span><\/a><\/div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"logo navbar-right\"><a href=\"index.html\" title=\"Erik Jonsson\"><\/a><\/div>\r\n\t\t\t\t\t\t\t\t<\/div>\r\n\t\t\t\t\t\t\t<\/div>\r\n\t\t\t\t\t\t<\/header>\r\n\t\t\t\t\t\t\r\n\t\t\t\t<div id=\"overlay-menu\">\r\n\t\t\t\t\t<div class=\"overlay-menu-inner\" data-xl-width=\"12\">\r\n\t\t\t\t\t\t<nav class=\"overlay-nav\" data-justify=\"center\" data-align=\"align-middle\" data-font=\"font_p2ekx3bej\">\r\n\t\t\t\t\t\t\t<ul class=\"container\"><li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-46 current_page_item menu-item-239\"><a href=\"index.html\" aria-current=\"page\"><span>Erik Jonsson : Work 2018\u2014<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-306\"><a href=\"archives\/2015\/index.html\"><span>Archives: 2017\u20142015<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-307\"><a href=\"archives\/2014\/index.html\"><span>2014\u20142008<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-custom menu-item-object-custom menu-item-308\"><a href=\"photostudio\/index.html\"><span>Photostudio<\/span><\/a><\/li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-238\"><a href=\"erikjonsson\/index.html\"><span>Information<\/span><\/a><\/li>\n<\/ul>\r\n\t\t\t\t\t\t<\/nav>\r\n\t\t\t\t\t<\/div>\r\n\t\t\t\t<\/div>\r\n\t\t\t\r\n\t\t\t\t\t",
+      "css": ".nav_ttmmgk8cq { background-color: transparent;; }.nav_ttmmgk8cq .navbar-inner .navbar-left, .nav_ttmmgk8cq .navbar-inner .navbar-center, .nav_ttmmgk8cq .navbar-inner .navbar-distributed { left: 2.2222222222222223rem; }.nav_ttmmgk8cq .container-fluid .navbar-inner .navbar-right, .nav_ttmmgk8cq .container-fluid .navbar-inner .navbar-distributed { right: 2.2222222222222223rem; }.nav_ttmmgk8cq .container-fluid .hamburger a:after { padding-right: 1.1111111111111rem; }.nav_ttmmgk8cq .navbar-inner .logo a { color: #ffffff; }.nav_ttmmgk8cq .navbar-inner .logo { align-items: center; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { background-color: #fafafa; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { width: 24; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { height: 2px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu span::before { transform: translateY(-6px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu span::after { transform: translateY(6px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu:hover span::before { transform: translateY(-8px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.open-menu:hover span::after { transform: translateY(8px); }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { font-size: 0.8888888888888888rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { color: #fafafa; }.nav_ttmmgk8cq .navbar-inner nav ul li a { padding-left: 1.6666666666667rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a { padding-right: 1.6666666666667rem; }.nav_ttmmgk8cq .navbar-inner nav ul li a span { border-bottom-color: #ffffff; }.nav_ttmmgk8cq .navbar-inner nav ul li a:hover span, .navbar-inner nav ul li.current-menu-item a span, .navbar-inner nav ul li.current_page_item a span, .nav_ttmmgk8cq .navbar-inner nav ul li.wrap-focus a span { color: #ffd300; }.nav_ttmmgk8cq .navbar-inner nav ul li.current-menu-item a span { color: #ffd300; }.nav_ttmmgk8cq .navbar-inner nav ul li.current_page_item a span { color: #ffd300; }[data-post-type=\"project\"] .navbar-inner nav ul li.portfolio-grid a span, [data-post-type=\"post\"] .navbar-inner nav ul li.blog-overview a span { color: #ffd300; }#overlay-menu { background-color: rgba(0, 0, 0, 1); }@media screen and (min-width: 992px) and (max-width: 1169.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (min-width: 768px) and (max-width: 991.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (min-width: 544px) and (max-width: 767.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}@media screen and (max-width: 543.98px) { .nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }}",
+      "mobile_css": {
+        "lg": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }",
+        "md": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }",
+        "sm": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }",
+        "xs": ".nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon { height: 14px; }.nav_ttmmgk8cq .navbar-inner .hamburger a.menu-icon span { margin-top: 7px; }"
+      }
+    }
+  },
+  "post_ids": {
+    "privacy-policy": "3",
+    "erikjonsson": "8",
+    "erikjonsson-2": "46",
+    "marcus-martinus-pocketdial": "72",
+    "above-design-salon": "606",
+    "above-event-graphics": "609",
+    "larsvaular-kroppssprak-ep": "10",
+    "lars-vaular-visual-identity": "67",
+    "lars-vaular-flere-steder-alltid": "70",
+    "misfitchris-illegal-street-racing": "71",
+    "exeger-visual-identity": "73",
+    "lars-vaular-merch": "126",
+    "norban-brand-prestudy": "134",
+    "concordium-brand-system": "177",
+    "urban-oasis": "242",
+    "plant-prefab": "263",
+    "inspo": "256",
+    "mavs-eternal-destiny": "295",
+    "above-rebrand": "311",
+    "norban-illustrations": "390",
+    "tool-of-na": "566",
+    "above-id-posters": "589",
+    "above-announcement-design-system": "612",
+    "google-performing-arts": "634",
+    "google-abbey-road": "651",
+    "google-beyond-the-map": "666",
+    "inn-visual-identity": "683",
+    "mavs-synchro": "733",
+    "apple-art-direction": "754",
+    "rapha-copenhagen": "759"
+  },
+  "transition": {
+    "in": {
+      "effect": "fadeIn",
+      "position": "normal",
+      "visibility": "transition-hidden",
+      "easing": "Expo.easeInOut",
+      "duration": 1
+    },
+    "out": {
+      "effect": "fadeOut",
+      "position": "normal",
+      "visibility": "transition-hidden",
+      "easing": "Expo.easeInOut",
+      "duration": 1
+    },
+    "reveal": false,
+    "optimize": "disabled",
+    "status": "disabled",
+    "preset": "fade",
+    "scrollToTop": "enabled"
+  }
+};
+/* ]]> */
+  </script>
+  <script id="semplice-frontend-js-js" src="wp-content/themes/semplice5/assets/js/frontend.min.js?ver=5.3.2">
+  </script>
+  <script id="wp-embed-js" src="wp-includes/js/wp-embed.min.js?ver=5.8.11">
+  </script>
+  <script id="46-motion-js">
+   (function ($) { "use strict";var playRepeat = [];var endDuration = 25;var options = JSON.parse('{"id":"column_6ab423e20","trigger":"#content-holder #column_6ab423e20","start":"top bottom-=85%","end":"migrated top+=15%","pin":false,"markers":false,"pinSpacing":false,"scrub":0}');
+							if(typeof endDuration !== "undefined") {
+								var vpHeight = parseInt($(window).height());
+								var content = document.getElementById("column_6ab423e20");
+								var contentRect = content.getBoundingClientRect();
+								var contentHeight = contentRect.height;
+								var newEnd = Math.round(((endDuration * (vpHeight / 100)) - contentHeight) / (contentHeight / 100));
+								// changing end
+								if(false !== newEnd && null !== newEnd) {
+									options["end"] = options["end"].replace("migrated", "bottom+=" + newEnd + "%");
+								}
+							}
+						
+						if(options.pin === true) {
+							if("column_6ab423e20".indexOf("section_") > -1 || "column_6ab423e20".indexOf("cover") > -1) {
+								$("#column_6ab423e20").wrap("<div class='section-pin sp_column_6ab423e20'></div>");
+								options["trigger"] = ".sp_column_6ab423e20";
+							} else if("column_6ab423e20".indexOf("column_") > -1) {
+								$("#column_6ab423e20").wrap("<div class='column-pin-outer cpo_column_6ab423e20'><div class='column-pin-inner cpi_column_6ab423e20 '></div></div>");
+								options["trigger"] = ".cpi_column_6ab423e20";
+								var atts = $("#column_6ab423e20").prop("attributes");
+								$.each(atts, function(key, attr) {
+									if(attr.name.indexOf("width") > -1) {
+										$(".cpo_column_6ab423e20").attr(attr.name, attr.value);
+									}
+								});
+							} else if("column_6ab423e20".indexOf("content_") > -1) {
+								options["trigger"] = "#column_6ab423e20";
+							}
+							
+						}
+						s4.animate.gsap["column_6ab423e20"] = gsap.timeline({
+							scrollTrigger: options,
+						});
+					
+								// gsap set transform
+								gsap.set("#content-holder #column_6ab423e20", JSON.parse('{"translateY":0,"translateX":0,"rotate":"0deg","rotateY":"0deg","rotateX":"0deg","skewX":"0deg","skewY":"0deg","scaleX":"1","scaleY":"1"}'));
+							
+						// parse props
+						var props = JSON.parse('{"duration":0.24,"ease":"Power0.easeNone","delay":0,"opacity":0.25}');
+						// add to timeline
+						s4.animate.gsap["column_6ab423e20"].to("#content-holder #column_6ab423e20", props);
+						// pause timeline
+						s4.animate.gsap["column_6ab423e20"].pause();
+					var playRepeat = [];
+						s4.animate.gsap["content_c6af43e15"] = gsap.timeline({
+							scrollTrigger: "#content-holder #content_c6af43e15 .is-content",
+							repeat: 0,
+							
+						});
+					
+								// gsap set transform
+								gsap.set("#content-holder #content_c6af43e15 .is-content", JSON.parse('{"translateY":0,"translateX":0,"rotate":"0deg","rotateY":"0deg","rotateX":"0deg","skewX":"0deg","skewY":"0deg","scaleX":"1","scaleY":"1"}'));
+							
+						// parse props
+						var props = JSON.parse('{"duration":0.25,"ease":"Power0.easeNone","delay":0.1,"opacity":1}');
+						// add to timeline
+						s4.animate.gsap["content_c6af43e15"].to("#content-holder #content_c6af43e15 .is-content", props);
+						// pause timeline
+						s4.animate.gsap["content_c6af43e15"].pause();
+					var playRepeat = [];
+						s4.animate.gsap["content_235d085ca"] = gsap.timeline({
+							scrollTrigger: "#content-holder #content_235d085ca .is-content",
+							repeat: 0,
+							
+						});
+					
+								// gsap set transform
+								gsap.set("#content-holder #content_235d085ca .is-content", JSON.parse('{"translateY":0,"translateX":0,"rotate":"0deg","rotateY":"0deg","rotateX":"0deg","skewX":"0deg","skewY":"0deg","scaleX":"1","scaleY":"1"}'));
+							
+						// parse props
+						var props = JSON.parse('{"duration":0.5,"ease":"Power0.easeNone","delay":1,"opacity":1}');
+						// add to timeline
+						s4.animate.gsap["content_235d085ca"].to("#content-holder #content_235d085ca .is-content", props);
+						// pause timeline
+						s4.animate.gsap["content_235d085ca"].pause();
+					var playRepeat = [];
+						s4.animate.gsap["content_7069b0024"] = gsap.timeline({
+							scrollTrigger: "#content-holder #content_7069b0024 .is-content",
+							repeat: 0,
+							
+						});
+					
+								// gsap set transform
+								gsap.set("#content-holder #content_7069b0024 .is-content", JSON.parse('{"translateY":0,"translateX":0,"rotate":"0deg","rotateY":"0deg","rotateX":"0deg","skewX":"0deg","skewY":"0deg","scaleX":"1","scaleY":"1"}'));
+							
+						// parse props
+						var props = JSON.parse('{"duration":0.8,"ease":"Power0.easeNone","delay":3,"opacity":1}');
+						// add to timeline
+						s4.animate.gsap["content_7069b0024"].to("#content-holder #content_7069b0024 .is-content", props);
+						// pause timeline
+						s4.animate.gsap["content_7069b0024"].pause();
+					$(window).scroll();})(jQuery);
+  </script>
+ </body>
+</html>
+<!-- Page supported by LiteSpeed Cache 6.5.4 on 2025-09-02 11:47:27 -->

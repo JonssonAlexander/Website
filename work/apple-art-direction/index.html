@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GNN‑Style Proxy Gradient — Quadratic Programming Case Study</title>
+  <meta name="description" content="Speeding up QP solvers by using a graph neural network graph‑neural‑network‑style proxy gradient  and a linear‑algebra trick"/>
+  
+  <link rel="icon" href="favicon.png" />
+  <!-- MathJax for equations (works offline if you self‑host); safe to remove if you export equations as images -->
+  <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    /* ------- Minimal reset ------- */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.6 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:#0f0f10;background:#fff}
+    img{max-width:100%;display:block;height:auto}
+    a{color:inherit}
+    :root{
+      --max: 1080px;          /* content max width */
+      --gutter: clamp(16px, 4vw, 32px);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --border: 1px solid rgba(0,0,0,.08);
+      --accent: #111;         /* tweak if you want a color pop */
+      --muted: #6b7280;
+    }
+
+    /* ------- Layout ------- */
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+    header.site{padding:20vh var(--gutter) 10vh;position:relative}
+    header.site h1{font-size:clamp(32px,7vw,64px);line-height:1.05;margin:0 0 .6rem;font-weight:700;letter-spacing:-.02em}
+    .lede{font-size:clamp(18px,2.4vw,22px);color:var(--muted);max-width:70ch;margin:0}
+    .back{display:none}
+    /* Always-visible back button, same behavior as index site-name */
+    .back-fixed{position:fixed;top:16px;left:16px;z-index:10000;color:#fafafa;text-decoration:none;font-family:"BasisGrotesque-Regular",sans-serif;font-size:.888rem;letter-spacing:.02em;mix-blend-mode:exclusion;padding:4px 6px}
+    .back-fixed:focus{outline:2px solid #ffd300;outline-offset:2px}
+    @media (max-width:543.98px){.back-fixed{top:12px;left:12px;font-size:.777rem}}
+
+    /* sticky section index like Erik Jonsson’s numbered sections */
+    nav.toc{position:sticky;top:0;background:linear-gradient(#fff,rgba(255,255,255,.85));backdrop-filter:saturate(150%) blur(6px);border-bottom:var(--border);z-index:10}
+    nav.toc .wrap{display:flex;gap:1rem;overflow:auto;scrollbar-width:none}
+    nav.toc .wrap::-webkit-scrollbar{display:none}
+    nav.toc a{display:flex;align-items:center;gap:.6rem;padding:1rem .75rem;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent}
+    nav.toc a:is(:hover,:focus){border-color:#000}
+    nav.toc a span.num{display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;border:1px solid rgba(0,0,0,.15);font-size:.9rem}
+
+    main section{padding:10vh 0;border-bottom:var(--border)}
+    main section:last-of-type{border-bottom:none}
+
+    /* ------- Typography helpers ------- */
+    h2.section-title{font-size:clamp(22px,3.5vw,32px);letter-spacing:-.01em;margin:0 0 1rem}
+    .eyebrow{display:flex;align-items:center;gap:.6rem;color:var(--muted);text-transform:uppercase;font-size:.8rem;letter-spacing:.12em}
+    .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#000;opacity:.3}
+    .kicker{color:var(--muted)}
+
+    /* ------- Figures / images ------- */
+    figure{margin:2rem 0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#f8f8f8;border:var(--border)}
+    figure.nochrome{border:none;box-shadow:none;background:transparent}
+    figcaption{padding:.75rem 1rem;color:var(--muted);font-size:.9rem}
+
+    /* full‑bleed image (edge‑to‑edge like the reference) */
+    .full-bleed{width:100vw;margin-left:calc(50% - 50vw)}
+    .full-bleed img{width:100%;height:clamp(40vh,70vh,84vh);object-fit:cover}
+
+    /* hero plot pairing */
+    .hero-plot{padding:clamp(24px,4vw,48px);background:#f8f8f8;border-radius:var(--radius);box-shadow:var(--shadow);border:var(--border)}
+    .hero-plot-grid{display:grid;gap:clamp(16px,3vw,32px);grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .hero-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(16px,3vw,24px);display:flex;flex-direction:column;align-items:center}
+    .hero-card img{width:100%;height:auto!important;object-fit:contain!important;margin:0}
+    .hero-card p{margin-top:.75rem;font-size:.9rem;color:var(--muted);text-align:center}
+    .hero-plot figcaption{margin-top:clamp(18px,2vw,32px);text-align:center}
+    .hero-plot img{height:auto!important;object-fit:contain!important}
+
+    /* simple responsive grids for multiple figures */
+    .grid{display:grid;gap:clamp(12px,2vw,20px)}
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    .grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+    @media (max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
+
+    /* ------- Code / math blocks ------- */
+    pre{padding:1rem;border-radius:12px;background:#0f0f10;color:#f1f5f9;overflow:auto}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+
+    /* ------- Reveal on scroll ------- */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    /* ------- Lightbox using <dialog> ------- */
+    dialog#lightbox{padding:0;border:none;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    dialog#lightbox::backdrop{background:rgba(0,0,0,.65)}
+    .lightbox-img{max-width:90vw;max-height:85vh;display:block}
+    .lb-close{position:absolute;inset:10px 14px auto auto;border:none;background:#fff;border-radius:999px;width:40px;height:40px;box-shadow:var(--shadow);font-weight:700;cursor:pointer}
+
+    footer{padding:12vh var(--gutter) 16vh;color:var(--muted)}
+
+    /* ------- Proof hover subpage ------- */
+    .proof-trigger{color:var(--accent); text-decoration:underline; text-decoration-thickness: from-font; cursor:pointer}
+    .proof-box{position:fixed; left:50%; top:8vh; transform:translateX(-50%) translateY(-8px); width:min(1100px,92vw); max-height:80vh; overflow:auto; background:#fff; border:var(--border); border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.25); padding:18px; opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease; z-index:10001}
+    .proof-box.open{opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0)}
+    .proof-trigger:hover + .proof-box{opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0)}
+    .proof-close{position:sticky; top:0; margin:-6px -6px 12px auto; display:inline-block; border:none; background:#fff; border-radius:999px; width:36px; height:36px; box-shadow:var(--shadow); font-weight:700; cursor:pointer}
+    .proof-box > *{margin-left:0; margin-right:0}
+  </style>
+</head>
+<body>
+  <a class="back-fixed" href="../../index.html"><span>←</span> Back to projects</a>
+  <header class="site wrap">
+    <h1>GNN‑Style Proxy Gradient for Quadratic Programming</h1>
+    <p class="lede">Using a linear‑algebra trick on fully connected graphs to accelerate exact QP solvers via a proxy gradient interpreted through a GNN lens.</p>
+  </header>
+
+  <!-- Sticky section index (numbers echo the Erik Jonsson vibe) -->
+  <nav class="toc">
+    <div class="wrap">
+      <a href="#tldr"><span class="num">1</span> TL;DR</a>
+      <a href="#benchmark"><span class="num">2</span> Benchmark & Workflow</a>
+      <a href="#overview"><span class="num">3</span> QP Overview</a>
+      <a href="#faster"><span class="num">4</span> Making it Faster</a>
+      <a href="#gnn"><span class="num">5</span> GNN Connection</a>
+      <a href="#sim"><span class="num">6</span> Simulation</a>
+      <a href="#conclusion"><span class="num">7</span> Conclusion</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO full‑bleed image -->
+    <section id="hero" class="full-bleed">
+      <figure class="hero-plot">
+        <div class="hero-plot-grid">
+          <div class="hero-card">
+            <img class="zoomable" src="../../wp-content/uploads/GNN/runtime_vs_error.png" alt="Runtime versus error trade-off plot" loading="eager" decoding="async" />
+            <p>Runtime vs. error trade-off</p>
+          </div>
+          <div class="hero-card">
+            <img class="zoomable" src="../../wp-content/uploads/GNN/runtime_scaling.png" alt="Runtime scaling versus dimension plot" loading="eager" decoding="async" />
+            <p>Runtime scaling vs. dimension</p>
+          </div>
+        </div>
+        <figcaption>Proxy-guided solver performance: error trade-off (left) and scaling with dimensionality (right).</figcaption>
+      </figure>
+    </section>
+
+    <section id="tldr" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Summary</span></div>
+      <h2 class="section-title">1 — TL;DR</h2>
+      <p><strong>Idea:</strong> Use a proxy gradient derived from a fully connected graph (via a correlation matrix) to step an exact QP solver faster. The proxy is cheap to evaluate and acts like an <em>attention‑style</em> global aggregation over variables.</p>
+      <ul>
+        <li><strong>Trick:</strong> Linear-algebra manipulation on a dense correlation matrix \(\mathbf{C}\) yields a per‑step proxy \(\tilde{\nabla} f\) that approximates the true QP gradient.</li>
+        <li><strong>Why it helps:</strong> Fewer expensive solves; a handful of proxy-guided steps often land near the optimum.</li>
+        <li><strong>Trade-off:</strong> Slight accuracy loss for large speed gains; great for time-critical settings (e.g., HFT or inventory optimisation).</li>
+
+
+      </ul>
+    </section>
+
+    <section id="benchmark" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Context</span></div>
+      <h2 class="section-title">2 — Benchmark & Workflow</h2>
+      <p class="kicker">Baseline: ~1s for an exact solution on a <code>100×100</code> QP (on reference hardware).</p>
+      <div class="grid cols-2 reveal">
+        <!-- Replace the images below with your actual workflow charts -->
+        <figure>
+          <img class="zoomable" src="images/workflow_qp.png" alt="Standard QP workflow diagram" loading="lazy" />
+          <figcaption>Standard QP workflow.</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="images/workflow_proxy.png" alt="Proxy‑gradient QP workflow diagram" loading="lazy" />
+          <figcaption>Proxy‑gradient‑assisted QP workflow.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="overview" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Setup</span></div>
+      <h2 class="section-title">3 — QP Overview (Finance notation)</h2>
+      <p>We use a mean‑variance style notation with covariance \(\boldsymbol{\Sigma}\) and expected returns \(\boldsymbol{\mu}\). A canonical QP writes</p>
+      <p>\[\min_{\mathbf{x}}\; \tfrac12\,\mathbf{x}^\top \boldsymbol{\Sigma}\,\mathbf{x} - \lambda\, \boldsymbol{\mu}^\top\mathbf{x} \quad \text{s.t.}\; \mathbf{A}\mathbf{x}\le\mathbf{b},\;\mathbf{1}^\top\mathbf{x}=1,\;\mathbf{x}\ge0.\]</p>
+      <p>The <em>true</em> gradient of the objective (ignoring constraints) is \(\nabla f(\mathbf{x}) = \boldsymbol{\Sigma}\,\mathbf{x} - \lambda\,\boldsymbol{\mu}.\)</p>
+      <figure class="reveal">
+        <img class="zoomable" src="images/overview_figure.png" alt="Overview illustration of QP in finance notation" loading="lazy" />
+        <figcaption>QP in finance terms — same math, more intuition.</figcaption>
+      </figure>
+    </section>
+
+<section id="faster" class="wrap">
+  <div class="eyebrow"><span class="dot"></span><span>Derivation</span></div>
+<h2 class="section-title">4 — From the QP to One Fast Step</h2>
+
+<p class="kicker">If you are interested in the proof you can hover over <a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">here</a>.</p>
+
+<aside id="proof-box" class="proof-box" aria-hidden="true">
+  <button class="proof-close" aria-label="Close">×</button>
+
+<!-- Box 1 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+  <strong>Step 1 — Write the QP we actually solve.</strong>
+  <div>
+    We pick trade deltas \( \Delta w\in\mathbb R^N \) by maximizing
+    \[
+      J(\Delta w) = \mu^\top \Delta w - \tfrac{\gamma}{2}\,\Delta w^\top \Sigma\,\Delta w - \eta \|\Delta w\|_1 .
+    \]
+    Equivalently, minimize \( f(\Delta w)=g(\Delta w)+h(\Delta w) \) with
+    \[
+      g(\Delta w)=\tfrac{\gamma}{2}\Delta w^\top\Sigma\Delta w-\mu^\top\Delta w,\quad
+      h(\Delta w)=\eta\|\Delta w\|_1 .
+    \]
+    <em>Why:</em> turning a max into a min lets us use standard proximal-gradient tools.
+  </div>
+</div>
+
+<!-- Box 2 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+  <strong>Step 2 — Compute the smooth gradient and its Lipschitz constant.</strong>
+  <div>
+    \[
+      \nabla g(\Delta w)=\gamma\,\Sigma\,\Delta w-\mu, \qquad
+      L=\gamma\,\lambda_{\max}(\Sigma) .
+    \]
+    <em>Why:</em> \( \nabla^2 g=\gamma\Sigma \), so the gradient is \(L\)-Lipschitz with that spectral bound.
+  </div>
+</div>
+
+<!-- Box 3 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+  <strong>Step 3 — Proximal-gradient update (one step).</strong>
+  <div>
+    Using the standard quadratic upper bound for a smooth \(g\),
+    \[
+      \Delta w^{(k+1)}=\operatorname{prox}_{\alpha h}\!\Big(\Delta w^{(k)}-\alpha\,\nabla g(\Delta w^{(k)})\Big),
+      \quad 0<\alpha<\tfrac{2}{L}.
+    \]
+    Plug in \( \nabla g \):
+    \[
+      \Delta w^{(k+1)}=\operatorname{prox}_{\alpha\eta\|\cdot\|_1}\!\Big(\Delta w^{(k)}+\alpha(\mu-\gamma\Sigma\Delta w^{(k)})\Big).
+    \]
+    <em>Why:</em> this step minimizes a simple surrogate of \(g+h\) that upper-bounds the true objective near \(\Delta w^{(k)}\).
+  </div>
+</div>
+
+<!-- Box 4 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+  <strong>Step 4 — The \(\ell_1\) prox is soft-thresholding.</strong>
+  <div>
+    For \(z\in\mathbb R^N\),
+    \[
+      \big[\operatorname{prox}_{\alpha\eta\|\cdot\|_1}(z)\big]_i
+      = \mathrm{sign}(z_i)\,\max\{|z_i|-\alpha\eta,\,0\}
+      \;=:\; S_{\alpha\eta}(z_i).
+    \]
+    <em>Why:</em> coordinate-wise 1D problems yield the shrinkage/thresholding solution.
+  </div>
+</div>
+
+<!-- Box 5 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+  <strong>Step 5 — Put it in “one affine map + nonlinearity” form.</strong>
+  <div>
+    Let \(W:=I-\alpha\gamma\Sigma\) and \(b:=\alpha\mu\). Then
+    \[
+      \boxed{\;\Delta w^{(k+1)} = S_{\alpha\eta}\!\big(W\,\Delta w^{(k)}+b\big)\;}
+    \]
+    <em>Why:</em> this is a single forward pass: matrix-vector, add bias, then soft-threshold.
+  </div>
+</div>
+
+<!-- Box 6 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+  <strong>Step 6 — The linear-algebra trick that makes it fast.</strong>
+  <div>
+    For a fully connected aggregation,
+    \[
+      (11^\top - I)\,x \;=\; 1\,(1^\top x)\;-\;x .
+    \]
+    <em>Proof (one line):</em> the \(i\)-th component is \(\sum_j x_j - x_i = (1^\top x) - x_i\).  
+    <br/>
+    As a matrix identity (row-wise),
+    \[
+      (11^\top - I)\,X \;=\; 1\,(1^\top X)\;-\;X .
+    \]
+    <em>Why it helps:</em> a dense \(N\times N\) multiply becomes one <u>reduction</u> \(1^\top X\) + one <u>broadcast</u> \(1(\cdot)\) → cost \(O(NF)\) instead of \(O(N^2F)\).
+  </div>
+</div>
+
+<!-- Box 7 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+  <strong>Step 7 — Fast product for a practical covariance.</strong>
+  <div>
+    If we model
+    \[
+      \Sigma \approx D \;+\; \beta(11^\top - I)\;+\;\sum_{k=1}^{r} u_k v_k^\top \quad (r\ll N),
+    \]
+    then for any vector \(x\),
+    \[
+      \Sigma x 
+      = D x + \beta\big(1(1^\top x)-x\big) + \sum_{k=1}^r u_k\,(v_k^\top x).
+    \]
+    <em>Cost:</em> diagonal: \(O(N)\); each rank-1 term: one dot (reduction) + one axpy (broadcast) → \(O(rN)\). Overall \(O(N)\) per factor, not \(O(N^2)\).
+  </div>
+</div>
+
+<!-- Box 8 -->
+<div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;background:#fafafa;">
+  <strong>Final fast update (what you implement).</strong>
+  <div>
+    \[
+      \boxed{
+      \Delta w^{(k+1)} 
+      = S_{\alpha\eta}\!\Big(\,\Delta w^{(k)} + \alpha\big(\mu - \gamma\,\Sigma\,\Delta w^{(k)}\big)\Big)
+      }
+    \]
+    with \(\Sigma\,\Delta w^{(k)}\) evaluated by the reduction+broadcast form above.  
+    <em>Step size:</em> pick \(0<\alpha<2/(\gamma\lambda_{\max}(\Sigma))\) (estimate \(\lambda_{\max}\) via a few power iterations).
+  </div>
+</div>
+
+<p class="kicker">That’s the whole path: QP → split (smooth + \(\ell_1\)) → one prox step → soft-threshold → linear-algebra identity → \(O(N)\)-per-factor mat-vec → one fast pass. In many applications we can accept a tiny loss in optimality for a large win in latency (e.g., HFT, real‑time video).</p>
+
+</aside>
+
+    </section>
+
+    <section id="gnn" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Analogy</span></div>
+      <h2 class="section-title">5 — How this looks like a GNN</h2>
+      <p>The basic GNN update with self‑loops can be written</p>
+      <p>\[\mathbf{h}^{(l+1)} = \sigma\!\left(\underbrace{\mathbf{W}_s\,\mathbf{h}^{(l)}}_{\text{self}} + \underbrace{\mathbf{W}_n\,\mathbf{A}\,\mathbf{h}^{(l)}}_{\text{neighbours}}\right),\]
+      where \(\mathbf{A}\) is the (fully connected) adjacency implied by \(\mathbf{C}\). If we set \(\sigma\) to identity and align parameters \((\alpha,\beta)\) with \((\mathbf{W}_s,\mathbf{W}_n)\), the proxy step matches a <em>linear</em> GNN layer followed by a global aggregation — i.e., <strong>an attention‑like layer + global mean pool</strong>.</p>
+      <div class="grid cols-2 reveal">
+        <figure>
+          <img class="zoomable" src="images/gnn_eq.png" alt="Simple GNN equation diagram" loading="lazy" />
+          <figcaption>GNN update with self and neighbour terms.</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="images/gnn_proxy_analogy.png" alt="Analogy between GNN update and proxy gradient" loading="lazy" />
+          <figcaption>Analogy: proxy gradient ≈ linear GNN layer.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="sim" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Results</span></div>
+      <h2 class="section-title">6 — Simulation</h2>
+      <p>Swap in your plots for different sizes \(N\times M\). Suggested layout: a full‑bleed hero plot and a grid of detailed charts.</p>
+      <figure class="full-bleed reveal">
+        <img class="zoomable" src="../../wp-content/uploads/GNN/runtime_vs_error.png" alt="Runtime versus error trade-off plot" loading="lazy" />
+        <figcaption>Runtime ↔︎ error trade-off.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img class="zoomable" src="../../wp-content/uploads/GNN/runtime_scaling.png" alt="Runtime scaling versus dimension plot" loading="lazy" />
+        <figcaption>Runtime scaling vs. problem dimension.</figcaption>
+      </figure>
+    </section>
+
+    <section id="conclusion" class="wrap">
+      <div class="eyebrow"><span class="dot"></span><span>Wrap‑up</span></div>
+      <h2 class="section-title">7 — Conclusion</h2>
+      <ul>
+        <li>Proxy gradient gives fast, low‑cost steps that land near optimal solutions.</li>
+        <li>Acts like a linear GNN layer over a fully connected graph induced by correlations.</li>
+        <li>Great for latency‑sensitive workloads; can warm‑start exact solvers.</li>
+      </ul>
+      <p><em>Future work:</em> tighter convergence bounds, sparse‑graph variants, and adaptive \((\alpha,\beta,\gamma)\) learning.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© Your Name — <a href="#">Download PDF</a> · <a href="#">Contact</a></p>
+  </footer>
+
+  <!-- Lightbox dialog (click any .zoomable image) -->
+  <dialog id="lightbox">
+    <button class="lb-close" aria-label="Close">×</button>
+    <img class="lightbox-img" src="../../wp-content/uploads/GNN/runtime_vs_error.png" alt="Expanded view" />
+  </dialog>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in');});
+    }, {threshold: .08});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Simple lightbox using <dialog>
+    const lb = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('.lightbox-img');
+    const closeLb = ()=> lb.close();
+    document.addEventListener('click', (e)=>{
+      const t = e.target.closest('.zoomable');
+      if(!t) return;
+      e.preventDefault();
+      lbImg.src = t.currentSrc || t.src;
+      lb.showModal();
+    });
+    lb.querySelector('.lb-close').addEventListener('click', closeLb);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLb(); });
+
+    // Proof hover/click interactions (works for hover and touch)
+    (function(){
+      const trigger = document.querySelector('.proof-trigger');
+      const box = document.getElementById('proof-box');
+      const close = box ? box.querySelector('.proof-close') : null;
+      if(!trigger || !box) return;
+      const setOpen = (open)=>{
+        box.classList.toggle('open', open);
+        trigger.setAttribute('aria-expanded', String(!!open));
+        box.setAttribute('aria-hidden', String(!open));
+      };
+      trigger.addEventListener('click', (e)=>{ e.preventDefault(); setOpen(!box.classList.contains('open')); });
+      trigger.addEventListener('mouseenter', ()=> setOpen(true));
+      box.addEventListener('mouseleave', ()=> setOpen(false));
+      if(close) close.addEventListener('click', ()=> setOpen(false));
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setOpen(false); });
+    })();
+  </script>
+</body>
+</html>
