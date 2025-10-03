@@ -174,20 +174,20 @@
     <section id="overview" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Setup</span></div>
       <h2 class="section-title">3 — QP Overview (Finance notation)</h2>
-      <p>We use a mean‑variance style notation with covariance \(\boldsymbol{\Sigma}\) and expected returns \(\boldsymbol{\mu}\). A canonical QP writes</p>
+      <p>QP solvers are widely researched and there is basically no need for improvements over there. 
+    
+       Let's use a finance style notation with covariance \(\boldsymbol{\Sigma}\) and expected returns \(\boldsymbol{\mu}\). I chose this mainly because it's intuitive. The canonical QP becomes</p>
       <p>\[\min_{\mathbf{x}}\; \tfrac12\,\mathbf{x}^\top \boldsymbol{\Sigma}\,\mathbf{x} - \lambda\, \boldsymbol{\mu}^\top\mathbf{x} \quad \text{s.t.}\; \mathbf{A}\mathbf{x}\le\mathbf{b},\;\mathbf{1}^\top\mathbf{x}=1,\;\mathbf{x}\ge0.\]</p>
       <p>The <em>true</em> gradient of the objective (ignoring constraints) is \(\nabla f(\mathbf{x}) = \boldsymbol{\Sigma}\,\mathbf{x} - \lambda\,\boldsymbol{\mu}.\)</p>
-      <figure class="reveal">
-        <img class="zoomable" src="images/overview_figure.png" alt="Overview illustration of QP in finance notation" loading="lazy" />
-        <figcaption>QP in finance terms — same math, more intuition.</figcaption>
-      </figure>
+      <p> So what's today's benchmark time? ≈200 ms (M1 Mac) for full solution on a 100x100 matrix.</p>
     </section>
 
 <section id="faster" class="wrap">
   <div class="eyebrow"><span class="dot"></span><span>Derivation</span></div>
 <h2 class="section-title">4 — From the QP to One Fast Step</h2>
 
-<p class="kicker">If you are interested in the proof you can hover over <a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">here</a>.</p>
+<p class="kicker"><bf>Let's make it faster! </bf>
+If you are interested in the proof you can hover over <bf><a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">here</a></bf>.</p>
 
 <aside id="proof-box" class="proof-box" aria-hidden="true">
   <button class="proof-close" aria-label="Close">×</button>
@@ -272,7 +272,7 @@
     \[
       (11^\top - I)\,x \;=\; 1\,(1^\top x)\;-\;x .
     \]
-    <em>Proof (one line):</em> the \(i\)-th component is \(\sum_j x_j - x_i = (1^\top x) - x_i\).  
+    <em>Intuition:</em> the \(i\)-th component is \(\sum_j x_j - x_i = (1^\top x) - x_i\).  
     <br/>
     As a matrix identity (row-wise),
     \[
@@ -301,7 +301,7 @@
 
 <!-- Box 8 -->
 <div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;background:#fafafa;">
-  <strong>Final fast update (what you implement).</strong>
+  <strong>Final fast update.</strong>
   <div>
     \[
       \boxed{
@@ -322,20 +322,29 @@
 
     <section id="gnn" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Analogy</span></div>
-      <h2 class="section-title">5 — How this looks like a GNN</h2>
+      <h2 class="section-title">5 — Main analogy-  GNN</h2>
+      <p>Before we move on, let's briefly talk about what we've created with the maths:</p>
+      <p> With the proxy gradient, we have a really fast QP solver - but it needs a few iterations to converge (remember- each ∆ is a step on the way to the optimal solution) </p>
+      <p> But in many cases, you'd like to trade a bit of precision to get a faster solution. For example when it's all about speed, like HFT, or in real time video analysis. </p>
+      <p> But Wait! How does this connect to the main title (GNN)?</p>
       <p>The basic GNN update with self‑loops can be written</p>
-      <p>\[\mathbf{h}^{(l+1)} = \sigma\!\left(\underbrace{\mathbf{W}_s\,\mathbf{h}^{(l)}}_{\text{self}} + \underbrace{\mathbf{W}_n\,\mathbf{A}\,\mathbf{h}^{(l)}}_{\text{neighbours}}\right),\]
-      where \(\mathbf{A}\) is the (fully connected) adjacency implied by \(\mathbf{C}\). If we set \(\sigma\) to identity and align parameters \((\alpha,\beta)\) with \((\mathbf{W}_s,\mathbf{W}_n)\), the proxy step matches a <em>linear</em> GNN layer followed by a global aggregation — i.e., <strong>an attention‑like layer + global mean pool</strong>.</p>
-      <div class="grid cols-2 reveal">
-        <figure>
-          <img class="zoomable" src="images/gnn_eq.png" alt="Simple GNN equation diagram" loading="lazy" />
-          <figcaption>GNN update with self and neighbour terms.</figcaption>
-        </figure>
-        <figure>
-          <img class="zoomable" src="images/gnn_proxy_analogy.png" alt="Analogy between GNN update and proxy gradient" loading="lazy" />
-          <figcaption>Analogy: proxy gradient ≈ linear GNN layer.</figcaption>
-        </figure>
-      </div>
+      <p>\[\mathbf{h}^{(l+1)} = \sigma\!\left(\underbrace{\mathbf{W}_s\,\mathbf{h}^{(l)}}_{\text{self}} + \underbrace{\mathbf{W}_n\,\mathbf{X}\,\mathbf{h}^{(l)}}_{\text{neighbours}}\right),\]
+      where \(\mathbf{X}\) is the adjacency graph.
+      <p>Simply explained, the first term is to take account for itself and the second term is accounting for the neighbours in the graph (do not forget self loops). If you recall the proxy gradient equation, it looks awfully alot like the proxy gradient...
+      </p> So basically, a single proxy step matches a <em>linear</em> GNN layer followed by a global aggregation — i.e., <strong>an attention-like layer + global mean pool</strong>.</p>
+      <p>Why is this nice? Note that \(\mathbf{X}\) in our case is the <strong>correlation matrix</strong>. Also, recall that the correlation matrix is made from real data, so zero-correlations are almost non existent when using past data. This essentially means that our correlation matrix is full. And we can visualise this with a fully connected graph, where the probability for each state is made up from the correlation matrix. So let's place in a fully connected graph in the equation, let's call it \(\mathbf{A}\).  </p>
+      <p> Our equation then becomes:
+        
+      <p>$$\textbf{X}^{l+1} = f(\textbf{W}^l_1\textbf{X}^l + \textbf{W}^l_2\textbf{E}\textbf{X}^l) = f(\textbf{W}^l_1\textbf{X}^l + \textbf{W}^l_2\left(\mathbf{1}\mathbf{1}^T - \mathbf{I}\right))\textbf{X}^l  = $$</p>
+      <p>$$
+        =f((\textbf{W}^l_1-\textbf{W}^l_2)\textbf{X}^l + \textbf{W}^l_2\left(\mathbf{1}\mathbf{1}^T\right)\textbf{X}^l)  = f((\textbf{W}^l_1-\textbf{W}^l_2)\textbf{X}^l + \mathbf{W}^l_2\mathbf{1}\left(\mathbf{1}^T\textbf{X}^l\right)) = [\mathbf{s} = \left(\mathbf{1}^T\textbf{X}^l\right)) ] = 
+        $$</p>
+      <p>$$
+            =f\left((\textbf{W}^l_1-\textbf{W}^l_2)\textbf{X}^l + \textbf{W}^l_2\mathbf{1}\mathbf{s}\right) 
+        $$</p>
+      <p> We have essentially made a <strong>connection</strong> between an aggregation step in a GNN and QP! </p>
+      </p>
+      
     </section>
 
     <section id="sim" class="wrap">
