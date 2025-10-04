@@ -1,0 +1,447 @@
+[
+  {
+    "name": "roi1",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "roi2",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "roi3",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "roi4",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "roi5",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "roi6",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "roi7",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "golf1",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "golf2",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "golf3",
+    "color": "#ef4444",
+    "weight": 0.54
+  },
+  {
+    "name": "golf4",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "golf5",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "golf6",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "golf7",
+    "color": "#d946ef",
+    "weight": 0.62
+  },
+  {
+    "name": "golf8",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "golf9",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "aboveGolf1",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "aboveGolf2",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "aboveGolf3",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "randomArea",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "citrosucoOrchard",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "citrosuco2",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "citrosuco3",
+    "color": "#d97706",
+    "weight": 0.52
+  },
+  {
+    "name": "belowCitro",
+    "color": "#d946ef",
+    "weight": 0.43
+  },
+  {
+    "name": "brancoPeres",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "random2",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "fazFenixX",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "random2",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "fazFenixX",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "new1",
+    "color": "#ef4444",
+    "weight": 0.65
+  },
+  {
+    "name": "new2",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "new3",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "new4",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "new5",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "new6",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "new7",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "new8",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "new9",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "new10",
+    "color": "#eab308",
+    "weight": 0.56
+  },
+  {
+    "name": "new11",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "new12",
+    "color": "#0f766e",
+    "weight": 0.46
+  },
+  {
+    "name": "new13",
+    "color": "#2563eb",
+    "weight": 0.49
+  },
+  {
+    "name": "new14",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "new15",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "new16",
+    "color": "#14b8a6",
+    "weight": 0.88
+  },
+  {
+    "name": "new17",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "new18",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "new19",
+    "color": "#22c55e",
+    "weight": 0.53
+  },
+  {
+    "name": "new20",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "new21",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "new22",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "new23",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "new24",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "new25",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "new26",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "new27",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "new28",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "new29",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba1",
+    "color": "#eab308",
+    "weight": 0.42
+  },
+  {
+    "name": "nearAraquaba2",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba3",
+    "color": "#0f766e",
+    "weight": 0.81
+  },
+  {
+    "name": "nearAraquaba4",
+    "color": "#2563eb",
+    "weight": 0.56
+  },
+  {
+    "name": "nearAraquaba5",
+    "color": "#d97706",
+    "weight": 0.51
+  },
+  {
+    "name": "nearAraquaba6",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba7",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba8",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba9",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba10",
+    "color": "#22c55e",
+    "weight": 0.55
+  },
+  {
+    "name": "nearAraquaba11",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba12",
+    "color": "#ef4444",
+    "weight": 1.15
+  },
+  {
+    "name": "nearAraquaba13",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba14",
+    "color": "#2563eb",
+    "weight": 0.42
+  },
+  {
+    "name": "nearAraquaba15",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba16",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba17",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba18",
+    "color": "#f43f5e",
+    "weight": 0.44
+  },
+  {
+    "name": "nearAraquaba19",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba20",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba21",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba22",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba23",
+    "color": "#0f766e",
+    "weight": 0.41
+  },
+  {
+    "name": "nearAraquaba24",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba25",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba26",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba27",
+    "color": "#14b8a6",
+    "weight": 0.51
+  },
+  {
+    "name": "nearAraquaba28",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba29",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba30",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba31",
+    "color": "#eab308",
+    "weight": 0.4
+  }
+]

@@ -67,6 +67,13 @@
     .grid{display:grid;gap:clamp(12px,2vw,20px)}
     .grid.cols-2{grid-template-columns:1fr 1fr}
     .grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+    .news-grid{display:grid;gap:clamp(14px,2vw,22px);grid-template-columns:1fr 1fr}
+    @media (max-width:767px){.news-grid{grid-template-columns:1fr}}
+    .news-card{background:rgba(15,22,36,0.78);color:#f8fafc;border-radius:var(--radius);padding:clamp(16px,3vw,24px);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:0.75rem}
+    .news-card time{font-size:.75rem;color:rgba(248,250,252,0.7);letter-spacing:.05em;text-transform:uppercase}
+    .news-card a{color:#facc15;text-decoration:none;font-weight:600;line-height:1.4}
+    .news-card a:hover{text-decoration:underline}
+    .news-error{padding:1rem;border-radius:var(--radius);background:#111827;color:#f87171;font-size:.9rem}
     @media (max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
 
     /* ------- Code / math blocks ------- */
@@ -152,7 +159,7 @@
           <figcaption>NDVI evolution for a representative field (click to zoom).</figcaption>
         </figure>
         <figure>
-          <img class="zoomable" src="images/detector_flow.png" alt="Detection algorithm flow" loading="lazy"/>
+          <img class="zoomable" src="../../wp-content/uploads/Satellite/flowchart.png" alt="Detection algorithm flow" loading="lazy"/>
           <figcaption>Detection algorithm at a glance.</figcaption>
         </figure>
       </div>
@@ -166,20 +173,17 @@
       <p>Over recent years, the OJ market has significantly changed. In the beginning, OJ market had predominately two main producing countries: US and Brazil. Due to various reasons, the Florida orchards, which is the main producing area in the US, reduced significantly. Currently, the Brazil area stands for >80% of the worlds OJ-production. </p>
       <p>Alright, now it becomes interesting. In Brazil, there is an area, just northwest of Sao Paulo (major city in Brazil), called the <strong>citrus belt</strong>. This consists of a couple of municipalities with all of them contributing heavily to the OJ production. </p>
       <p class="kicker"><strong>Market Overview</strong>
-       If you think the OJ market sounds is interesting, I've shared a quick market overview, hover over <strong><a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">here</a></strong>.</p>
+       If you think the OJ market sounds is interesting, I've shared a quick market overview, hover over <strong><a href="#" class="proof-trigger" aria-controls="proof-box-market" aria-expanded="false">here</a></strong>.</p>
       </div>
       <div class="grid cols-2 reveal">
         <figure>
-          <img class="zoomable" src="images/oj_price_trend.png" alt="OJ futures/prices chart" loading="lazy"/>
-          <figcaption>OJ price dynamics (placeholder image).</figcaption>
+          <img class="zoomable" src="../../wp-content/uploads/Satellite/stock_chart_oni.png" alt="OJ Futures + ONI Index chart" loading="lazy"/>
+          <figcaption>OJ Futures + ONI Index chart.</figcaption>
         </figure>
-        <figure>
-          <img class="zoomable" src="images/market_news_collage.jpg" alt="Market headlines collage" loading="lazy"/>
-          <figcaption>Recent supply/disease/weather headlines.</figcaption>
-        </figure>
+        <div id="orange-news" class="news-grid" aria-live="polite"></div>
       </div>
 
-      <aside id="proof-box" class="proof-box" aria-hidden="true">
+      <aside id="proof-box-market" class="proof-box" aria-hidden="true">
         <button class="proof-close" aria-label="Close">×</button>
 
       <!-- Box 1 -->
@@ -226,21 +230,27 @@
       <p>There are two main things we can find out using satellite images: 
         1. Greening‑stressed trees reduce chlorophyll production, altering reflectance: NIR rises while red band behavior shifts, making stressed vs healthy trees separable via vegetation indices (e.g., NDVI).
         2. Most importantly, right after the oranges have been harvested, the trees become stressed, shreading a heavy amount of leaves. If the oranges are harvested at approximately the same time of the year, this will result in a dip in i.e. NDVI charts.</p>
-      <figure class="reveal">
-        <img class="zoomable" src="images/band_diagram.png" alt="NIR/Red band reflectance diagram" loading="lazy"/>
-        <figcaption>NIR sensitivity to chlorophyll &rarr; NDVI contrast for stressed trees.</figcaption>
-      </figure>
+      <div class="grid cols-2 reveal">
+        <figure>
+          <img class="zoomable" src="../../wp-content/uploads/Satellite/nir_image.png" alt="NIR/Red band reflectance diagram" loading="lazy"/>
+          <figcaption>Near infrared light (NIR) sits just by the visible light spectrum.</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="../../wp-content/uploads/Satellite/comparing_ndvi.png" alt="NIR/Red band reflectance diagram" loading="lazy"/>
+          <figcaption>Idea: NIR changes as trees' leaves change chlorophyll content  &rarr; NDVI (index derived from NIR) for identification stressed fields.</figcaption>
+        </figure>
+      </div>
       <ul>
         <li><strong>Data:</strong> ESA Sentinel imagery (~10–15 m) with NIR and Red bands.</li>
         <li><strong>Scope:</strong> 87 mapped orchards across São Paulo state.</li>
-        <li><strong>Goal:</strong> Harvest progress curve + greening prevalence proxy.</li>
+        <li><strong>Goal:</strong> Harvest progress curve.</li>
       </ul>
     </section>
 
     <section id="fields" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Map</span></div>
       <h2 class="section-title">4 — Interactive Fields Map</h2>
-      <p>Explore the 87 orchards.</p>
+      <p>Explore the 87 orchards (you have to zoom in a bit to actually see the fields).</p>
       <div id="map" class="reveal"></div>
       <figcaption class="wrap" style="color:var(--muted);margin-top:.5rem"> This is basically the data I collected</figcaption>
     </section>
@@ -248,22 +258,30 @@
     <section id="parallel" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Engineering</span></div>
       <h2 class="section-title">5 — Parallelizing the Pipeline</h2>
-      <p class="kicker">API pulls were the bottleneck &mdash; so I fanned them out.</p>
-      <div class="grid cols-2 reveal">
-        <figure>
-          <img class="zoomable" src="images/parallel_arch.png" alt="Parallel data loader architecture" loading="lazy"/>
-          <figcaption>Batching + async queue + per‑tile caching.</figcaption>
-        </figure>
-        <figure>
-          <img class="zoomable" src="images/perf_bars.png" alt="Performance bars" loading="lazy"/>
-          <figcaption>Throughput vs workers; sweet spot before throttling.</figcaption>
-        </figure>
-      </div>
-      <pre><code>// Pseudocode sketch (replace with your snippet)
-for batch in chunk(field_tiles, B):
-  schedule(async fetch(tile) for tile in batch)
-  await all
-  write(cache(tile.id), tile.data)
+      <p class="kicker">API pulls were the bottleneck &mdash; so I <strong><a href="#" class="proof-trigger" aria-controls="proof-box-pipeline" aria-expanded="false"> fanned them out</a></strong></p>
+      <aside id="proof-box-pipeline" class="proof-box" aria-hidden="true">
+        <button class="proof-close" aria-label="Close">×</button>
+        <div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+        <strong>Explaining Thread Pooling</strong>
+        <div>
+          You first split the big job (compute indices for many ROIs across many time windows) into independent, tiny tasks of the form (roi_name, roi, start_interval, end_interval).
+          Each task is network-bound (most time is spent waiting on Earth Engine's remote calls like .getInfo()), so Python threads can overlap that waiting time. A ThreadPoolExecutor(i.e. max_workers=24) acts like a small "team" of workers: you submit all tasks at once, 
+          each worker repeatedly pulls a task, runs process_interval(...) (builds server-side EE graph → triggers a small scalar result).
+        </div>
+      </aside>
+
+      <pre><code>// Pseudocode sketch 
+B := batch_size  // ~ W or small multiple of W
+
+for batch in chunk(tasks, B):
+    // schedule
+    futures := [ pool.submit(PROCESS_INTERVAL, t) for t in batch ]
+
+    // await all in the batch
+    for f in wait_all(futures):
+        out := f.result()
+        if out != NONE:
+            results.append(out)
 </code></pre>
     </section>
 
@@ -274,24 +292,28 @@ for batch in chunk(field_tiles, B):
       <p>This is noisy! And of course, for time series we we don't use band pass filters, but Butterworth (Notch) filters.</p>
       <div class="grid cols-2 reveal">
         <figure>
-          <img class="zoomable" src="images/ndvi_grid_50.png" alt="Raw data" loading="lazy">
-          <figcaption>Raw data</figcaption>
+          <img class="zoomable" src="../../wp-content/uploads/Satellite/raw_orange_data.png" alt="Raw data" loading="lazy">
+          <figcaption>Raw and mean NDVI data</figcaption>
         </figure>
         <figure>
-          <img class="zoomable" src="images/ndvi_grid_87.png" alt="Filtered data" loading="lazy">
-          <figcaption>Filtered data.</figcaption>
+          <img class="zoomable" src="../../wp-content/uploads/Satellite/smoothed_orange_data.png" alt="Zero-lag smoothed data" loading="lazy">
+          <figcaption>Zero-lag smoothed data.</figcaption>
         </figure>
       </div>
-      <p class="kicker">Curious why classic band‑pass breaks here? Hover over <strong><a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">here</a></strong>.</p>
-      <aside id="proof-box" class="proof-box" aria-hidden="true">
-        <button class="proof-closes" aria-label="Close">×</button>
+      <p class="kicker">Note that we used a zero-lag filter. I read about this filter in the book Cycle Analysis for Traders by John Ehler. Because it is zero-lag, we are essentially able to capture changes in the data quickly. For comparison, a normal moving average has a lag of (N+1)/2. In the book, Ehler doesn't go very deep on why you can't use a simple band pass filter. Curious why classic band‑pass breaks? Hover over <strong><a href="#" class="proof-trigger" aria-controls="proof-box-filter" aria-expanded="false">here</a></strong>.</p>
+      <aside id="proof-box-filter" class="proof-box" aria-hidden="true">
+        <button class="proof-close" aria-label="Close">×</button>
 
       <!-- Box 1 -->
       <div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
         <h3 style="margin-top:0">Why you can’t band‑pass irregular temporal data</h3>
-        <p>With irregular times \(t_i\), convolution \((x * h)(t)\) isn’t shift‑invariant; FFT assumptions break. We instead fit a local trend via a kernel:</p>
-        <p>\[\hat{x}(t) = \arg\min_m \sum_i w_{\tau}(t-t_i)\,\big(x_i - m(t_i)\big)^2 + \lambda\,\|m''\|^2,\]</p>
-        <p>where \(w_{\tau}\) is a time‑decay kernel; sampling gaps down‑weight stale points. Equivalent to a continuous‑time low‑pass with adaptive support.</p>
+        A classic band-pass assumes a stationary spectrum, so filtering acts as 
+        \(Y(\omega) = H(\omega)X(\omega)\). When dominant frequencies drift, this 
+        assumption breaks—phase shifts accumulate and ringing appears. 
+        The Butterworth response,
+        \( |H(\omega)|^2 = \frac{1}{1 + (\omega/\omega_c)^{2n}} \),
+        is smooth and monotonic, giving stable attenuation even as the spectrum evolve. 
+        In zero-phase form \(H_{zp}(\omega) = |H(\omega)|^2\), it stays symmetric and nearly lag-free.</p>      
       </div>
 
     </section>
@@ -366,39 +388,525 @@ for batch in chunk(field_tiles, B):
     lb.querySelector('.lb-close').addEventListener('click', closeLb);
     lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLb(); });
 
-    // Hover/click math box
+    // Hover/click math boxes (supports multiple sections)
     (function(){
-      const trigger = document.querySelector('.proof-trigger');
-      const box = document.getElementById('proof-box');
-      const close = box ? box.querySelector('.proof-close') : null;
-      if(!trigger || !box) return;
-      const setOpen = (open)=>{
-        box.classList.toggle('open', open);
-        trigger.setAttribute('aria-expanded', String(!!open));
-        box.setAttribute('aria-hidden', String(!open));
-      };
-      trigger.addEventListener('click', (e)=>{ e.preventDefault(); setOpen(!box.classList.contains('open')); });
-      trigger.addEventListener('mouseenter', ()=> setOpen(true));
-      box.addEventListener('mouseleave', ()=> setOpen(false));
-      if(close) close.addEventListener('click', ()=> setOpen(false));
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setOpen(false); });
+      const triggers = document.querySelectorAll('.proof-trigger');
+      if(!triggers.length) return;
+
+      const registry = new Map();
+
+      triggers.forEach(trigger => {
+        const targetId = trigger.getAttribute('aria-controls');
+        const box = targetId ? document.getElementById(targetId) : null;
+        if(!box) return;
+        const close = box.querySelector('.proof-close');
+
+        const setOpen = (open) => {
+          box.classList.toggle('open', open);
+          box.setAttribute('aria-hidden', String(!open));
+          trigger.setAttribute('aria-expanded', String(!!open));
+        };
+
+        registry.set(box, setOpen);
+
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          setOpen(!box.classList.contains('open'));
+        });
+
+        trigger.addEventListener('mouseenter', () => setOpen(true));
+        box.addEventListener('mouseleave', () => setOpen(false));
+        if(close) close.addEventListener('click', () => setOpen(false));
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') {
+          registry.forEach(fn => fn(false));
+        }
+      });
     })();
 
     // Leaflet map setup (replace GeoJSON path with your file)
     (function(){
       const el = document.getElementById('map');
       if(!el || typeof L === 'undefined') return;
-      const map = L.map('map', {scrollWheelZoom:false}).setView([-22.5, -48.0], 6); // São Paulo region
+      const map = L.map('map', {scrollWheelZoom:false}).setView([-22.5, -47.5], 7); // São Paulo region, closer zoom
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18, attribution: '© OpenStreetMap'}).addTo(map);
       // Load your GeoJSON of fields (polygons or points). Example skeleton shown inline:
-      fetch('data/fields.geojson')
+      fetch('../../wp-content/uploads/Satellite/orange_fields.geojson')
         .then(r=>r.json())
         .then(geo => {
+              const overrides = [
+  {
+    "name": "roi1",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "roi2",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "roi3",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "roi4",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "roi5",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "roi6",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "roi7",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "golf1",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "golf2",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "golf3",
+    "color": "#ef4444",
+    "weight": 0.54
+  },
+  {
+    "name": "golf4",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "golf5",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "golf6",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "golf7",
+    "color": "#d946ef",
+    "weight": 0.62
+  },
+  {
+    "name": "golf8",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "golf9",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "aboveGolf1",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "aboveGolf2",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "aboveGolf3",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "randomArea",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "citrosucoOrchard",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "citrosuco2",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "citrosuco3",
+    "color": "#d97706",
+    "weight": 0.52
+  },
+  {
+    "name": "belowCitro",
+    "color": "#d946ef",
+    "weight": 0.43
+  },
+  {
+    "name": "brancoPeres",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "random2",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "fazFenixX",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "random2",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "fazFenixX",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "new1",
+    "color": "#ef4444",
+    "weight": 0.65
+  },
+  {
+    "name": "new2",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "new3",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "new4",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "new5",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "new6",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "new7",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "new8",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "new9",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "new10",
+    "color": "#eab308",
+    "weight": 0.56
+  },
+  {
+    "name": "new11",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "new12",
+    "color": "#0f766e",
+    "weight": 0.46
+  },
+  {
+    "name": "new13",
+    "color": "#2563eb",
+    "weight": 0.49
+  },
+  {
+    "name": "new14",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "new15",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "new16",
+    "color": "#14b8a6",
+    "weight": 0.88
+  },
+  {
+    "name": "new17",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "new18",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "new19",
+    "color": "#22c55e",
+    "weight": 0.53
+  },
+  {
+    "name": "new20",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "new21",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "new22",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "new23",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "new24",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "new25",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "new26",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "new27",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "new28",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "new29",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba1",
+    "color": "#eab308",
+    "weight": 0.42
+  },
+  {
+    "name": "nearAraquaba2",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba3",
+    "color": "#0f766e",
+    "weight": 0.81
+  },
+  {
+    "name": "nearAraquaba4",
+    "color": "#2563eb",
+    "weight": 0.56
+  },
+  {
+    "name": "nearAraquaba5",
+    "color": "#d97706",
+    "weight": 0.51
+  },
+  {
+    "name": "nearAraquaba6",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba7",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba8",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba9",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba10",
+    "color": "#22c55e",
+    "weight": 0.55
+  },
+  {
+    "name": "nearAraquaba11",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba12",
+    "color": "#ef4444",
+    "weight": 1.15
+  },
+  {
+    "name": "nearAraquaba13",
+    "color": "#0f766e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba14",
+    "color": "#2563eb",
+    "weight": 0.42
+  },
+  {
+    "name": "nearAraquaba15",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba16",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba17",
+    "color": "#14b8a6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba18",
+    "color": "#f43f5e",
+    "weight": 0.44
+  },
+  {
+    "name": "nearAraquaba19",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba20",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba21",
+    "color": "#eab308",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba22",
+    "color": "#ef4444",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba23",
+    "color": "#0f766e",
+    "weight": 0.41
+  },
+  {
+    "name": "nearAraquaba24",
+    "color": "#2563eb",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba25",
+    "color": "#d97706",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba26",
+    "color": "#d946ef",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba27",
+    "color": "#14b8a6",
+    "weight": 0.51
+  },
+  {
+    "name": "nearAraquaba28",
+    "color": "#f43f5e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba29",
+    "color": "#8b5cf6",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba30",
+    "color": "#22c55e",
+    "weight": 0.4
+  },
+  {
+    "name": "nearAraquaba31",
+    "color": "#eab308",
+    "weight": 0.4
+  }
+];
+          const overrideMap = overrides.reduce((acc, item) => {
+            if(item && item.name) acc[item.name] = item;
+            return acc;
+          }, {});
           const layer = L.geoJSON(geo, {
-            style: {color:'#0f766e', weight:1, fillOpacity:.15},
+            style: (feature) => {
+              const name = feature?.properties?.name;
+              const ov = name ? overrideMap[name] : null;
+              const color = ov?.color || '#2563eb';
+              const weight = ov?.weight || 0.8;
+              return {
+                color,
+                weight,
+                fillColor: color,
+                fillOpacity: 0.25,
+                opacity: 0.9
+              };
+            },
             onEachFeature: (f, l) => {
               const p = f.properties || {};
-              l.bindPopup(`<strong>${p.name||'Field'}</strong><br/>Farm: ${p.farm||'n/a'}<br/>${p.notes||''}`);
+              const area = (p.area_sqkm != null && !Number.isNaN(Number(p.area_sqkm)))
+                ? `Area: ${Number(p.area_sqkm).toFixed(3)} km²`
+                : 'Area: n/a';
+              l.bindPopup(`<strong>${p.name||'Field'}</strong><br/>${area}`);
             }
           });
           layer.addTo(map);
@@ -412,6 +920,50 @@ for batch in chunk(field_tiles, B):
             {name:'Demo Field C', lat:-21.8, lng:-49.0},
           ];
           demo.forEach(d=> L.marker([d.lat,d.lng]).addTo(map).bindPopup(`<strong>${d.name}</strong>`));
+        });
+    })();
+
+    // Live orange juice news cards
+    (function(){
+      const container = document.getElementById('orange-news');
+      if(!container) return;
+      const endpoint = '../../wp-content/uploads/Satellite/orange_news.json';
+
+      function render(items){
+        container.innerHTML = '';
+        if(!items.length){
+          container.innerHTML = '<div class="news-error">No fresh news headlines right now. Check back soon.</div>';
+          return;
+        }
+        items.forEach(item => {
+          const card = document.createElement('article');
+          card.className = 'news-card';
+          const title = item.title || 'Orange market update';
+          const link = item.link || '#';
+          const pubDate = item.pubDate || '';
+          let dateText = '';
+          if(pubDate){
+            const date = new Date(pubDate);
+            if(!Number.isNaN(date.getTime())){
+              dateText = date.toLocaleDateString(undefined, {weekday:'short', month:'short', day:'numeric'});
+            }
+          }
+          card.innerHTML = `
+            ${dateText ? `<time datetime="${pubDate}">${dateText}</time>` : ''}
+            <a href="${link}" target="_blank" rel="noopener">${title}</a>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      fetch(endpoint)
+        .then(res => res.json())
+        .then(data => {
+          const items = Array.isArray(data.items) ? data.items.slice(0,4) : [];
+          render(items);
+        })
+        .catch(() => {
+          container.innerHTML = '<div class="news-error">Unable to load live news. <span style="opacity:0.7">Try refreshing the page.</span></div>';
         });
     })();
   </script>
