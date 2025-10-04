@@ -328,8 +328,8 @@ If you are interested in the proof you can hover over <strong><a href="#" class=
       <p> But in many cases, you'd like to trade a bit of precision to get a faster solution. For example when it's all about speed, like HFT, or in real time video analysis. </p>
       <p> But Wait! How does this connect to the main title (GNN)?</p>
       <p>The basic GNN update with self‑loops can be written</p>
-      <p>\[\mathbf{h}^{(l+1)} = \sigma\!\left(\underbrace{\mathbf{W}_s\,\mathbf{h}^{(l)}}_{\text{self}} + \underbrace{\mathbf{W}_n\,\mathbf{X}\,\mathbf{h}^{(l)}}_{\text{neighbours}}\right),\]
-      where \(\mathbf{X}\) is the adjacency graph.
+      <p>\[\mathbf{X}^{(l+1)} = \sigma\!\left(\underbrace{\mathbf{W}_s\,\mathbf{X}^{(l)}}_{\text{self}} + \underbrace{\mathbf{W}_n\,\mathbf{E}\,\mathbf{X}^{(l)}}_{\text{neighbours}}\right),\]
+      where \(\mathbf{E}\) is the adjacency graph.
       <p>Simply explained, the first term is to take account for itself and the second term is accounting for the neighbours in the graph (do not forget self loops). If you recall the proxy gradient equation, it looks awfully alot like the proxy gradient...
       </p> So basically, a single proxy step matches a <em>linear</em> GNN layer followed by a global aggregation — i.e., <strong>an attention-like layer + global mean pool</strong>.</p>
       <p>Why is this nice? Note that \(\mathbf{X}\) in our case is the <strong>correlation matrix</strong>. Also, recall that the correlation matrix is made from real data, so zero-correlations are almost non existent when using past data. This essentially means that our correlation matrix is full. And we can visualise this with a fully connected graph, where the probability for each state is made up from the correlation matrix. So let's place in a fully connected graph in the equation, let's call it \(\mathbf{A}\).  </p>

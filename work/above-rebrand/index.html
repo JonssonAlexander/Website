@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NIR Satellite Signals → Orange Juice Yield — Brazil Case Study</title>
+  <title>NIR Satellite Signals → Orange Juice Yield? Yes</title>
   <meta name="description" content="Using near‑infrared ESA satellite data to predict harvest timing and disease prevalence in São Paulo orange orchards; includes naive factor model vs detection algorithm, NDVI time‑lapse, and market context."/>
   <link rel="icon" href="favicon.png" />
 
@@ -109,7 +109,7 @@
   <a class="back-fixed" href="../../index.html"><span>←</span> Back to projects</a>
   <header class="site wrap">
     <h1>Predicting Orange Juice Production with NIR Satellites</h1>
-    <p class="lede">ESA near‑infrared (NIR) imaging to forecast harvest timing and detect citrus greening in São Paulo, Brazil — with a naive market factor model vs an NDVI‑driven detection algorithm.</p>
+    <p class="lede">ESA near-infrared (NIR) imaging to forecast harvest timing and detect citrus greening in São Paulo, Brazil .</p>
   </header>
 
   <!-- Sticky section index -->
@@ -133,7 +133,7 @@
     <section id="hero" class="full-bleed">
       <figure class="nochrome">
         <!-- Replace hero.jpg with your best cover image (2000px+ recommended) -->
-        <img class="zoomable" src="images/hero_orchard.jpg" alt="NIR/NDVI orchard montage" loading="eager" decoding="async" />
+        <img class="zoomable" src="../../wp-content/uploads/Satellite/nearAraquaba16_2023-01-01_2023-12-31_nir.gif" alt="NIR/NDVI orchard montage" loading="eager" decoding="async" />
       </figure>
     </section>
 
@@ -148,7 +148,7 @@
       </ul>
       <div class="grid cols-2 reveal">
         <figure>
-          <img class="zoomable" src="images/ndvi_timelapse.gif" alt="NDVI field evolution GIF" loading="lazy"/>
+          <img class="zoomable" src="../../wp-content/uploads/Satellite/nearAraquaba16_2023-01-01_2023-12-31_nir.gif" alt="NDVI field evolution GIF" loading="lazy"/>
           <figcaption>NDVI evolution for a representative field (click to zoom).</figcaption>
         </figure>
         <figure>
@@ -162,6 +162,12 @@
       <div class="eyebrow"><span class="dot"></span><span>Context</span></div>
       <h2 class="section-title">2 — Market Context</h2>
       <p class="kicker">Current state of the OJ market &mdash; framing the question: <em>When does the bubble burst?</em></p>
+      <p>The orange juice market is quite small with approximately $1M traded daily, thus classed as an "illiquid" market. It was introduced in 1966 by the New York Cotton Exchange to allow farmers to hedge against price volatility caused by weather, crop diseases, and supply-demand shifts.</p>
+      <p>Over recent years, the OJ market has significantly changed. In the beginning, OJ market had predominately two main producing countries: US and Brazil. Due to various reasons, the Florida orchards, which is the main producing area in the US, reduced significantly. Currently, the Brazil area stands for >80% of the worlds OJ-production. </p>
+      <p>Alright, now it becomes interesting. In Brazil, there is an area, just northwest of Sao Paulo (major city in Brazil), called the <strong>citrus belt</strong>. This consists of a couple of municipalities with all of them contributing heavily to the OJ production. </p>
+      <p class="kicker"><strong>Market Overview</strong>
+       If you think the OJ market sounds is interesting, I've shared a quick market overview, hover over <strong><a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">here</a></strong>.</p>
+      </div>
       <div class="grid cols-2 reveal">
         <figure>
           <img class="zoomable" src="images/oj_price_trend.png" alt="OJ futures/prices chart" loading="lazy"/>
@@ -172,12 +178,54 @@
           <figcaption>Recent supply/disease/weather headlines.</figcaption>
         </figure>
       </div>
+
+      <aside id="proof-box" class="proof-box" aria-hidden="true">
+        <button class="proof-close" aria-label="Close">×</button>
+
+      <!-- Box 1 -->
+      <div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+        <strong>Commodity Theory </strong>
+        <div>
+          Now that we have the necessary facts about the market. Let's make a trading argument from what we have: 
+          So for the argument to be stringent, we know that production is necessary. 
+          No oranges, no orange juice. We also have to look at demand (but for now, let's assume that it is constant). 
+          Also, in commodity theory, we also pay a risk premium. 
+          If the stock of oranges drops, the chance of a supply limit for OJ rises and the underlying OJ price naturally goes up. 
+
+          <em>Why:</em> If the stock of oranges drops, the chance of a supply limit for OJ rises and the underlying OJ price naturally goes up.
+        </div>
+      </div>
+      <div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+        <strong>Focusing on supply</strong>
+        <div>
+          Okay so focusing on supply, if we could know exactly how many oranges produced, then we would would also have exact knowledge of supply. 
+          Since OJ (FCOJ, frozen concentrated orange juice) can be stored, we would also be able to know of the stock premium we have to pay, still assuming that demand is constant. 
+          But how do we know that information? Luckily, there is a non profit organinsation, Fundecitrus, who supplies the world with bimonthy or quarlerly updates of Orange production in the Sao Paoulo area. 
+          They get the number basically by going around and knocking on the orange framers doors, asking them about their production. 
+          Naturally, they  have sophisticated tools to predict the OJ production, and every year in May/June, they predict what the OJ prodction will be the next year. 
+          Historically, their predictions have been extremely close to the actual production. Other than Fundecitrus, there are two other main sources of information: Rabobank and US Treasury. Rabobank has a team in Brazil for beverages and have YoY been successful in trading OJ, similary, the US treasury gives out market predictions in a similar way.
+          Essentially, they both come up with publish market reports and predictions at least every year. 
+
+        </div>
+      </div>
+      <div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
+        <strong>Reason for crazy OJ price </strong>
+        <div>
+          Now, back to the original question. Why has the OJ price gone up? Well, there are two main contributors to the upswing. 
+          Firstly, in recent years, orange orchards have been defected with a discease called <strong>Orange greening</strong>. 
+          This discease makes oranges green and small, decreasing production. According to Fundecitrus and Rabobank, the predicted orange greening will be over 60% in upcoming years. 
+          The other notable thing is the El Nino. This is the South American storm that basically makes everything hotter and introduces heavy rainfall. 
+          This comes every couple of years but has for the past years been very prominent. Due to mainly these two reasons, the OJ price have trampolined in the past two years.
+        </div>
+      
     </section>
 
     <section id="method" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Setup</span></div>
-      <h2 class="section-title">3 — Method Overview</h2>
-      <p>Greening‑stressed trees reduce chlorophyll production, altering reflectance: NIR rises while red band behavior shifts, making stressed vs healthy trees separable via vegetation indices (e.g., NDVI).</p>
+      <h2 class="section-title">3 — Method Overview </h2>
+      <p>There are two main things we can find out using satellite images: 
+        1. Greening‑stressed trees reduce chlorophyll production, altering reflectance: NIR rises while red band behavior shifts, making stressed vs healthy trees separable via vegetation indices (e.g., NDVI).
+        2. Most importantly, right after the oranges have been harvested, the trees become stressed, shreading a heavy amount of leaves. If the oranges are harvested at approximately the same time of the year, this will result in a dip in i.e. NDVI charts.</p>
       <figure class="reveal">
         <img class="zoomable" src="images/band_diagram.png" alt="NIR/Red band reflectance diagram" loading="lazy"/>
         <figcaption>NIR sensitivity to chlorophyll &rarr; NDVI contrast for stressed trees.</figcaption>
@@ -192,15 +240,15 @@
     <section id="fields" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Map</span></div>
       <h2 class="section-title">4 — Interactive Fields Map</h2>
-      <p>Explore the 87 orchards. Click markers/polygons to see field metadata and sample NDVI sparkline.</p>
+      <p>Explore the 87 orchards.</p>
       <div id="map" class="reveal"></div>
-      <figcaption class="wrap" style="color:var(--muted);margin-top:.5rem">Tip: Replace <code>data/fields.geojson</code> with your exported polygons. Properties <code>{name, farm, notes}</code> are shown in popups.</figcaption>
+      <figcaption class="wrap" style="color:var(--muted);margin-top:.5rem"> This is basically the data I collected</figcaption>
     </section>
 
     <section id="parallel" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Engineering</span></div>
       <h2 class="section-title">5 — Parallelizing the Pipeline</h2>
-      <p class="kicker">API pulls were the bottleneck &mdash; so we fanned them out.</p>
+      <p class="kicker">API pulls were the bottleneck &mdash; so I fanned them out.</p>
       <div class="grid cols-2 reveal">
         <figure>
           <img class="zoomable" src="images/parallel_arch.png" alt="Parallel data loader architecture" loading="lazy"/>
@@ -219,53 +267,48 @@ for batch in chunk(field_tiles, B):
 </code></pre>
     </section>
 
-    <section id="naive" class="wrap">
-      <div class="eyebrow"><span class="dot"></span><span>Baseline</span></div>
-      <h2 class="section-title">6 — Naive Factor Model</h2>
-      <p>First pass: field‑level means &rarr; aggregate seasonal factors &rarr; simple price regression.</p>
-      <div class="grid cols-3 reveal">
-        <figure><img class="zoomable" src="images/naive_pipeline.png" alt="Naive pipeline" loading="lazy"><figcaption>Pipeline overview.</figcaption></figure>
-        <figure><img class="zoomable" src="images/factor_table.png" alt="Factors" loading="lazy"><figcaption>Seasonal/weather factors.</figcaption></figure>
-        <figure><img class="zoomable" src="images/backtest_plot.png" alt="Backtest" loading="lazy"><figcaption>Backtest vs OJ price.</figcaption></figure>
-      </div>
-    </section>
 
     <section id="filter" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Signal Processing</span></div>
-      <h2 class="section-title">7 — Looking at the Data &amp; Filtering</h2>
-      <p>This is noisy! Means can help, but we use a tailored temporal filter instead of naive band‑pass.</p>
-      <p class="kicker">Curious why classic band‑pass breaks for irregular satellite cadence? <a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">Hover/tap for the math</a>.</p>
-      <figure class="reveal">
-        <img class="zoomable" src="images/raw_vs_filtered.png" alt="Raw vs filtered NDVI" loading="lazy"/>
-        <figcaption>Raw (grey) vs filtered (accent) NDVI; gaps handled by kernel weighting.</figcaption>
-      </figure>
+      <h2 class="section-title">6 — Looking at the Data &amp; Filtering</h2>
+      <p>This is noisy! And of course, for time series we we don't use band pass filters, but Butterworth (Notch) filters.</p>
+      <div class="grid cols-2 reveal">
+        <figure>
+          <img class="zoomable" src="images/ndvi_grid_50.png" alt="Raw data" loading="lazy">
+          <figcaption>Raw data</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="images/ndvi_grid_87.png" alt="Filtered data" loading="lazy">
+          <figcaption>Filtered data.</figcaption>
+        </figure>
+      </div>
+      <p class="kicker">Curious why classic band‑pass breaks here? Hover over <strong><a href="#" class="proof-trigger" aria-controls="proof-box" aria-expanded="false">here</a></strong>.</p>
       <aside id="proof-box" class="proof-box" aria-hidden="true">
-        <button class="proof-close" aria-label="Close">×</button>
+        <button class="proof-closes" aria-label="Close">×</button>
+
+      <!-- Box 1 -->
+      <div style="border:1px solid #eee;border-radius:12px;padding:14px;margin:18px 0;">
         <h3 style="margin-top:0">Why you can’t band‑pass irregular temporal data</h3>
         <p>With irregular times \(t_i\), convolution \((x * h)(t)\) isn’t shift‑invariant; FFT assumptions break. We instead fit a local trend via a kernel:</p>
         <p>\[\hat{x}(t) = \arg\min_m \sum_i w_{\tau}(t-t_i)\,\big(x_i - m(t_i)\big)^2 + \lambda\,\|m''\|^2,\]</p>
         <p>where \(w_{\tau}\) is a time‑decay kernel; sampling gaps down‑weight stale points. Equivalent to a continuous‑time low‑pass with adaptive support.</p>
-      </aside>
+      </div>
+
     </section>
 
     <section id="results" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Findings</span></div>
-      <h2 class="section-title">8 — Results</h2>
+      <h2 class="section-title">8 — Conclusion</h2>
       <p>Signals line up with the main harvest window (Sep–Nov). NDVI slope reversals flag harvest onset; plateau levels track progress.</p>
-      <figure class="full-bleed reveal">
-        <img class="zoomable" src="images/harvest_tradeoff.png" alt="Runtime vs error or Harvest vs price tradeoff" loading="lazy" />
-        <figcaption>Lead time vs accuracy trade‑off.</figcaption>
-      </figure>
-      <div class="grid cols-3 reveal">
-        <figure><img class="zoomable" src="images/ndvi_grid_50.png" alt="N=50 fields" loading="lazy"><figcaption>50 fields.</figcaption></figure>
-        <figure><img class="zoomable" src="images/ndvi_grid_87.png" alt="N=87 fields" loading="lazy"><figcaption>87 fields.</figcaption></figure>
-        <figure><img class="zoomable" src="images/ndvi_grid_200.png" alt="N=200 fields (simulated)" loading="lazy"><figcaption>200 fields (sim).</figcaption></figure>
-      </div>
+      <p><strong>What does this mean for us?</strong>
+      This is actually great information. Looking back when we talked about how credible Fundecitrus was, the key thing to remember is that they only report quarterly (sometimes bimonthly). In that report, they provide results about harvesting. </p>
+      <p> In our case, if the report is available in December, but the harvesting was made in September, we have <strong>up to a three month head start</strong> over analysts and traders! And that's also the trading thesis! </p>
+      <p>So now we just have to identify the dips. Here, the question rather becomes which approach to use: quantitative vs qualitative? I'd say that both work, but since our use case would be: "Is the harvest early or late?" qualitatively works fine for once!</p>
     </section>
 
     <section id="demos" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Try It</span></div>
-      <h2 class="section-title">9 — Two Clickable Paths</h2>
+      <h2 class="section-title">9 — <strong>Work In Progress </strong>Two Clickable Paths</h2>
       <div class="cards reveal">
         <a class="card" href="#demo-detect">
           <span class="chip">Detection</span>
@@ -278,40 +321,11 @@ for batch in chunk(field_tiles, B):
           <p>Seasonal/market factors with field means → OJ price regression/backtest.</p>
         </a>
       </div>
-
-      <!-- Demo sections (anchors only; feel free to split into separate pages later) -->
-      <section id="demo-detect" class="wrap" style="padding-top:6vh">
-        <h3 style="margin:0 0 .5rem">A — Detection Demo</h3>
-        <div class="grid cols-2">
-          <figure>
-            <img class="zoomable" src="images/ndvi_timelapse.gif" alt="Per‑field GIF" loading="lazy"/>
-            <figcaption>Per‑field NDVI evolution (GIF).</figcaption>
-          </figure>
-          <figure>
-            <img class="zoomable" src="images/confusion_matrix.png" alt="Confusion matrix" loading="lazy"/>
-            <figcaption>Classifier performance snapshot.</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section id="demo-naive" class="wrap" style="padding-top:6vh">
-        <h3 style="margin:0 0 .5rem">B — Naive Factor Model</h3>
-        <div class="grid cols-2">
-          <figure>
-            <img class="zoomable" src="images/factor_loadings.png" alt="Factor loadings" loading="lazy"/>
-            <figcaption>Estimated factor loadings.</figcaption>
-          </figure>
-          <figure>
-            <img class="zoomable" src="images/oj_fit.png" alt="Model fit vs price" loading="lazy"/>
-            <figcaption>Model fit vs OJ price.</figcaption>
-          </figure>
-        </div>
-      </section>
     </section>
 
     <section id="conclusion" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Wrap‑up</span></div>
-      <h2 class="section-title">10 — Conclusion</h2>
+      <h2 class="section-title">10 — Wrap-Up</h2>
       <ul>
         <li>Satellites provide a cheap, timely harvest progress proxy &amp; disease signal.</li>
         <li>Detection algo outperforms naive mean‑of‑field in timing precision.</li>
