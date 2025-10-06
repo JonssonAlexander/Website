@@ -123,23 +123,28 @@
 
   <main>
     <!-- HERO full‑bleed image -->
-    <section id="hero" class="full-bleed">
-      <figure class="nochrome">
-        <img class="zoomable" src="images/hero_cscv.jpg" alt="Backtest cross‑validation montage" loading="eager" decoding="async" />
-      </figure>
-    </section>
 
     <section id="tldr" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Summary</span></div>
       <h2 class="section-title">1 — TL;DR</h2>
       <div class="grid cols-2 reveal">
         <figure>
-          <img class="zoomable" src="images/normal_optim.png" alt="Normal optimisation schematic" loading="lazy"/>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/walkforward_cross_validation(1).png" alt="Normal optimisation schematic" loading="lazy"/>
           <figcaption>Normal IS‑optimisation flow.</figcaption>
         </figure>
         <figure>
-          <img class="zoomable" src="images/cscv_flow.png" alt="CSCV schematic" loading="lazy"/>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/comb_sym_cv_6.png" alt="CSCV schematic" loading="lazy"/>
           <figcaption>Combinatorial CV alternative.</figcaption>
+        </figure>
+      </div>
+      <div class="grid cols-2 reveal">
+        <figure>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/normal_opt_normalised.png" alt="Normal optimisation schematic" loading="lazy"/>
+          <figcaption>Normal IS‑optimisation results.</figcaption>
+        </figure>
+        <figure>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/Rank_surv_cscv_4_weeks_3_param.png" alt="CSCV schematic ((Apologise for the linear reg...))" loading="lazy"/>
+          <figcaption>Combinatorial CV results (Apologise for the linear reg...).</figcaption>
         </figure>
       </div>
       <ul>
@@ -163,40 +168,43 @@
       <p>If returns were i.i.d. Gaussian and our strategy P&amp;L were linear in returns, then for parameter set \(\theta\) the expected out‑of‑sample utility \(U\) under normalisation would satisfy</p>
       <p>\[U(\theta) = \mathbb E[\hat{\mu}_\theta] - \lambda\,\mathbb E[\hat{\sigma}_\theta] \approx \mu_\theta - \lambda\,\sigma_\theta,\]</p>
       <p>and the sampling distribution of the in-sample ranking converges to the true ranking at rate \(O(1/\sqrt{n})\). Essentially, This motivates the use of MCMC: if we see  more survivors than the Gaussian benchmark, we're probably picking up structure</p>
-      <p class="kicker">Note: In heignsight, if the question accounting for multiple-testing is actually "what's the probability that at least one of the parameters in a parameter set is \[\sum{(1/2)^n(1/2)^{N-n}}", which is a way higher number. I did not realise this and the results actually motivates the search for a robust optimum each combinatorial split.</p>
+      <p class="kicker">Note: In heignsight, if the question accounting for multiple-testing is actually "what's the probability that at least one of the parameters in a parameter set is \(\sum{(R\frac{1}{2})^n(\frac{1}{2})^{N-n}}\), which is a way higher number. I did not realise this and the results actually motivates the search for a robust optimum each combinatorial split.</p>
     </section>
 
     <section id="mcmc" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Benchmark</span></div>
       <h2 class="section-title">4 — Monte Carlo </h2>
-      <p>Monte to simulate the "null hypothesis".</p>
+      <p>Monte to simulate the "null hypothesis". </p>
       <div class="grid cols-2 reveal">
         <figure>
-          <img class="zoomable" src="images/mcmc_chain.png" alt="MCMC chain diagram" loading="lazy"/>
-          <figcaption>MCMC chain sketch.</figcaption>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/MCMC_600_6_3.png" alt="Reference survivor distribution" loading="lazy"/>
+          <figcaption>Reference survivor distribution (null) (MCMC sample - 600 runs, 6 splits).</figcaption>
         </figure>
         <figure>
-          <img class="zoomable" src="images/mcmc_ref_dist.png" alt="Reference survivor distribution" loading="lazy"/>
-          <figcaption>Reference survivor distribution (null).</figcaption>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/MCMC_100_10_5.png" alt="Reference survivor distribution" loading="lazy"/>
+          <figcaption>Reference survivor distribution (null) (MCMC sample - 100 runs, 10 splits).</figcaption>
         </figure>
       </div>
+    <p> Looks sort of like the maths we did \((\frac{1}{n})\), so we got just about what you need to be able to distinguish the distribution. Except for a few differences, you can essentially be happy that the maths sort of looks like what we want to and can move on. </p>
+    <p> One thing to note is that the probability of a high survival score lowers as we increase splits. This is important and we will use this later. </p>
     </section>
 
     <section id="cscv" class="wrap">
       <div class="eyebrow"><span class="dot"></span><span>Method</span></div>
       <h2 class="section-title">5 — CSCV: Combinatorial Cross‑Validation</h2>
-      <p>Following ideas explored in the literature (e.g., Timothy Masters), we evaluate a Boolean <em>survival</em> criterion across all data splits and parameter candidates.</p>
+      <p>The following workflow evolves ideas explored in the literature (e.g., Timothy Masters). Here, we evaluate a Boolean <em>survival</em> criterion across all data splits and parameter candidates and rank them using the criteria as following:</p>
       <ul>
         <li>Dataset is split into combinatorial train/test <em>sub‑datasets</em> (e.g., 54 combinations).</li>
         <li>Parameter grid examples: <code>RSI(14,2)</code>, <code>RSI(8,4)</code>, ...</li>
         <li>Thresholds: train ≥ 90th percentile among candidates; test ≥ 50th percentile.</li>
         <li>Each time a parameter passes both thresholds for a split, it earns one <strong>survival</strong>.</li>
       </ul>
+      <p> Below, you can see the ranking picture from the test. Here, we minute bitcoin data between 2020-2024 because it's easily accessible, high granularity and covers a sufficient amount of market regimes.</p>
       <figure class="reveal">
-        <img class="zoomable" src="images/cscv_matrix.png" alt="Combinatorial survival matrix" loading="lazy"/>
-        <figcaption>Survival counts across 54 splits × parameter grid.</figcaption>
+        <img class="zoomable" src="../../wp-content/uploads/Quant/Rank_surv_cscv_4_weeks_3_param.png" alt="Combinatorial survival matrix" loading="lazy"/>
+        <figcaption>Survival counts across 54 splits for the parameter grid (Apologise for the linear reg...).</figcaption>
       </figure>
-      <p class="note">Note: Too high of a survival count can indicate overfitting.</p>
+      <p class="note">Note: Too high of a survival count can still indicate overfitting.</p>
     </section>
 
     <section id="protocol" class="wrap">
@@ -210,16 +218,16 @@
       </ol>
       <div class="grid cols-2 reveal">
         <figure>
-          <img class="zoomable" src="images/rank_vs_survival.png" alt="Ranking vs survival scatter" loading="lazy"/>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/Rank_surv_cscv_4_weeks_3_param.png" alt="Ranking vs survival scatter" loading="lazy"/>
           <figcaption>Higher survival tends to correlate with better OOS ranking.</figcaption>
         </figure>
         <figure>
-          <img class="zoomable" src="images/is_vs_cscv.png" alt="IS vs CSCV comparison" loading="lazy"/>
+          <img class="zoomable" src="../../wp-content/uploads/Quant/normal_opt_normalised.png" alt="IS vs CSCV comparison" loading="lazy"/>
           <figcaption>IS best pick across windows for reference.</figcaption>
         </figure>
       </div>
       <p class="note">Because we optimise an <em>algorithm</em>, not a specific strategy, we compare candidates <em>relative to peers</em>, not absolute returns.</p>
-      <p>Note: I mentioned the use of robust optimum above to minimise multiple-testing, but as we saw in the MCMC, as long as we use a sufficient amount of splits, we should be fine.</p>
+      <p>Note: I mentioned the use of robust optimum above to minimise multiple-testing, but as we saw in the MCMC, a quick and dirty remedy for this is to use a sufficient amount of combinatorial MOsplits.</p>
     </section>
 
 
@@ -228,22 +236,38 @@
       <h2 class="section-title">8 — A Note on Speed</h2>
       <p>CSCV can be compute‑heavy. We accelerate with precomputed utilities, cached split indices, and vectorised thresholds.</p>
       <div class="grid cols-2 reveal">
-        <figure>
-          <img class="zoomable" src="images/speed_profile.png" alt="Speed profile" loading="lazy"/>
-          <figcaption>Hotspots before/after caching.</figcaption>
-        </figure>
-        <figure>
-          <img class="zoomable" src="images/parallel_queue.png" alt="Parallel queue diagram" loading="lazy"/>
-          <figcaption>Parallel split evaluator (job queue).</figcaption>
-        </figure>
+        <section>
+          <p class="note">
+          <strong> Before</strong>
+          <ul>
+            <li> Python work to build train/test</li>
+            <li>Per-split slicing of the full returns matrix</li>
+            <li> Percentiles computed repeatedly on large arrays</li>
+          </ul>
+          </p>
+        </section>
+        <section>
+          <p class="note">
+          <strong> After</strong>
+          <ul>
+           <li>Precompute per-period aggregates once</li>
+           <li>Split evaluation reduces to vectorized adds</li>
+           <li>Numba JIT on the metric kernels</li>
+          </ul>
+          </p>
+        </section> 
       </div>
       <pre><code>// Sketch: precompute & cache
-splits = precompute_splits(N=1000, combos=54)
-U = compute_utilities(params, all_segments)  // vectorised
-for (train_idx, test_idx) in splits:
-  train_U = U[:, train_idx].mean(axis=1)
-  test_U  = U[:, test_idx].mean(axis=1)
-  survivors += (rank_pct(train_U)>=90) & (rank_pct(test_U)>=50)
+splits = precompute_splits(K=num_periods, choose=num_chosen)  # cache (train_idx, test_idx)
+U = precompute_chunk_stats(R, metric)  # vectorized period x params stats
+
+for (train_idx, test_idx) in splits:    # parallel-friendly loop
+    tr = score_metric(U, train_idx)     # sums/vars reduced along axis=0
+    te = score_metric(U, test_idx)
+    thr_tr = np.percentile(tr, percentile)
+    thr_te = np.percentile(te, percentile_2)
+    survivors += (tr > thr_tr) & (te > thr_te)
+
 </code></pre>
     </section>
 
