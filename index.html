@@ -34,20 +34,27 @@ img.emoji {
             }
   </style>
   <style id="site-custom-overrides">
-   .site-name {
+   .site-branding {
      position: fixed;
      top: 16px;
      left: 16px;
      z-index: 9999;
+     display: flex;
+     gap: 1.111rem;
+     align-items: center;
+     mix-blend-mode: exclusion;
+     font-family: "BasisGrotesque-Regular", sans-serif;
+     letter-spacing: 0.02em;
+   }
+   .site-branding a {
      color: #fafafa;
      text-decoration: none;
-     font-family: "BasisGrotesque-Regular", sans-serif;
      font-size: 0.888rem;
-     letter-spacing: 0.02em;
-     mix-blend-mode: exclusion;
    }
+   .site-branding a:hover { color: #ffd300; }
    @media (max-width: 543.98px) {
-     .site-name { top: 12px; left: 12px; font-size: 0.777rem; }
+     .site-branding { top: 12px; left: 12px; gap: 0.888rem; }
+     .site-branding a { font-size: 0.777rem; }
    }
    /* Hero typography tweaks */
    #content_c6af43e15 h1,
@@ -365,7 +372,10 @@ url('wp-content/uploads/2020/01/HelveticaNeueLTStd-Md.woff') format('woff');
   </style>
  </head>
 <body class="home page-template-default page page-id-46 is-frontend dynamic-mode mejs-semplice-ui" data-post-id="46" data-post-type="page">
-  <a class="site-name" href="index.html" aria-label="Home">Alexander Jonsson</a>
+  <div class="site-branding">
+   <a class="site-name" href="index.html" aria-label="Home">Alexander Jonsson</a>
+   <a class="site-link site-about" href="about/index.html" aria-label="About Alexander Jonsson">About me</a>
+  </div>
   <div data-active-post="46" id="content-holder">
    <header class="nav_ttmmgk8cq semplice-navbar active-navbar sticky-nav cover-transparent scroll-to-top" data-bg-overlay-visibility="hidden" data-cover-transparent="enabled" data-mobile-fallback="enabled">
     <div class="container-fluid" data-nav="logo-right-menu-left">
@@ -404,6 +414,13 @@ url('wp-content/uploads/2020/01/HelveticaNeueLTStd-Md.woff') format('woff');
          <a href="https://erikjonsson.se/erikjonsson">
           <span>
            Information
+          </span>
+         </a>
+        </li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-about">
+         <a href="about/index.html">
+          <span>
+           About
           </span>
          </a>
         </li>
@@ -458,6 +475,13 @@ url('wp-content/uploads/2020/01/HelveticaNeueLTStd-Md.woff') format('woff');
         <a href="https://erikjonsson.se/erikjonsson">
          <span>
           Information
+         </span>
+        </a>
+       </li>
+       <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-about">
+        <a href="about/index.html">
+         <span>
+          About
          </span>
         </a>
        </li>
