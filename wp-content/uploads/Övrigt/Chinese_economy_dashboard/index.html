@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chinese Economy HE3033 — Second-hand Residential Market</title>
+  <meta name="description" content="Snapshot of China's second-hand residential market .">
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      --bg: #f5f5f7;
+      --fg: #0f172a;
+      --muted: #4b5563;
+      --card: #ffffff;
+      --shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      --radius: 18px;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: clamp(24px, 4vw, 48px);
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(24px, 4vw, 40px);
+    }
+    header {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.01em;
+    }
+    .lede {
+      margin: 0;
+      font-size: clamp(18px, 2.4vw, 20px);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .dashboard {
+      display: flex;
+      flex: 1;
+      gap: clamp(16px, 3vw, 32px);
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .map-panel,
+    .side-panel {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 3vw, 24px);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(16px, 3vw, 24px);
+    }
+    .map-panel {
+      flex: 5;
+      min-height: 60vh;
+    }
+    .map-panel iframe {
+      flex: 1;
+      border: none;
+      border-radius: calc(var(--radius) - 6px);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+    .side-panel {
+      flex: 3;
+      min-height: 60vh;
+    }
+    figure {
+      margin: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: calc(var(--radius) - 6px);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+      background: #fff;
+    }
+    figure figcaption {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .insight {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: clamp(16px, 3vw, 24px);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      color: var(--fg);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+    .insight ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .note {
+      max-width: 960px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 1024px) {
+      body {
+        padding: 24px;
+      }
+      .dashboard {
+        flex-direction: column;
+      }
+      .map-panel,
+      .side-panel {
+        min-height: auto;
+      }
+    }
+    @media (max-width: 640px) {
+      body {
+        padding: 16px;
+      }
+      header {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chinese Economy HE3033</h1>
+    <p class="lede">Tracking China's second-hand residential market between June 2024 - September 2025.</p>
+  </header>
+
+  <main class="dashboard">
+    <section class="map-panel" aria-label="Second-hand MoM Change Map">
+      <iframe src="geomaps/second_hand_mom_change_sep_to_nov_2024.html" title="Second-hand MoM Change - Sep to Nov 2024"></iframe>
+    </section>
+    <aside class="side-panel">
+      <figure>
+        <img src="SH_mom_percentage_change.png" alt="Shanghai second-hand residential month-over-month percentage change">
+        <figcaption>MoM percentage change across China's second-hand residential market.</figcaption>
+      </figure>
+      <figure>
+        <img src="second_hand_mom.gif" alt="Animation of Shanghai second-hand residential MoM momentum">
+        <figcaption>Animated momentum of month-over-month dynamics.</figcaption>
+      </figure>
+    </aside>
+  </main>
+
+  <section class="insight" aria-label="Policy impact insight">
+    <ul>
+      <li><strong>General intuition:</strong> The nationwide policy Sep 2024 temporarily remidied the second-hand housing market. </li>
+      <li>Harbin stands alone with roughly 10&nbsp;million residents and a 48.5‑month de-stocking cycle versus the 32-city average of 14.8&nbsp;months.</li>
+      <li>Anything > 36&nbsp;months signals severe inventory pressure, highlighting how overbuilt Harbin remains.</li>
+      <li>Excluding Harbin, this policy briefly relieved stock across metros covering ~688&nbsp;million of 700&nbsp;million urban residents before the momentum faded.</li>
+    </ul>
+  </section>
+
+  <p class="note">For a full-screen experience of the combined dashboard layout, open <a href="geomaps/second_hand_overview.html">geomaps/second_hand_overview.html</a>.</p>
+</body>
+</html>

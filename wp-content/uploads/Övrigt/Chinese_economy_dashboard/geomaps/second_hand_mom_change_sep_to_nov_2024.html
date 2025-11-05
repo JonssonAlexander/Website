@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9cebba5b34d822d022d62ed0b1f36380 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed;
+                bottom: 40px;
+                left: 40px;
+                z-index: 9999;
+                background-color: white;
+                padding: 12px 16px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      <h4 style="margin-top:0;margin-bottom:8px;font-size:14px;">MoM change 2024-Sep → 2024-Nov</h4>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li><span style='background:#1b9e77;'></span>Less negative / more positive</li><li><span style='background:#d95f02;'></span>More negative</li><li><span style='background:#7570b3;'></span>Unchanged</li>
+      </ul>
+    </div>
+    
+    
+            <div class="folium-map" id="map_9cebba5b34d822d022d62ed0b1f36380" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9cebba5b34d822d022d62ed0b1f36380 = L.map(
+                "map_9cebba5b34d822d022d62ed0b1f36380",
+                {
+                    center: [35.5, 104.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4.3,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9e860188e9868f4d9fa7dbe85bb3f15e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9e860188e9868f4d9fa7dbe85bb3f15e.addTo(map_9cebba5b34d822d022d62ed0b1f36380);
+        
+    
+            var feature_group_865f1c14a20c5f789991875cba37db46 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_f30c23909d806b8dea9304b6a1492296 = L.circleMarker(
+                [30.6592336, 116.6302585],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_188d41e764b236cbdf3c67cffbb6b581 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8df8e71c212a9b84674dd234cc1f6ecd = $(`<div id="html_8df8e71c212a9b84674dd234cc1f6ecd" style="width: 100.0%; height: 100.0%;"><b>Anqing</b><br>Tier: Other<br>Start value (2024-Sep): -0.70%<br>End value (2024-Nov): -0.40%<br>Δ: +0.30 percentage points</div>`)[0];
+                popup_188d41e764b236cbdf3c67cffbb6b581.setContent(html_8df8e71c212a9b84674dd234cc1f6ecd);
+            
+        
+
+        circle_marker_f30c23909d806b8dea9304b6a1492296.bindPopup(popup_188d41e764b236cbdf3c67cffbb6b581)
+        ;
+
+        
+    
+    
+            var circle_marker_259a1741fd494d61b8d9c42e133f48d6 = L.circleMarker(
+                [40.6174777, 109.944912],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_a7c36478b1736f56aa2b4f159b815753 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f03c5e61f5ca4321f850663501bf0def = $(`<div id="html_f03c5e61f5ca4321f850663501bf0def" style="width: 100.0%; height: 100.0%;"><b>Baotou</b><br>Tier: Other<br>Start value (2024-Sep): -1.30%<br>End value (2024-Nov): -0.80%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_a7c36478b1736f56aa2b4f159b815753.setContent(html_f03c5e61f5ca4321f850663501bf0def);
+            
+        
+
+        circle_marker_259a1741fd494d61b8d9c42e133f48d6.bindPopup(popup_a7c36478b1736f56aa2b4f159b815753)
+        ;
+
+        
+    
+    
+            var circle_marker_467c217bcde80fa6ad95f3ac499a3305 = L.circleMarker(
+                [21.6740808, 109.3729721],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_de142617c3b8b56696f9009f35da6d0b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_00d52b03b22ae1205fa5e587c5f31197 = $(`<div id="html_00d52b03b22ae1205fa5e587c5f31197" style="width: 100.0%; height: 100.0%;"><b>Beihai</b><br>Tier: Other<br>Start value (2024-Sep): -0.60%<br>End value (2024-Nov): -0.40%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_de142617c3b8b56696f9009f35da6d0b.setContent(html_00d52b03b22ae1205fa5e587c5f31197);
+            
+        
+
+        circle_marker_467c217bcde80fa6ad95f3ac499a3305.bindPopup(popup_de142617c3b8b56696f9009f35da6d0b)
+        ;
+
+        
+    
+    
+            var circle_marker_55f188dad294be49afb3d54a5bfd3320 = L.circleMarker(
+                [40.190632, 116.412144],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_17efd5ae8727eb8541accad021fb34db = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d7e83c988650fd65538251ee16fe0c56 = $(`<div id="html_d7e83c988650fd65538251ee16fe0c56" style="width: 100.0%; height: 100.0%;"><b>Beijing</b><br>Tier: First-tier<br>Start value (2024-Sep): -1.30%<br>End value (2024-Nov): +0.90%<br>Δ: +2.20 percentage points</div>`)[0];
+                popup_17efd5ae8727eb8541accad021fb34db.setContent(html_d7e83c988650fd65538251ee16fe0c56);
+            
+        
+
+        circle_marker_55f188dad294be49afb3d54a5bfd3320.bindPopup(popup_17efd5ae8727eb8541accad021fb34db)
+        ;
+
+        
+    
+    
+            var circle_marker_1cffccc4301ea8c07a043ae3f643ecf7 = L.circleMarker(
+                [32.9176422, 117.3825673],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_b3549d428eaae1d2485e9a9df0bec488 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8c2fa30a092df8a89b9546391bd29ab0 = $(`<div id="html_8c2fa30a092df8a89b9546391bd29ab0" style="width: 100.0%; height: 100.0%;"><b>Bengbu</b><br>Tier: Other<br>Start value (2024-Sep): -0.40%<br>End value (2024-Nov): -0.30%<br>Δ: +0.10 percentage points</div>`)[0];
+                popup_b3549d428eaae1d2485e9a9df0bec488.setContent(html_8c2fa30a092df8a89b9546391bd29ab0);
+            
+        
+
+        circle_marker_1cffccc4301ea8c07a043ae3f643ecf7.bindPopup(popup_b3549d428eaae1d2485e9a9df0bec488)
+        ;
+
+        
+    
+    
+            var circle_marker_38c6ff264652dec5e237fa4284716b08 = L.circleMarker(
+                [43.8844201, 125.3180998],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_06c45d52a055431fcdc35d34d6212f7a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9ee3feecf4cb16a7f93eb9026a1c48a3 = $(`<div id="html_9ee3feecf4cb16a7f93eb9026a1c48a3" style="width: 100.0%; height: 100.0%;"><b>Changchun</b><br>Tier: Other<br>Start value (2024-Sep): -0.80%<br>End value (2024-Nov): -0.20%<br>Δ: +0.60 percentage points</div>`)[0];
+                popup_06c45d52a055431fcdc35d34d6212f7a.setContent(html_9ee3feecf4cb16a7f93eb9026a1c48a3);
+            
+        
+
+        circle_marker_38c6ff264652dec5e237fa4284716b08.bindPopup(popup_06c45d52a055431fcdc35d34d6212f7a)
+        ;
+
+        
+    
+    
+            var circle_marker_c3b936a2e832b3a7fa0c01500112866e = L.circleMarker(
+                [29.034552, 111.6928724],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_87381d91f87df8106ffbb3f187dc8833 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_82052be4d4069565e4692a14f8888723 = $(`<div id="html_82052be4d4069565e4692a14f8888723" style="width: 100.0%; height: 100.0%;"><b>Changde</b><br>Tier: Other<br>Start value (2024-Sep): -1.80%<br>End value (2024-Nov): -0.40%<br>Δ: +1.40 percentage points</div>`)[0];
+                popup_87381d91f87df8106ffbb3f187dc8833.setContent(html_82052be4d4069565e4692a14f8888723);
+            
+        
+
+        circle_marker_c3b936a2e832b3a7fa0c01500112866e.bindPopup(popup_87381d91f87df8106ffbb3f187dc8833)
+        ;
+
+        
+    
+    
+            var circle_marker_db53625ad38dde620d27d18bd6d5c1c9 = L.circleMarker(
+                [28.1450774, 113.2384362],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_1d8d6b90dc61cfebfc27224188ce7ad2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_899bd58459c4d8457fb8e5ef670b890f = $(`<div id="html_899bd58459c4d8457fb8e5ef670b890f" style="width: 100.0%; height: 100.0%;"><b>Changsha</b><br>Tier: Other<br>Start value (2024-Sep): -0.90%<br>End value (2024-Nov): -0.40%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_1d8d6b90dc61cfebfc27224188ce7ad2.setContent(html_899bd58459c4d8457fb8e5ef670b890f);
+            
+        
+
+        circle_marker_db53625ad38dde620d27d18bd6d5c1c9.bindPopup(popup_1d8d6b90dc61cfebfc27224188ce7ad2)
+        ;
+
+        
+    
+    
+            var circle_marker_a7b32308087fccb9bef29b191177ffee = L.circleMarker(
+                [30.659867, 104.063315],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_0efeb9bcfb50a7a3b991a28b051372d4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_173e44f727ec2f8b6091f7b636f8468f = $(`<div id="html_173e44f727ec2f8b6091f7b636f8468f" style="width: 100.0%; height: 100.0%;"><b>Chengdu</b><br>Tier: New first-tier<br>Start value (2024-Sep): -0.70%<br>End value (2024-Nov): +0.70%<br>Δ: +1.40 percentage points</div>`)[0];
+                popup_0efeb9bcfb50a7a3b991a28b051372d4.setContent(html_173e44f727ec2f8b6091f7b636f8468f);
+            
+        
+
+        circle_marker_a7b32308087fccb9bef29b191177ffee.bindPopup(popup_0efeb9bcfb50a7a3b991a28b051372d4)
+        ;
+
+        
+    
+    
+            var circle_marker_dcb388c4c89dbd17ade4b3dc6b4d28c0 = L.circleMarker(
+                [30.05518, 107.8748712],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_48266d189639ea78e73d16a900b6a6eb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2a3ec0b13ae4ddc40517495bc870c256 = $(`<div id="html_2a3ec0b13ae4ddc40517495bc870c256" style="width: 100.0%; height: 100.0%;"><b>Chongqing</b><br>Tier: New first-tier<br>Start value (2024-Sep): -1.10%<br>End value (2024-Nov): +0.40%<br>Δ: +1.50 percentage points</div>`)[0];
+                popup_48266d189639ea78e73d16a900b6a6eb.setContent(html_2a3ec0b13ae4ddc40517495bc870c256);
+            
+        
+
+        circle_marker_dcb388c4c89dbd17ade4b3dc6b4d28c0.bindPopup(popup_48266d189639ea78e73d16a900b6a6eb)
+        ;
+
+        
+    
+    
+            var circle_marker_dea9007b868ac200b04892065d0d0f35 = L.circleMarker(
+                [39.740278, 122.255833],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_6393b81a9d6d4848272b9977990acfbe = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e9670826669c6187e589a9edbb67c8d1 = $(`<div id="html_e9670826669c6187e589a9edbb67c8d1" style="width: 100.0%; height: 100.0%;"><b>Dalian</b><br>Tier: Other<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -0.40%<br>Δ: +0.80 percentage points</div>`)[0];
+                popup_6393b81a9d6d4848272b9977990acfbe.setContent(html_e9670826669c6187e589a9edbb67c8d1);
+            
+        
+
+        circle_marker_dea9007b868ac200b04892065d0d0f35.bindPopup(popup_6393b81a9d6d4848272b9977990acfbe)
+        ;
+
+        
+    
+    
+            var circle_marker_82199849de00b205d8f660c8684c0c3d = L.circleMarker(
+                [26.0774954, 119.2918215],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_95ebe1d28434d5bbf74e01625bf0f5d4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5e9b910c97548c56eddcfdad68c98cb9 = $(`<div id="html_5e9b910c97548c56eddcfdad68c98cb9" style="width: 100.0%; height: 100.0%;"><b>Fuzhou</b><br>Tier: Other<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -0.40%<br>Δ: +0.80 percentage points</div>`)[0];
+                popup_95ebe1d28434d5bbf74e01625bf0f5d4.setContent(html_5e9b910c97548c56eddcfdad68c98cb9);
+            
+        
+
+        circle_marker_82199849de00b205d8f660c8684c0c3d.bindPopup(popup_95ebe1d28434d5bbf74e01625bf0f5d4)
+        ;
+
+        
+    
+    
+            var circle_marker_973f2f7091ebd1b0c79c127af7815c31 = L.circleMarker(
+                [25.703866, 115.348216],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_e5273d765d66c43237d018376b325fa1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2401880960823559558dcff2d77b97ac = $(`<div id="html_2401880960823559558dcff2d77b97ac" style="width: 100.0%; height: 100.0%;"><b>Ganzhou</b><br>Tier: Other<br>Start value (2024-Sep): -0.20%<br>End value (2024-Nov): -0.10%<br>Δ: +0.10 percentage points</div>`)[0];
+                popup_e5273d765d66c43237d018376b325fa1.setContent(html_2401880960823559558dcff2d77b97ac);
+            
+        
+
+        circle_marker_973f2f7091ebd1b0c79c127af7815c31.bindPopup(popup_e5273d765d66c43237d018376b325fa1)
+        ;
+
+        
+    
+    
+            var circle_marker_d74ca71cc9ba22bbea3a8fffa33d1656 = L.circleMarker(
+                [23.1301964, 113.2592945],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_374891b5b5b50ce4ac5554c016efd6af = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e10afc516ffcb767072d4d2656201299 = $(`<div id="html_e10afc516ffcb767072d4d2656201299" style="width: 100.0%; height: 100.0%;"><b>Guangzhou</b><br>Tier: First-tier<br>Start value (2024-Sep): -1.10%<br>End value (2024-Nov): -0.40%<br>Δ: +0.70 percentage points</div>`)[0];
+                popup_374891b5b5b50ce4ac5554c016efd6af.setContent(html_e10afc516ffcb767072d4d2656201299);
+            
+        
+
+        circle_marker_d74ca71cc9ba22bbea3a8fffa33d1656.bindPopup(popup_374891b5b5b50ce4ac5554c016efd6af)
+        ;
+
+        
+    
+    
+            var circle_marker_f709be2e95f92cde8fcd3df769ed2904 = L.circleMarker(
+                [25.2779894, 110.2910622],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_fe6495a7dcc1a4cc4debf2c7bdad178d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_909fb23cd8f86815a8976d3e03c6b382 = $(`<div id="html_909fb23cd8f86815a8976d3e03c6b382" style="width: 100.0%; height: 100.0%;"><b>Guilin</b><br>Tier: Other<br>Start value (2024-Sep): -0.50%<br>End value (2024-Nov): -0.30%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_fe6495a7dcc1a4cc4debf2c7bdad178d.setContent(html_909fb23cd8f86815a8976d3e03c6b382);
+            
+        
+
+        circle_marker_f709be2e95f92cde8fcd3df769ed2904.bindPopup(popup_fe6495a7dcc1a4cc4debf2c7bdad178d)
+        ;
+
+        
+    
+    
+            var circle_marker_a1bcb5e8c8c8c9acc8828fe61c40d802 = L.circleMarker(
+                [26.6499922, 106.6246178],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_5cb9c444c9b2ce7c1ce70e23fb1bebb9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c9bfd520a1107b17cfaff09a4dd52cf7 = $(`<div id="html_c9bfd520a1107b17cfaff09a4dd52cf7" style="width: 100.0%; height: 100.0%;"><b>Guiyang</b><br>Tier: Other<br>Start value (2024-Sep): -0.40%<br>End value (2024-Nov): -0.30%<br>Δ: +0.10 percentage points</div>`)[0];
+                popup_5cb9c444c9b2ce7c1ce70e23fb1bebb9.setContent(html_c9bfd520a1107b17cfaff09a4dd52cf7);
+            
+        
+
+        circle_marker_a1bcb5e8c8c8c9acc8828fe61c40d802.bindPopup(popup_5cb9c444c9b2ce7c1ce70e23fb1bebb9)
+        ;
+
+        
+    
+    
+            var circle_marker_5937baaf37485a199e3b7f589fc61a66 = L.circleMarker(
+                [20.0462328, 110.1956502],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_110b4ff7a9937e8e7b9d122907973119 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_11f2a842ed02e46c50bbe7be4d398963 = $(`<div id="html_11f2a842ed02e46c50bbe7be4d398963" style="width: 100.0%; height: 100.0%;"><b>Haikou</b><br>Tier: Development potential<br>Start value (2024-Sep): -0.50%<br>End value (2024-Nov): +0.00%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_110b4ff7a9937e8e7b9d122907973119.setContent(html_11f2a842ed02e46c50bbe7be4d398963);
+            
+        
+
+        circle_marker_5937baaf37485a199e3b7f589fc61a66.bindPopup(popup_110b4ff7a9937e8e7b9d122907973119)
+        ;
+
+        
+    
+    
+            var circle_marker_35c93561d59a323be95c0970a7f8e79a = L.circleMarker(
+                [30.2489634, 120.2052342],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_245062e67b8b5f7e7488cc0e7e8eb5ee = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_41ae1a2656ab24e8b9eeec0b50047024 = $(`<div id="html_41ae1a2656ab24e8b9eeec0b50047024" style="width: 100.0%; height: 100.0%;"><b>Hangzhou</b><br>Tier: New first-tier<br>Start value (2024-Sep): -1.40%<br>End value (2024-Nov): +0.80%<br>Δ: +2.20 percentage points</div>`)[0];
+                popup_245062e67b8b5f7e7488cc0e7e8eb5ee.setContent(html_41ae1a2656ab24e8b9eeec0b50047024);
+            
+        
+
+        circle_marker_35c93561d59a323be95c0970a7f8e79a.bindPopup(popup_245062e67b8b5f7e7488cc0e7e8eb5ee)
+        ;
+
+        
+    
+    
+            var circle_marker_c6c687f307a0417da8fe0b9e7d93253d = L.circleMarker(
+                [31.8665676, 117.281428],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_ee80d68dd7478e008e857f533d06c117 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_70edb9fee36b2f4d3c0c14c7c50fecdb = $(`<div id="html_70edb9fee36b2f4d3c0c14c7c50fecdb" style="width: 100.0%; height: 100.0%;"><b>Hefei</b><br>Tier: Strong economy<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -0.40%<br>Δ: +0.80 percentage points</div>`)[0];
+                popup_ee80d68dd7478e008e857f533d06c117.setContent(html_70edb9fee36b2f4d3c0c14c7c50fecdb);
+            
+        
+
+        circle_marker_c6c687f307a0417da8fe0b9e7d93253d.bindPopup(popup_ee80d68dd7478e008e857f533d06c117)
+        ;
+
+        
+    
+    
+            var circle_marker_bfe4031f433f9bc7fa70fc2dbe3dd613 = L.circleMarker(
+                [40.8184528, 111.6601939],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_4c71af803a05c507f535978618088535 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2d53a1b0848806af704793cce9892e51 = $(`<div id="html_2d53a1b0848806af704793cce9892e51" style="width: 100.0%; height: 100.0%;"><b>Hohhot</b><br>Tier: Other<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -1.10%<br>Δ: +0.10 percentage points</div>`)[0];
+                popup_4c71af803a05c507f535978618088535.setContent(html_2d53a1b0848806af704793cce9892e51);
+            
+        
+
+        circle_marker_bfe4031f433f9bc7fa70fc2dbe3dd613.bindPopup(popup_4c71af803a05c507f535978618088535)
+        ;
+
+        
+    
+    
+            var circle_marker_bbe61176fcdd7b73df4ecf92f3f3cc25 = L.circleMarker(
+                [23.1125153, 114.4127007],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_f8672b0b661cbdba6822417f52a3a198 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_24f7e7ad46c8f7168b65bb804f1e8c56 = $(`<div id="html_24f7e7ad46c8f7168b65bb804f1e8c56" style="width: 100.0%; height: 100.0%;"><b>Huizhou</b><br>Tier: Other<br>Start value (2024-Sep): -0.90%<br>End value (2024-Nov): -0.40%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_f8672b0b661cbdba6822417f52a3a198.setContent(html_24f7e7ad46c8f7168b65bb804f1e8c56);
+            
+        
+
+        circle_marker_bbe61176fcdd7b73df4ecf92f3f3cc25.bindPopup(popup_f8672b0b661cbdba6822417f52a3a198)
+        ;
+
+        
+    
+    
+            var circle_marker_8d91dd7986a17cbd32281dfebceb2bdf = L.circleMarker(
+                [29.1080344, 119.6486487],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_d4e2073d5dbd5edb5ba98df4a13fe2e5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_05a1237708afbb7577bbf258455be0bd = $(`<div id="html_05a1237708afbb7577bbf258455be0bd" style="width: 100.0%; height: 100.0%;"><b>Jinhua</b><br>Tier: Other<br>Start value (2024-Sep): -1.70%<br>End value (2024-Nov): -0.50%<br>Δ: +1.20 percentage points</div>`)[0];
+                popup_d4e2073d5dbd5edb5ba98df4a13fe2e5.setContent(html_05a1237708afbb7577bbf258455be0bd);
+            
+        
+
+        circle_marker_8d91dd7986a17cbd32281dfebceb2bdf.bindPopup(popup_d4e2073d5dbd5edb5ba98df4a13fe2e5)
+        ;
+
+        
+    
+    
+            var circle_marker_9d0ae7831ea4d9ca08353dd39031e0d7 = L.circleMarker(
+                [35.4125047, 116.5849266],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_ea12fedd2388302b2e5927ce67fea45f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4e2f078e12c97f22037019ada708eb3a = $(`<div id="html_4e2f078e12c97f22037019ada708eb3a" style="width: 100.0%; height: 100.0%;"><b>Jining</b><br>Tier: Other<br>Start value (2024-Sep): -0.30%<br>End value (2024-Nov): -0.20%<br>Δ: +0.10 percentage points</div>`)[0];
+                popup_ea12fedd2388302b2e5927ce67fea45f.setContent(html_4e2f078e12c97f22037019ada708eb3a);
+            
+        
+
+        circle_marker_9d0ae7831ea4d9ca08353dd39031e0d7.bindPopup(popup_ea12fedd2388302b2e5927ce67fea45f)
+        ;
+
+        
+    
+    
+            var circle_marker_fcb32e79e15ffcc9933b7edea960273f = L.circleMarker(
+                [29.388607, 115.3820227],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_593181236ca6a1fe4ea111db7301e316 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2b0d9c777034bf907ad91460bd8f19f6 = $(`<div id="html_2b0d9c777034bf907ad91460bd8f19f6" style="width: 100.0%; height: 100.0%;"><b>Jiujiang</b><br>Tier: Other<br>Start value (2024-Sep): -1.50%<br>End value (2024-Nov): -0.40%<br>Δ: +1.10 percentage points</div>`)[0];
+                popup_593181236ca6a1fe4ea111db7301e316.setContent(html_2b0d9c777034bf907ad91460bd8f19f6);
+            
+        
+
+        circle_marker_fcb32e79e15ffcc9933b7edea960273f.bindPopup(popup_593181236ca6a1fe4ea111db7301e316)
+        ;
+
+        
+    
+    
+            var circle_marker_6b1c865768d6172fea3c1b2f429f9f7a = L.circleMarker(
+                [25.0363006, 102.7086139],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_1f0e77192eaa66d27ce219117abe2d4e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6490c2e7923656bbd6e1f309a65e09b2 = $(`<div id="html_6490c2e7923656bbd6e1f309a65e09b2" style="width: 100.0%; height: 100.0%;"><b>Kunming</b><br>Tier: Other<br>Start value (2024-Sep): -0.90%<br>End value (2024-Nov): -0.50%<br>Δ: +0.40 percentage points</div>`)[0];
+                popup_1f0e77192eaa66d27ce219117abe2d4e.setContent(html_6490c2e7923656bbd6e1f309a65e09b2);
+            
+        
+
+        circle_marker_6b1c865768d6172fea3c1b2f429f9f7a.bindPopup(popup_1f0e77192eaa66d27ce219117abe2d4e)
+        ;
+
+        
+    
+    
+            var circle_marker_23fda2b501017501b7eb8b8032bf6923 = L.circleMarker(
+                [36.474436, 103.733224],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_2b363d26fdc9f4226ac55d37a0722864 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_540fdea7791271eaecae196d0e5f804d = $(`<div id="html_540fdea7791271eaecae196d0e5f804d" style="width: 100.0%; height: 100.0%;"><b>Lanzhou</b><br>Tier: Other<br>Start value (2024-Sep): -0.40%<br>End value (2024-Nov): -0.30%<br>Δ: +0.10 percentage points</div>`)[0];
+                popup_2b363d26fdc9f4226ac55d37a0722864.setContent(html_540fdea7791271eaecae196d0e5f804d);
+            
+        
+
+        circle_marker_23fda2b501017501b7eb8b8032bf6923.bindPopup(popup_2b363d26fdc9f4226ac55d37a0722864)
+        ;
+
+        
+    
+    
+            var circle_marker_b1c7c913ac903f79d61e56b1b545e3e7 = L.circleMarker(
+                [34.6196539, 112.4477046],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_5a086d92c619bd3620adaa401156e7bb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7d321a45e8b559a49b386831a10f9046 = $(`<div id="html_7d321a45e8b559a49b386831a10f9046" style="width: 100.0%; height: 100.0%;"><b>Luoyang</b><br>Tier: Other<br>Start value (2024-Sep): -1.10%<br>End value (2024-Nov): -0.50%<br>Δ: +0.60 percentage points</div>`)[0];
+                popup_5a086d92c619bd3620adaa401156e7bb.setContent(html_7d321a45e8b559a49b386831a10f9046);
+            
+        
+
+        circle_marker_b1c7c913ac903f79d61e56b1b545e3e7.bindPopup(popup_5a086d92c619bd3620adaa401156e7bb)
+        ;
+
+        
+    
+    
+            var circle_marker_0ed9268f00e8c274ddce42e39a83d79e = L.circleMarker(
+                [28.5297899, 105.5382725],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_2169ccbbca9a69496965d6a52536a164 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ec79629c5892c76e0ddefd86f99fcc6f = $(`<div id="html_ec79629c5892c76e0ddefd86f99fcc6f" style="width: 100.0%; height: 100.0%;"><b>Luzhou</b><br>Tier: Other<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -0.50%<br>Δ: +0.70 percentage points</div>`)[0];
+                popup_2169ccbbca9a69496965d6a52536a164.setContent(html_ec79629c5892c76e0ddefd86f99fcc6f);
+            
+        
+
+        circle_marker_0ed9268f00e8c274ddce42e39a83d79e.bindPopup(popup_2169ccbbca9a69496965d6a52536a164)
+        ;
+
+        
+    
+    
+            var circle_marker_1f957ff2b86ff5e1ec286f35f05f8a39 = L.circleMarker(
+                [44.635006, 130.013384],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_e252ff74790da0a8de0ce7c9973da6df = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_94360f997ed600ed80e6837abbf4f740 = $(`<div id="html_94360f997ed600ed80e6837abbf4f740" style="width: 100.0%; height: 100.0%;"><b>Mudanjiang</b><br>Tier: Other<br>Start value (2024-Sep): -1.10%<br>End value (2024-Nov): -0.70%<br>Δ: +0.40 percentage points</div>`)[0];
+                popup_e252ff74790da0a8de0ce7c9973da6df.setContent(html_94360f997ed600ed80e6837abbf4f740);
+            
+        
+
+        circle_marker_1f957ff2b86ff5e1ec286f35f05f8a39.bindPopup(popup_e252ff74790da0a8de0ce7c9973da6df)
+        ;
+
+        
+    
+    
+            var circle_marker_2d3512b384984b48835f938c0ad4e621 = L.circleMarker(
+                [28.6472124, 116.0348483],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_a548b34b351ee983c296b378c5aad078 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_04e5d884ccee9dc0ba823caa018b9efb = $(`<div id="html_04e5d884ccee9dc0ba823caa018b9efb" style="width: 100.0%; height: 100.0%;"><b>Nanchang</b><br>Tier: Development potential<br>Start value (2024-Sep): -1.60%<br>End value (2024-Nov): -0.40%<br>Δ: +1.20 percentage points</div>`)[0];
+                popup_a548b34b351ee983c296b378c5aad078.setContent(html_04e5d884ccee9dc0ba823caa018b9efb);
+            
+        
+
+        circle_marker_2d3512b384984b48835f938c0ad4e621.bindPopup(popup_a548b34b351ee983c296b378c5aad078)
+        ;
+
+        
+    
+    
+            var circle_marker_4f699a085769dce4cd8fa0cb94e23bab = L.circleMarker(
+                [31.210219, 106.231735],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_8b943f14f6914b2db3e326378fa7c141 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_45573c9f1620a092361e4a0bfddda126 = $(`<div id="html_45573c9f1620a092361e4a0bfddda126" style="width: 100.0%; height: 100.0%;"><b>Nanchong</b><br>Tier: Other<br>Start value (2024-Sep): -0.80%<br>End value (2024-Nov): -0.30%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_8b943f14f6914b2db3e326378fa7c141.setContent(html_45573c9f1620a092361e4a0bfddda126);
+            
+        
+
+        circle_marker_4f699a085769dce4cd8fa0cb94e23bab.bindPopup(popup_8b943f14f6914b2db3e326378fa7c141)
+        ;
+
+        
+    
+    
+            var circle_marker_fe8eaf521340c67503a666127419f147 = L.circleMarker(
+                [32.0438284, 118.7788631],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_587841cd71cf6c31942366670106734d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5b0162d1eabea2341920ded78a233686 = $(`<div id="html_5b0162d1eabea2341920ded78a233686" style="width: 100.0%; height: 100.0%;"><b>Nanjing</b><br>Tier: New first-tier<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): +0.00%<br>Δ: +1.20 percentage points</div>`)[0];
+                popup_587841cd71cf6c31942366670106734d.setContent(html_5b0162d1eabea2341920ded78a233686);
+            
+        
+
+        circle_marker_fe8eaf521340c67503a666127419f147.bindPopup(popup_587841cd71cf6c31942366670106734d)
+        ;
+
+        
+    
+    
+            var circle_marker_0bf9ab949a3f63f5703b6ad66e74078a = L.circleMarker(
+                [22.8193063, 108.3627211],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_08926482ec78c272c1c8da5fdfbcc1e2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_72be00cde04933ea0a429bdc071bea79 = $(`<div id="html_72be00cde04933ea0a429bdc071bea79" style="width: 100.0%; height: 100.0%;"><b>Nanning</b><br>Tier: Other<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -0.50%<br>Δ: +0.70 percentage points</div>`)[0];
+                popup_08926482ec78c272c1c8da5fdfbcc1e2.setContent(html_72be00cde04933ea0a429bdc071bea79);
+            
+        
+
+        circle_marker_0bf9ab949a3f63f5703b6ad66e74078a.bindPopup(popup_08926482ec78c272c1c8da5fdfbcc1e2)
+        ;
+
+        
+    
+    
+            var circle_marker_5431b20fc21e1112fad2ccf485e54329 = L.circleMarker(
+                [29.8622194, 121.6203873],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_c90f84bce7c42250238249cb7496d41a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_82d9470769ca8b43dec4d283400fe865 = $(`<div id="html_82d9470769ca8b43dec4d283400fe865" style="width: 100.0%; height: 100.0%;"><b>Ningbo</b><br>Tier: Other<br>Start value (2024-Sep): -0.70%<br>End value (2024-Nov): +0.10%<br>Δ: +0.80 percentage points</div>`)[0];
+                popup_c90f84bce7c42250238249cb7496d41a.setContent(html_82d9470769ca8b43dec4d283400fe865);
+            
+        
+
+        circle_marker_5431b20fc21e1112fad2ccf485e54329.bindPopup(popup_c90f84bce7c42250238249cb7496d41a)
+        ;
+
+        
+    
+    
+            var circle_marker_bbdf92de920e3d9769da482b635131c4 = L.circleMarker(
+                [33.7419956, 113.3002154],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_564b4651a6adcb466f8e155f286290ff = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ee9945e5a1166e089ba4ad8f4d17d4c6 = $(`<div id="html_ee9945e5a1166e089ba4ad8f4d17d4c6" style="width: 100.0%; height: 100.0%;"><b>Pingdingshan</b><br>Tier: Other<br>Start value (2024-Sep): -0.60%<br>End value (2024-Nov): -0.20%<br>Δ: +0.40 percentage points</div>`)[0];
+                popup_564b4651a6adcb466f8e155f286290ff.setContent(html_ee9945e5a1166e089ba4ad8f4d17d4c6);
+            
+        
+
+        circle_marker_bbdf92de920e3d9769da482b635131c4.bindPopup(popup_564b4651a6adcb466f8e155f286290ff)
+        ;
+
+        
+    
+    
+            var circle_marker_5710071a7bcff20cf25fd0435794c125 = L.circleMarker(
+                [36.0663249, 120.3777659],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_966dd36e69246a1d524e38205cf25db9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_59ce979ab3b2d8c599e841a3c7650b24 = $(`<div id="html_59ce979ab3b2d8c599e841a3c7650b24" style="width: 100.0%; height: 100.0%;"><b>Qingdao</b><br>Tier: Strong economy<br>Start value (2024-Sep): -1.10%<br>End value (2024-Nov): -0.40%<br>Δ: +0.70 percentage points</div>`)[0];
+                popup_966dd36e69246a1d524e38205cf25db9.setContent(html_59ce979ab3b2d8c599e841a3c7650b24);
+            
+        
+
+        circle_marker_5710071a7bcff20cf25fd0435794c125.bindPopup(popup_966dd36e69246a1d524e38205cf25db9)
+        ;
+
+        
+    
+    
+            var circle_marker_91f8bc9d9e7cd6f60566675e9806b23e = L.circleMarker(
+                [25.1901863, 118.338717],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_24acceb9b1a3ac66ddd302e615abf5d1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_39fa20f81aff16dd0f928e9ed0ca57d1 = $(`<div id="html_39fa20f81aff16dd0f928e9ed0ca57d1" style="width: 100.0%; height: 100.0%;"><b>Quanzhou</b><br>Tier: Other<br>Start value (2024-Sep): -1.40%<br>End value (2024-Nov): -0.90%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_24acceb9b1a3ac66ddd302e615abf5d1.setContent(html_39fa20f81aff16dd0f928e9ed0ca57d1);
+            
+        
+
+        circle_marker_91f8bc9d9e7cd6f60566675e9806b23e.bindPopup(popup_24acceb9b1a3ac66ddd302e615abf5d1)
+        ;
+
+        
+    
+    
+            var circle_marker_3426fc099b7e9653d48b45fd7947e4f1 = L.circleMarker(
+                [18.2534658, 109.5034392],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_63ff689958e2a2deafe33045f0937481 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c1326c939b1e0a95997204701e1149b5 = $(`<div id="html_c1326c939b1e0a95997204701e1149b5" style="width: 100.0%; height: 100.0%;"><b>Sanya</b><br>Tier: Other<br>Start value (2024-Sep): -1.80%<br>End value (2024-Nov): -0.60%<br>Δ: +1.20 percentage points</div>`)[0];
+                popup_63ff689958e2a2deafe33045f0937481.setContent(html_c1326c939b1e0a95997204701e1149b5);
+            
+        
+
+        circle_marker_3426fc099b7e9653d48b45fd7947e4f1.bindPopup(popup_63ff689958e2a2deafe33045f0937481)
+        ;
+
+        
+    
+    
+            var circle_marker_5d2c388a0b128b0c475649b6bbfc8588 = L.circleMarker(
+                [31.2312707, 121.4700152],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_fda12fcc45a29b8ce986736c60fc1541 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d18d6d7ee76e10e72dc2d376b31ba7ec = $(`<div id="html_d18d6d7ee76e10e72dc2d376b31ba7ec" style="width: 100.0%; height: 100.0%;"><b>Shanghai</b><br>Tier: First-tier<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): +0.40%<br>Δ: +1.60 percentage points</div>`)[0];
+                popup_fda12fcc45a29b8ce986736c60fc1541.setContent(html_d18d6d7ee76e10e72dc2d376b31ba7ec);
+            
+        
+
+        circle_marker_5d2c388a0b128b0c475649b6bbfc8588.bindPopup(popup_fda12fcc45a29b8ce986736c60fc1541)
+        ;
+
+        
+    
+    
+            var circle_marker_7cea519f794a06c2634c90ba05f16cf3 = L.circleMarker(
+                [24.8309489, 113.8155263],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_03f2f7cb8a6f063961c82b3fcc486654 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_12436bc9e9d18c6c3d62f6189d82c41b = $(`<div id="html_12436bc9e9d18c6c3d62f6189d82c41b" style="width: 100.0%; height: 100.0%;"><b>Shaoguan</b><br>Tier: Other<br>Start value (2024-Sep): -0.70%<br>End value (2024-Nov): -0.60%<br>Δ: +0.10 percentage points</div>`)[0];
+                popup_03f2f7cb8a6f063961c82b3fcc486654.setContent(html_12436bc9e9d18c6c3d62f6189d82c41b);
+            
+        
+
+        circle_marker_7cea519f794a06c2634c90ba05f16cf3.bindPopup(popup_03f2f7cb8a6f063961c82b3fcc486654)
+        ;
+
+        
+    
+    
+            var circle_marker_f16cd9c2c7c71157d36e387839417580 = L.circleMarker(
+                [41.8026095, 123.4279105],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_5eb162a1f7e551864bf58543e284d37e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7c0e429bb73795cfce10eb8c194278e6 = $(`<div id="html_7c0e429bb73795cfce10eb8c194278e6" style="width: 100.0%; height: 100.0%;"><b>Shenyang</b><br>Tier: Other<br>Start value (2024-Sep): -1.10%<br>End value (2024-Nov): -0.20%<br>Δ: +0.90 percentage points</div>`)[0];
+                popup_5eb162a1f7e551864bf58543e284d37e.setContent(html_7c0e429bb73795cfce10eb8c194278e6);
+            
+        
+
+        circle_marker_f16cd9c2c7c71157d36e387839417580.bindPopup(popup_5eb162a1f7e551864bf58543e284d37e)
+        ;
+
+        
+    
+    
+            var circle_marker_09ff1415038e9ed7191b566fe622ccd5 = L.circleMarker(
+                [22.5445741, 114.0545429],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_9531223185e450b4b33c623983ff586c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6952f457c1e0a4d237395d5262f76166 = $(`<div id="html_6952f457c1e0a4d237395d5262f76166" style="width: 100.0%; height: 100.0%;"><b>Shenzhen</b><br>Tier: First-tier<br>Start value (2024-Sep): -1.30%<br>End value (2024-Nov): +0.50%<br>Δ: +1.80 percentage points</div>`)[0];
+                popup_9531223185e450b4b33c623983ff586c.setContent(html_6952f457c1e0a4d237395d5262f76166);
+            
+        
+
+        circle_marker_09ff1415038e9ed7191b566fe622ccd5.bindPopup(popup_9531223185e450b4b33c623983ff586c)
+        ;
+
+        
+    
+    
+            var circle_marker_491450b8ebf5276e54a458cd3c7ec912 = L.circleMarker(
+                [38.0429742, 114.5088385],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_48e0b5c076297fa4f144885dce4f502c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8ba1c9b0c9d93471cc922845e0621f76 = $(`<div id="html_8ba1c9b0c9d93471cc922845e0621f76" style="width: 100.0%; height: 100.0%;"><b>Shijiazhuang</b><br>Tier: Development potential<br>Start value (2024-Sep): -0.80%<br>End value (2024-Nov): -0.20%<br>Δ: +0.60 percentage points</div>`)[0];
+                popup_48e0b5c076297fa4f144885dce4f502c.setContent(html_8ba1c9b0c9d93471cc922845e0621f76);
+            
+        
+
+        circle_marker_491450b8ebf5276e54a458cd3c7ec912.bindPopup(popup_48e0b5c076297fa4f144885dce4f502c)
+        ;
+
+        
+    
+    
+            var circle_marker_62c3217fd40db9700583519c92d65624 = L.circleMarker(
+                [39.6295951, 118.1738712],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_a16b69bb67d1ea754fa2577e9c8bb432 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b9ede0e2b225c89f1b794b5b3e9f648b = $(`<div id="html_b9ede0e2b225c89f1b794b5b3e9f648b" style="width: 100.0%; height: 100.0%;"><b>Tangshan</b><br>Tier: Development potential<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -1.00%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_a16b69bb67d1ea754fa2577e9c8bb432.setContent(html_b9ede0e2b225c89f1b794b5b3e9f648b);
+            
+        
+
+        circle_marker_62c3217fd40db9700583519c92d65624.bindPopup(popup_a16b69bb67d1ea754fa2577e9c8bb432)
+        ;
+
+        
+    
+    
+            var circle_marker_c58f50da24cf6e81cb387992834d5e42 = L.circleMarker(
+                [39.3032619, 117.4163641],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_a0e31ad34acfc45277d0c2f994ee7600 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_982dad4b079d222292e5302f4fbfcca1 = $(`<div id="html_982dad4b079d222292e5302f4fbfcca1" style="width: 100.0%; height: 100.0%;"><b>Tianjin</b><br>Tier: New first-tier<br>Start value (2024-Sep): -0.50%<br>End value (2024-Nov): +0.20%<br>Δ: +0.70 percentage points</div>`)[0];
+                popup_a0e31ad34acfc45277d0c2f994ee7600.setContent(html_982dad4b079d222292e5302f4fbfcca1);
+            
+        
+
+        circle_marker_c58f50da24cf6e81cb387992834d5e42.bindPopup(popup_a0e31ad34acfc45277d0c2f994ee7600)
+        ;
+
+        
+    
+    
+            var circle_marker_e6935e059e79005fe42f8482ad99c98f = L.circleMarker(
+                [27.9963899, 120.695345],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_212dadbbb7adbb68543e7de76904f589 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_32352f9431ef18c014b5a0e6ba125d79 = $(`<div id="html_32352f9431ef18c014b5a0e6ba125d79" style="width: 100.0%; height: 100.0%;"><b>Wenzhou</b><br>Tier: Other<br>Start value (2024-Sep): -1.50%<br>End value (2024-Nov): -1.30%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_212dadbbb7adbb68543e7de76904f589.setContent(html_32352f9431ef18c014b5a0e6ba125d79);
+            
+        
+
+        circle_marker_e6935e059e79005fe42f8482ad99c98f.bindPopup(popup_212dadbbb7adbb68543e7de76904f589)
+        ;
+
+        
+    
+    
+            var circle_marker_e4a8534bfe90a5452c05c8613cf7b8b6 = L.circleMarker(
+                [30.5951051, 114.2999353],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_fba20e1fbb072064404bcb06c4e00f97 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7cd92651dbabf400b3c388c1d6bcbda5 = $(`<div id="html_7cd92651dbabf400b3c388c1d6bcbda5" style="width: 100.0%; height: 100.0%;"><b>Wuhan</b><br>Tier: New first-tier<br>Start value (2024-Sep): -0.40%<br>End value (2024-Nov): -0.20%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_fba20e1fbb072064404bcb06c4e00f97.setContent(html_7cd92651dbabf400b3c388c1d6bcbda5);
+            
+        
+
+        circle_marker_e4a8534bfe90a5452c05c8613cf7b8b6.bindPopup(popup_fba20e1fbb072064404bcb06c4e00f97)
+        ;
+
+        
+    
+    
+            var circle_marker_ea2a8951ab6449ba72ba045fd4960ea6 = L.circleMarker(
+                [31.5776626, 120.2952752],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_b452f982c63bf9ab13596f92c6949803 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_eb5b0ef2251bf2d82a3f9bf160c6ba12 = $(`<div id="html_eb5b0ef2251bf2d82a3f9bf160c6ba12" style="width: 100.0%; height: 100.0%;"><b>Wuxi</b><br>Tier: Development potential<br>Start value (2024-Sep): -1.20%<br>End value (2024-Nov): -0.30%<br>Δ: +0.90 percentage points</div>`)[0];
+                popup_b452f982c63bf9ab13596f92c6949803.setContent(html_eb5b0ef2251bf2d82a3f9bf160c6ba12);
+            
+        
+
+        circle_marker_ea2a8951ab6449ba72ba045fd4960ea6.bindPopup(popup_b452f982c63bf9ab13596f92c6949803)
+        ;
+
+        
+    
+    
+            var circle_marker_52f74631ccdfeeb17c581d573c611526 = L.circleMarker(
+                [24.5438732, 118.0768065],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_3c40541090d8882c5fe1d2a63cc4eba6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_44e1ecb9698d97f168916b4e70b216b0 = $(`<div id="html_44e1ecb9698d97f168916b4e70b216b0" style="width: 100.0%; height: 100.0%;"><b>Xiamen</b><br>Tier: Strong economy<br>Start value (2024-Sep): -1.70%<br>End value (2024-Nov): +0.40%<br>Δ: +2.10 percentage points</div>`)[0];
+                popup_3c40541090d8882c5fe1d2a63cc4eba6.setContent(html_44e1ecb9698d97f168916b4e70b216b0);
+            
+        
+
+        circle_marker_52f74631ccdfeeb17c581d573c611526.bindPopup(popup_3c40541090d8882c5fe1d2a63cc4eba6)
+        ;
+
+        
+    
+    
+            var circle_marker_87f53eca6b1aaef8c899f4e3c23526fc = L.circleMarker(
+                [32.010998, 112.1163785],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_ea395adf5244503870df94e046119bd8 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ed5cce10351d554b10c98d1acd01857e = $(`<div id="html_ed5cce10351d554b10c98d1acd01857e" style="width: 100.0%; height: 100.0%;"><b>Xiangyang</b><br>Tier: Other<br>Start value (2024-Sep): -0.90%<br>End value (2024-Nov): -0.60%<br>Δ: +0.30 percentage points</div>`)[0];
+                popup_ea395adf5244503870df94e046119bd8.setContent(html_ed5cce10351d554b10c98d1acd01857e);
+            
+        
+
+        circle_marker_87f53eca6b1aaef8c899f4e3c23526fc.bindPopup(popup_ea395adf5244503870df94e046119bd8)
+        ;
+
+        
+    
+    
+            var circle_marker_6f7bc090f945d6a3fc74e757fdacd2b1 = L.circleMarker(
+                [34.261004, 108.9423363],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_a6c39631145df3bfc2a7f6238e744080 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f4a4f552a0317bfcbf52040d641fe6a2 = $(`<div id="html_f4a4f552a0317bfcbf52040d641fe6a2" style="width: 100.0%; height: 100.0%;"><b>Xi’an</b><br>Tier: Other<br>Start value (2024-Sep): -0.80%<br>End value (2024-Nov): -0.30%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_a6c39631145df3bfc2a7f6238e744080.setContent(html_f4a4f552a0317bfcbf52040d641fe6a2);
+            
+        
+
+        circle_marker_6f7bc090f945d6a3fc74e757fdacd2b1.bindPopup(popup_a6c39631145df3bfc2a7f6238e744080)
+        ;
+
+        
+    
+    
+            var circle_marker_309ee1b24b217e2afdfd23ce5a8ab977 = L.circleMarker(
+                [34.2665258, 117.1810431],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_7bbb05b96adc577aef342233a87006f6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b318c67e01df6692e0ea36668c083684 = $(`<div id="html_b318c67e01df6692e0ea36668c083684" style="width: 100.0%; height: 100.0%;"><b>Xuzhou</b><br>Tier: Other<br>Start value (2024-Sep): -1.00%<br>End value (2024-Nov): +0.20%<br>Δ: +1.20 percentage points</div>`)[0];
+                popup_7bbb05b96adc577aef342233a87006f6.setContent(html_b318c67e01df6692e0ea36668c083684);
+            
+        
+
+        circle_marker_309ee1b24b217e2afdfd23ce5a8ab977.bindPopup(popup_7bbb05b96adc577aef342233a87006f6)
+        ;
+
+        
+    
+    
+            var circle_marker_30d490550824b21623d79eff8aafa36a = L.circleMarker(
+                [32.3968554, 119.4077658],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_2b3d900c3def58c7527d311268805586 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8b256f0751453802d99214179c9b7274 = $(`<div id="html_8b256f0751453802d99214179c9b7274" style="width: 100.0%; height: 100.0%;"><b>Yangzhou</b><br>Tier: Other<br>Start value (2024-Sep): -1.40%<br>End value (2024-Nov): -0.90%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_2b3d900c3def58c7527d311268805586.setContent(html_8b256f0751453802d99214179c9b7274);
+            
+        
+
+        circle_marker_30d490550824b21623d79eff8aafa36a.bindPopup(popup_2b3d900c3def58c7527d311268805586)
+        ;
+
+        
+    
+    
+            var circle_marker_4d50bb25e7f707bdf8d0853b7034aef0 = L.circleMarker(
+                [37.461928, 121.4425255],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_eb38374a209c24d315f0be119d9cfbd8 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_904afac07c591cb169658f0a204531d2 = $(`<div id="html_904afac07c591cb169658f0a204531d2" style="width: 100.0%; height: 100.0%;"><b>Yantai</b><br>Tier: Other<br>Start value (2024-Sep): -0.60%<br>End value (2024-Nov): -0.40%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_eb38374a209c24d315f0be119d9cfbd8.setContent(html_904afac07c591cb169658f0a204531d2);
+            
+        
+
+        circle_marker_4d50bb25e7f707bdf8d0853b7034aef0.bindPopup(popup_eb38374a209c24d315f0be119d9cfbd8)
+        ;
+
+        
+    
+    
+            var circle_marker_b34d6c61b3a99e291106597373424f99 = L.circleMarker(
+                [30.6941332, 111.2803512],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_0d96f2d6c51f34c5834bb536f54ad889 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6928a8e071402ffb978a1ea934c9350a = $(`<div id="html_6928a8e071402ffb978a1ea934c9350a" style="width: 100.0%; height: 100.0%;"><b>Yichang</b><br>Tier: Other<br>Start value (2024-Sep): -0.50%<br>End value (2024-Nov): -0.30%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_0d96f2d6c51f34c5834bb536f54ad889.setContent(html_6928a8e071402ffb978a1ea934c9350a);
+            
+        
+
+        circle_marker_b34d6c61b3a99e291106597373424f99.bindPopup(popup_0d96f2d6c51f34c5834bb536f54ad889)
+        ;
+
+        
+    
+    
+            var circle_marker_716807e3cf7fe5c455b020d8fe56e9c8 = L.circleMarker(
+                [29.060703, 113.348653],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_8c9347896d00d15d8069c5596e138023 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6033333b18fe7401e1d8aeb96c95f86f = $(`<div id="html_6033333b18fe7401e1d8aeb96c95f86f" style="width: 100.0%; height: 100.0%;"><b>Yueyang</b><br>Tier: Other<br>Start value (2024-Sep): -0.60%<br>End value (2024-Nov): -0.40%<br>Δ: +0.20 percentage points</div>`)[0];
+                popup_8c9347896d00d15d8069c5596e138023.setContent(html_6033333b18fe7401e1d8aeb96c95f86f);
+            
+        
+
+        circle_marker_716807e3cf7fe5c455b020d8fe56e9c8.bindPopup(popup_8c9347896d00d15d8069c5596e138023)
+        ;
+
+        
+    
+    
+            var circle_marker_a5a6f1f451b94d2d9271e86a13722a08 = L.circleMarker(
+                [21.2737079, 110.3548318],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_82b8a9f6d6fb5dfcd33ec38b6e2fee87 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_650bad6bdfa77ffd17c76bc79da581d7 = $(`<div id="html_650bad6bdfa77ffd17c76bc79da581d7" style="width: 100.0%; height: 100.0%;"><b>Zhanjiang</b><br>Tier: Other<br>Start value (2024-Sep): -0.90%<br>End value (2024-Nov): -0.30%<br>Δ: +0.60 percentage points</div>`)[0];
+                popup_82b8a9f6d6fb5dfcd33ec38b6e2fee87.setContent(html_650bad6bdfa77ffd17c76bc79da581d7);
+            
+        
+
+        circle_marker_a5a6f1f451b94d2d9271e86a13722a08.bindPopup(popup_82b8a9f6d6fb5dfcd33ec38b6e2fee87)
+        ;
+
+        
+    
+    
+            var circle_marker_db6ed2ed12f1cae8dff508802b30c2db = L.circleMarker(
+                [34.7472531, 113.619321],
+                {"bubblingMouseEvents": true, "color": "#1b9e77", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_865f1c14a20c5f789991875cba37db46);
+        
+    
+        var popup_345d4ad80c9acf385d5f5db2d81b9f3d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_adc0ceb047c4cb5623f748d8e14dd03f = $(`<div id="html_adc0ceb047c4cb5623f748d8e14dd03f" style="width: 100.0%; height: 100.0%;"><b>Zhengzhou</b><br>Tier: Strong economy<br>Start value (2024-Sep): -1.00%<br>End value (2024-Nov): -0.50%<br>Δ: +0.50 percentage points</div>`)[0];
+                popup_345d4ad80c9acf385d5f5db2d81b9f3d.setContent(html_adc0ceb047c4cb5623f748d8e14dd03f);
+            
+        
+
+        circle_marker_db6ed2ed12f1cae8dff508802b30c2db.bindPopup(popup_345d4ad80c9acf385d5f5db2d81b9f3d)
+        ;
+
+        
+    
+    
+            feature_group_865f1c14a20c5f789991875cba37db46.addTo(map_9cebba5b34d822d022d62ed0b1f36380);
+        
+    
+            var feature_group_8ea8766776fd4861e7a6f3291e816ee6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_5fbcda9bc97d994ec68e81ff53b5cfc5 = L.circleMarker(
+                [40.5791477, 124.4407146],
+                {"bubblingMouseEvents": true, "color": "#d95f02", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d95f02", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_8ea8766776fd4861e7a6f3291e816ee6);
+        
+    
+        var popup_7306bc8a43cc8442750d0dd51cc91c11 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c428360ba567879869520d7a208b217b = $(`<div id="html_c428360ba567879869520d7a208b217b" style="width: 100.0%; height: 100.0%;"><b>Dandong</b><br>Tier: Other<br>Start value (2024-Sep): -0.90%<br>End value (2024-Nov): -1.30%<br>Δ: -0.40 percentage points</div>`)[0];
+                popup_7306bc8a43cc8442750d0dd51cc91c11.setContent(html_c428360ba567879869520d7a208b217b);
+            
+        
+
+        circle_marker_5fbcda9bc97d994ec68e81ff53b5cfc5.bindPopup(popup_7306bc8a43cc8442750d0dd51cc91c11)
+        ;
+
+        
+    
+    
+            var circle_marker_78fdf949a58e553f371b9b59ed88f594 = L.circleMarker(
+                [45.7593633, 126.6276177],
+                {"bubblingMouseEvents": true, "color": "#d95f02", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d95f02", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_8ea8766776fd4861e7a6f3291e816ee6);
+        
+    
+        var popup_6f5fd6726fabaf8d8d12d927a0072efa = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_67073de4a45e63971e5d8663d5324a36 = $(`<div id="html_67073de4a45e63971e5d8663d5324a36" style="width: 100.0%; height: 100.0%;"><b>Harbin</b><br>Tier: Other<br>Start value (2024-Sep): -0.70%<br>End value (2024-Nov): -0.90%<br>Δ: -0.20 percentage points</div>`)[0];
+                popup_6f5fd6726fabaf8d8d12d927a0072efa.setContent(html_67073de4a45e63971e5d8663d5324a36);
+            
+        
+
+        circle_marker_78fdf949a58e553f371b9b59ed88f594.bindPopup(popup_6f5fd6726fabaf8d8d12d927a0072efa)
+        ;
+
+        
+    
+    
+            var circle_marker_46a0a2a430e819cca4f85f4e505c23d3 = L.circleMarker(
+                [36.6519754, 117.1138479],
+                {"bubblingMouseEvents": true, "color": "#d95f02", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d95f02", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_8ea8766776fd4861e7a6f3291e816ee6);
+        
+    
+        var popup_41eab363bfe43c6b2b03cb76a28dd48f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e11e511f0dc8b5e94de27ab262aae91c = $(`<div id="html_e11e511f0dc8b5e94de27ab262aae91c" style="width: 100.0%; height: 100.0%;"><b>Jinan</b><br>Tier: Other<br>Start value (2024-Sep): -0.60%<br>End value (2024-Nov): -0.70%<br>Δ: -0.10 percentage points</div>`)[0];
+                popup_41eab363bfe43c6b2b03cb76a28dd48f.setContent(html_e11e511f0dc8b5e94de27ab262aae91c);
+            
+        
+
+        circle_marker_46a0a2a430e819cca4f85f4e505c23d3.bindPopup(popup_41eab363bfe43c6b2b03cb76a28dd48f)
+        ;
+
+        
+    
+    
+            var circle_marker_65ab82fcf0cfffac9be1fea690481f16 = L.circleMarker(
+                [41.494444, 121.615278],
+                {"bubblingMouseEvents": true, "color": "#d95f02", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d95f02", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_8ea8766776fd4861e7a6f3291e816ee6);
+        
+    
+        var popup_b6b6b8a398bccf7456e9e247bc0ddd14 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_27e9330ebfeb381c9e52ab26675bc10f = $(`<div id="html_27e9330ebfeb381c9e52ab26675bc10f" style="width: 100.0%; height: 100.0%;"><b>Jinzhou</b><br>Tier: Other<br>Start value (2024-Sep): -0.80%<br>End value (2024-Nov): -0.90%<br>Δ: -0.10 percentage points</div>`)[0];
+                popup_b6b6b8a398bccf7456e9e247bc0ddd14.setContent(html_27e9330ebfeb381c9e52ab26675bc10f);
+            
+        
+
+        circle_marker_65ab82fcf0cfffac9be1fea690481f16.bindPopup(popup_b6b6b8a398bccf7456e9e247bc0ddd14)
+        ;
+
+        
+    
+    
+            var circle_marker_60b6c4be04cd21d099a49e5b079da9f6 = L.circleMarker(
+                [37.8699921, 112.5437075],
+                {"bubblingMouseEvents": true, "color": "#d95f02", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d95f02", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_8ea8766776fd4861e7a6f3291e816ee6);
+        
+    
+        var popup_6dbf065760d2f092e12e8ae145f46cb9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6bdc948af5a50408644782b8417b4d30 = $(`<div id="html_6bdc948af5a50408644782b8417b4d30" style="width: 100.0%; height: 100.0%;"><b>Taiyuan</b><br>Tier: Other<br>Start value (2024-Sep): -0.20%<br>End value (2024-Nov): -0.30%<br>Δ: -0.10 percentage points</div>`)[0];
+                popup_6dbf065760d2f092e12e8ae145f46cb9.setContent(html_6bdc948af5a50408644782b8417b4d30);
+            
+        
+
+        circle_marker_60b6c4be04cd21d099a49e5b079da9f6.bindPopup(popup_6dbf065760d2f092e12e8ae145f46cb9)
+        ;
+
+        
+    
+    
+            var circle_marker_db1bfe07b909ba3f30611339e508e364 = L.circleMarker(
+                [36.824463, 101.440811],
+                {"bubblingMouseEvents": true, "color": "#d95f02", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d95f02", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_8ea8766776fd4861e7a6f3291e816ee6);
+        
+    
+        var popup_f184a1bc77193d0b51584bea4315c0c5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7500ed8672a24f8c76f2b62f23b6887e = $(`<div id="html_7500ed8672a24f8c76f2b62f23b6887e" style="width: 100.0%; height: 100.0%;"><b>Xining</b><br>Tier: Other<br>Start value (2024-Sep): -0.50%<br>End value (2024-Nov): -0.80%<br>Δ: -0.30 percentage points</div>`)[0];
+                popup_f184a1bc77193d0b51584bea4315c0c5.setContent(html_7500ed8672a24f8c76f2b62f23b6887e);
+            
+        
+
+        circle_marker_db1bfe07b909ba3f30611339e508e364.bindPopup(popup_f184a1bc77193d0b51584bea4315c0c5)
+        ;
+
+        
+    
+    
+            feature_group_8ea8766776fd4861e7a6f3291e816ee6.addTo(map_9cebba5b34d822d022d62ed0b1f36380);
+        
+    
+            var feature_group_0380b3bae455ab8a0475d9858df111c3 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_56427bab85aed1edfc156e2472b5780e = L.circleMarker(
+                [43.7289674, 126.1997366],
+                {"bubblingMouseEvents": true, "color": "#7570b3", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7570b3", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_0380b3bae455ab8a0475d9858df111c3);
+        
+    
+        var popup_4d7af588310de6a989359684ff663a2a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f96004d7cee242b739eaccfa399e05f7 = $(`<div id="html_f96004d7cee242b739eaccfa399e05f7" style="width: 100.0%; height: 100.0%;"><b>Jilin</b><br>Tier: Other<br>Start value (2024-Sep): -0.50%<br>End value (2024-Nov): -0.50%<br>Δ: +0.00 percentage points</div>`)[0];
+                popup_4d7af588310de6a989359684ff663a2a.setContent(html_f96004d7cee242b739eaccfa399e05f7);
+            
+        
+
+        circle_marker_56427bab85aed1edfc156e2472b5780e.bindPopup(popup_4d7af588310de6a989359684ff663a2a)
+        ;
+
+        
+    
+    
+            var circle_marker_5f3db1a6fddb680809463ae646d93f6a = L.circleMarker(
+                [39.9395724, 119.5894129],
+                {"bubblingMouseEvents": true, "color": "#7570b3", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7570b3", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 1}
+            ).addTo(feature_group_0380b3bae455ab8a0475d9858df111c3);
+        
+    
+        var popup_a83d4238afb578b85fb97ee637a5cb1b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_281867d7954beb3fff9883342cc62171 = $(`<div id="html_281867d7954beb3fff9883342cc62171" style="width: 100.0%; height: 100.0%;"><b>Qinhuangdao</b><br>Tier: Other<br>Start value (2024-Sep): -0.90%<br>End value (2024-Nov): -0.90%<br>Δ: +0.00 percentage points</div>`)[0];
+                popup_a83d4238afb578b85fb97ee637a5cb1b.setContent(html_281867d7954beb3fff9883342cc62171);
+            
+        
+
+        circle_marker_5f3db1a6fddb680809463ae646d93f6a.bindPopup(popup_a83d4238afb578b85fb97ee637a5cb1b)
+        ;
+
+        
+    
+    
+            feature_group_0380b3bae455ab8a0475d9858df111c3.addTo(map_9cebba5b34d822d022d62ed0b1f36380);
+        
+    
+            var layer_control_db7a6e1d9e980af7ec7b0de6c8123486_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_9e860188e9868f4d9fa7dbe85bb3f15e,
+                },
+                overlays :  {
+                    "Less negative / more positive" : feature_group_865f1c14a20c5f789991875cba37db46,
+                    "More negative" : feature_group_8ea8766776fd4861e7a6f3291e816ee6,
+                    "Unchanged" : feature_group_0380b3bae455ab8a0475d9858df111c3,
+                },
+            };
+            let layer_control_db7a6e1d9e980af7ec7b0de6c8123486 = L.control.layers(
+                layer_control_db7a6e1d9e980af7ec7b0de6c8123486_layers.base_layers,
+                layer_control_db7a6e1d9e980af7ec7b0de6c8123486_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_9cebba5b34d822d022d62ed0b1f36380);
+
+        
+</script>
+</html>
